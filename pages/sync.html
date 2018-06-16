@@ -1,0 +1,108 @@
+<div class="page" data-name="sync" style="bbackground:url(img/bkg0.jpg);background-size:cover;background-position:center">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left">
+        <a href="#" class="link icon-only panel-open" data-panel="left">
+          <i class="icon f7-icons ios-only">menu</i>
+          <i class="icon material-icons md-only">motorcycle</i><!--directions_car,add_to_home_screen,menu,sd_storage-->
+        </a>
+      </div>
+      <div class="title">
+        Sincronização
+      </div>
+      <div class="right">
+        <a href="#" class="link icon-only panel-open" data-panel="right">
+          <i class="icon f7-icons ios-only">menu</i>
+          <i class="icon material-icons md-only">person</i><!--person,person_pin,how_to_reg,perm_identity-->
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="page-content">
+
+    <div class="block">
+
+      <form id="sync">
+
+        <div class="auto_name block-title" style="font-weight:bold;text-align:center"></div>
+        <div style="clear:both"></div>
+
+        <div class="list label-bold" style="margin-top:30px !important">
+          <ul>
+
+            <li class="item-content item-input iiitem-input-with-info">
+              <div class="item-inner">
+                <div class="item-title item-label">Telefone do Rastreador</div>
+                <div class="item-input-wrap">
+                  <input name="dev_phone" required validate type="text" maxlength="32" placeholder="(99) 99999-9999" class="phone_with_ddd">
+                  <span class="input-clear-button"></span>
+                  <!--<div class="item-input-info">Número do chip inserido no rastreador</div>-->
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input" style="mmargin-top:15px">
+              <div class="item-inner">
+                <div class="item-title item-label">Operadora</div>
+                <div class="item-input-wrap input-dropdown-wrap">
+                  <select name="dev_op" placeholder="Selecione..." class="input-with-value">
+                    <option value="vivo">Vivo</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input" style="mmargin-top:15px">
+              <div class="item-inner">
+                <div class="item-title item-label">Senha</div>
+                <div class="item-input-wrap">
+                  <input name="dev_password" type="text" maxlength="32" placeholder="123456" class="">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input" style="mmargin-top:15px">
+              <div class="item-inner">
+                <div class="item-title item-label">Modelo do Rastreador</div>
+                <div class="item-input-wrap input-dropdown-wrap">
+                  <select name="dev_model" placeholder="Selecione..." class="input-with-value">
+                    <option value="tk303">TK 303</option>
+                  </select>
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input">
+              <button style="margin-top:10px" class="button button-big button-fill color-green">Iniciar Sincronização</button>
+            </li>
+            <li id="mais_show" class="item-content item-input">
+              <button style="margin-top:10px" class="button color-gray">Mais opções</button>
+            </li>
+            <li id="mais" class="item-content item-input" style="display:none">
+              <p class="row" style="width:100%">
+                <button class="col button bbutton-big button-fill color-gray">Rec. Senha</button>
+                <button class="col button bbutton-big button-fill color-blue">Editar</button>
+                <button class="col button bbutton-big button-fill color-red">Excluir</button>
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div style="padding-left:20px;padding-right:20px;padding-bottom:10px">
+    <div class="list">
+      <div class="block-footer">Já possui uma conta? <a href="/login/">Entrar</a>.</div>
+    </div>
+  </div>
+</div>

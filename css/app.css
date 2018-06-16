@@ -1,0 +1,84 @@
+/* Your app styles here */
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+/* Razor */
+body { font-family: 'Montserrat', sans-serif !important; }
+
+/* Toolbar */
+#rz-bar a { padding-top:15px;padding-bottom:12px; }
+#rz-bar a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
+
+/* Links */
+.md .color-theme-black a { color:#fff;font-weight:600 }
+.md .color-theme-black a.green { color:#49f892 !important }
+
+/* Inputs */
+.item-input-focused .item-label{ color:#fff !important }
+.item-input-focused .item-input-wrap:after{ background:#66d492 !important; }
+.right-input-link {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40%;
+  height: 37px;
+  color: rgba(255, 255, 255, 0.54) !important;
+  font-size: 12px;
+  line-height: 37px;
+  text-align: right;
+  font-weight:400 !important;
+}
+.item-input-error-message {color:#ffc700 !important}
+.item-input-invalid .item-label {ccolor:#ffc700 !important}
+.item-input-info {color:#999 !important}
+.label-bold .item-title {
+  font-weight:600 !important;
+  color:#ccc !important;
+  text-transform:uppercase;
+}
+.label-bold ul:before {background:none !important}
+
+/* Buttons */
+.button {font-weight:600;text-transform:none !important}
+.button.color-green {color:#000 !important;}
+.button-big {text-transform:uppercase !important}
+
+/* Text */
+.ucwords {text-transform:capitalize;}
+.navbar .title:not(.def) {width:100% !important;margin-left:auto !important;margin-right:auto !important;text-align:center !important}
+.muted {color:#999 !important}
+
+/* Listview */
+ul .item-media {min-width:0 !important}
+.md .links-list a {padding-left:0 !important}
+.list {margin-top:0 !important}
+
+/* Menu Icons */
+#icons .col {text-align:center !important;padding:16px;text-shadow:1px 1px 1px #000;font-weight:600;font-size:12px}
+#icons .col .fas {font-size:48px;position:relative;margin-bottom:10px}
+#icons .link {
+  &:focus {
+    outline: 0;
+    color: red !important;
+    &:before {
+      animation: effect_dylan 0.8s ease-out;
+    }
+  }
+}
+
+/* Animations */
+@keyframes blink {
+  0% { color  : red; }
+  /*49% { color : red; }
+  50% { color : blue }*/
+  100% { color: #fff; }
+}
+.blink {
+  animation: blink 0.5s linear infinite;
+}
+
+/* General */
+.preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}

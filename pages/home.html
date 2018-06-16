@@ -1,0 +1,171 @@
+<div class="page" data-name="home" style="background:url(img/bkg0.jpg);background-size:cover;background-position:center">
+
+  <!-- Status bar overlay for fullscreen mode-->
+  <div class="statusbar"></div>
+  <!-- Left panel with cover effect-->
+  <div class="panel panel-left panel-cover theme-dark">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title def">Meus veículos</div>
+          </div>
+        </div>
+        <div class="page-content">
+
+
+          <!--<div class="block-title">Main View Navigation</div>-->
+          <div class="list links-list">
+            <ul id="autoList">
+            </ul>
+            <ul>
+              <li>
+                <a href="/auto/">
+                  <div class="item-content">
+                    <div class="item-media"><i class="fas fa-plus"></i></div>
+                    <div class="item-inner">
+                      <div class="item-title" style="font-weight:600">Novo veículo</div>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Right panel with reveal effect-->
+  <div class="panel panel-right panel-reveal theme-dark">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="title">Right Panel</div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="block">Right panel content goes here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-----------------------------------
+  BOTTOM TABS
+  ------------------------------------>
+  <div class="views tabs ios-edges">
+    <div id="rz-bar" class="toolbar tabbar-labels toolbar-bottom-md">
+      <div class="toolbar-inner">
+        <a href="#tab-map" class="tab-link tab-link-active">
+          <i class="icon material-icons md-only">public</i><!--gps_fixed,gps_off,room-->
+        </a>
+        <a href="#tab-menu" class="tab-link">
+          <i class="icon material-icons md-only">view_module</i><!--view_module,,border_all-->
+        </a>
+        <a href="#tab-conf" class="tab-link">
+          <i class="icon material-icons md-only">settings</i>
+        </a>
+      </div>
+    </div>
+
+    <!-----------------------------------
+    TOP NAVBAR
+    ------------------------------------>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="left">
+          <a href="#" class="link icon-only panel-open" data-panel="left">
+            <!--<i class="icon f7-icons ios-only">menu</i>-->
+            <i class="icon material-icons mmd-only">motorcycle</i><!--directions_car,add_to_home_screen,menu,sd_storage-->
+          </a>
+        </div>
+        <div class="title"><img src='img/logo-txt-mini.png' style="width:110px;margin-top:5px" /></div>
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <!--<i class="icon f7-icons ios-only">menu</i>-->
+            <i class="icon material-icons">person</i><!--person,person_pin,how_to_reg,perm_identity-->
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tabs">
+
+      <div id="tab-map" class="page-content tab tab-active">
+        MAP
+      </div>
+
+      <div id="tab-menu" class="page-content tab">
+
+        <div class="block" id="icons" style="margin:0">
+          <div class="row">
+            <div class="col">
+              <a href="/auto/" class="link" style="display:block">
+                <i style="display:block" class="fas fa-power-off"></i><!-- plug,power-off -->
+                Cortar Corrente
+              </a>
+            </div>
+            <div class="col blink">
+              <i class="fas fa-exclamation-triangle"></i><br/>
+              Disparar alarme
+            </div>
+            <div class="col">
+              <i class="fas fa-bolt"></i><br/>
+              S.O.S.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
+              <i class="fas fa-map-marker-alt"></i><br/>
+              Geo-fence
+            </div>
+            <div class="col">
+              <i class="fas fa-random"></i><br/>
+              Alarme de Movimento
+            </div>
+            <div class="col">
+              <i class="fas fa-road"></i><br/>
+              Alarme de Velocidade
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <i class="fas fa-phone"></i><br/>
+              Áudio Interno
+            </div>
+            <div class="col">
+              <i class="fas fa-flask"></i><br/>
+              Alarme de Combustível
+            </div>
+            <div class="col">
+              <i class="fas fa-dollar-sign"></i><br/>
+              Verificar Saldo SMS
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <i class="fas fa-map"></i><br/>
+              Histórico de Trânsito
+            </div>
+            <div class="col">
+              <i class="fas fa-list-alt"></i><br/>
+              Histórico de Uso
+            </div>
+            <div class="col">
+              <i class="fas fa-plus"></i><br/>
+              Outros
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-conf" class="page-content tab">
+        CONF
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+  https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+  * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+  * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+  * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+  * Enable inline JS: add 'unsafe-inline' to default-src
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#2196f3">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<title>Razor</title>
+<link rel="stylesheet" href="framework7/css/razor-framework7.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,800" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link rel="stylesheet" href="css/icons.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app" class="page color-theme-black theme-dark">
+    <div class="statusbar"></div>
+
+    <div id="view-index" class="view view-main tab tab-active">
+
+      <div class="page" data-name="preloader" style="background:#000">
+
+        <div id="preloader" style="ddisplay:none;background-image:url(img/loader3.gif);background-size:80%;background-position:center;background-repeat:no-repeat;height:100%">
+
+          <div class="page-content login-screen-content">
+            <div id="logo" style="ddisplay:none;background-image:url(img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Cordova -->
+  <!-- <script src="cordova.js"></script> -->
+
+  <!-- Framework7 library -->
+  <script src="framework7/js/framework7.min.js"></script>
+
+  <!-- jQ -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+  <!-- Vendor -->
+  <script src="js/jquery.mask.js"></script>
+
+  <!-- App -->
+  <script src="js/funx.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/start.js"></script>
+
+  <!-- General -->
+  <script src="index.js"></script>
+
+  <script>
+  //localStorage.clear();sessionStorage.clear();
+  start();
+  setTimeout(function() {
+    $("#preloader").fadeOut("slow", function() {
+      if (localStorage.cli_id > 0) {
+        app.router.navigate("/home/");
+      }
+      else {
+        app.router.navigate("/login/");
+      }
+    });
+  },1000);
+</script>
+</body>
+</html>

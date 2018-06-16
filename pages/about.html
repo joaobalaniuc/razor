@@ -1,0 +1,19 @@
+<div class="page">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="title">About Me</div>
+    </div>
+  </div>
+  <div class="toolbar tabbar">
+    <div class="toolbar-inner">
+      <a href="./" class="tab-link" data-route-tab-id="about">About {{$route.params.name}}</a>
+      <a href="./contacts/" class="tab-link" data-route-tab-id="contacts">>Contacts</a>
+      <a href="./cv/" class="tab-link" data-route-tab-id="cv">>CV</a>
+    </div>
+  </div>
+  <div class="tabs tabs-routable">
+    <div class="tab page-content" id="about"></div>
+    <div class="tab page-content" id="contacts"></div>
+    <div class="tab page-content" id="cv"></div>
+  </div>
+</div>
