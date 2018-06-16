@@ -13,7 +13,6 @@ psd/
 test/
 public_html-old/
 public_html/backup/
-*backup*
 
 # Windows image file caches
 Thumbs.db
