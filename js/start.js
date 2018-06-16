@@ -56,8 +56,9 @@ var phonegap = {
 
     // SPLASHSCREEN (CONFIG.XML BUGFIX)
     setTimeout(function () {
-      navigator.splashscreen.hide();
+      //navigator.splashscreen.hide();
       //StatusBar.hide();
+      alert(1);
     }, 1000);
 
     start();
