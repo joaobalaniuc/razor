@@ -90,4 +90,3 @@ var phonegap = {
     console.log('Received Event: ' + id);
   }
 };
-phonegap.initialize();

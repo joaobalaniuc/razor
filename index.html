@@ -48,7 +48,7 @@
   </div>
 
   <!-- Cordova -->
-  <!-- <script src="cordova.js"></script> -->
+  <script src="cordova.js"></script>
 
   <!-- Framework7 library -->
   <script src="framework7/js/framework7.min.js"></script>
@@ -72,9 +72,7 @@
   <script>
   //localStorage.clear();sessionStorage.clear();
   //start();
-  alert(0);
-  
-  alert(1);
+  phonegap.initialize();
   setTimeout(function() {
     $("#preloader").fadeOut("slow", function() {
       if (localStorage.cli_id > 0) {
@@ -85,7 +83,6 @@
       }
     });
   },1000);
-  alert(2);
 </script>
 </body>
 </html>
