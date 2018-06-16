@@ -40,6 +40,5 @@ $$(document).on('page:init', '.page[data-name="register"]', function (e) {
 
 $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");
-  sessionStorage.auto_id_read = id;
-  
+  console.log(id);
 });
