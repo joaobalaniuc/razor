@@ -43,7 +43,7 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
-    navigator.splashscreen.hide();
+
 
     // GPS enabled?
     /*
@@ -59,7 +59,7 @@ var phonegap = {
 
     // SPLASHSCREEN (CONFIG.XML BUGFIX)
     setTimeout(function () {
-      //
+      navigator.splashscreen.hide();
       //StatusBar.hide();
     }, 1000);
 
@@ -72,7 +72,7 @@ var phonegap = {
           app.router.navigate("/login/");
         }
       });
-    },3000);
+    },10000);
 
     start();
     //geo();
