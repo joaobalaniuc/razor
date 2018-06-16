@@ -3,8 +3,6 @@
 //--------------------------------------------
 function start() {
 
-  alert("start");
-
   // App config
   localStorage.appname = "Razor";
   localStorage.version = "1.0.0";
@@ -30,7 +28,6 @@ var phonegap = {
 
   // Application Constructor
   initialize: function () {
-    alert("pg");
     this.bindEvents();
   },
 
@@ -46,7 +43,7 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
-    alert("ready0");
+    navigator.splashscreen.hide();
 
     // GPS enabled?
     /*
@@ -62,9 +59,8 @@ var phonegap = {
 
     // SPLASHSCREEN (CONFIG.XML BUGFIX)
     setTimeout(function () {
-      //navigator.splashscreen.hide();
+      //
       //StatusBar.hide();
-      alert("time...");
     }, 1000);
 
     setTimeout(function() {
@@ -76,11 +72,10 @@ var phonegap = {
           app.router.navigate("/login/");
         }
       });
-    },1000);
+    },3000);
 
     start();
     //geo();
-    alert("ready1");
 
   },
   // Update DOM on a Received Event
