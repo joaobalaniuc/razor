@@ -30,6 +30,7 @@ var phonegap = {
 
   // Application Constructor
   initialize: function () {
+    alert("pg");
     this.bindEvents();
   },
 
@@ -89,3 +90,4 @@ var phonegap = {
     console.log('Received Event: ' + id);
   }
 };
+phonegap.initialize();
