@@ -73,16 +73,7 @@
   //localStorage.clear();sessionStorage.clear();
   //start();
   phonegap.initialize();
-  setTimeout(function() {
-    $("#preloader").fadeOut("slow", function() {
-      if (localStorage.cli_id > 0) {
-        app.router.navigate("/home/");
-      }
-      else {
-        app.router.navigate("/login/");
-      }
-    });
-  },1000);
+  
 </script>
 </body>
 </html>

@@ -49,6 +49,7 @@ var phonegap = {
     alert("ready0");
 
     // GPS enabled?
+    /*
     if (device.platform != "iOS") {
       cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
         if (!enabled) { geoIP(); }
@@ -56,27 +57,29 @@ var phonegap = {
         alert("The following error occurred: " + error);
       });
     }
-
-    app.receivedEvent('deviceready');
+    */
+    phonegap.receivedEvent('deviceready');
 
     // SPLASHSCREEN (CONFIG.XML BUGFIX)
     setTimeout(function () {
       //navigator.splashscreen.hide();
       //StatusBar.hide();
-      alert(1);
+      alert("time...");
     }, 1000);
 
-    //start();
+    setTimeout(function() {
+      $("#preloader").fadeOut("slow", function() {
+        if (localStorage.cli_id > 0) {
+          app.router.navigate("/home/");
+        }
+        else {
+          app.router.navigate("/login/");
+        }
+      });
+    },1000);
 
-    // BACK BUTTON INDEX
-    document.addEventListener("backbutton", function (e) {
-      if (sessionStorage.activePage == "index" || sessionStorage.activePage == "user_login") {
-        //e.preventDefault();
-      }
-    }, false);
-
+    start();
     //geo();
-
     alert("ready1");
 
   },
