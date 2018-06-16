@@ -3,6 +3,8 @@
 //--------------------------------------------
 function start() {
 
+  alert("start");
+
   // App config
   localStorage.appname = "Razor";
   localStorage.version = "1.0.0";
@@ -43,6 +45,8 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
+    alert("ready0");
+
     // GPS enabled?
     if (device.platform != "iOS") {
       cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
@@ -61,7 +65,7 @@ var phonegap = {
       alert(1);
     }, 1000);
 
-    start();
+    //start();
 
     // BACK BUTTON INDEX
     document.addEventListener("backbutton", function (e) {
@@ -70,7 +74,9 @@ var phonegap = {
       }
     }, false);
 
-    geo();
+    //geo();
+
+    alert("ready1");
 
   },
   // Update DOM on a Received Event

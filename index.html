@@ -71,7 +71,8 @@
 
   <script>
   //localStorage.clear();sessionStorage.clear();
-  start();
+  //start();
+  phonegap.initialize();
   setTimeout(function() {
     $("#preloader").fadeOut("slow", function() {
       if (localStorage.cli_id > 0) {
