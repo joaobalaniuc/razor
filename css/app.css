@@ -82,3 +82,8 @@ ul .item-media {min-width:0 !important}
 
 /* General */
 .preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
+
+/* Preloader Page */
+[data-name="preloader"] .txt {
+  display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
+}

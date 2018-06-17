@@ -63,16 +63,7 @@ var phonegap = {
       //StatusBar.hide();
     }, 500);
 
-    setTimeout(function() {
-      $("#preloader").fadeOut("slow", function() {
-        if (localStorage.cli_id > 0) {
-          app.router.navigate("/home/");
-        }
-        else {
-          app.router.navigate("/login/");
-        }
-      });
-    },10000);
+    
 
     start();
     //geo();
