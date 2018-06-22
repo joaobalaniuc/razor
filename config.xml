@@ -38,7 +38,7 @@
 -->
 <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
 <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-<!--
+
 <platform name="android">
   <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
   <icon density="mdpi" src="res/icon/android/drawable-mdpi-icon.png" />
@@ -59,7 +59,7 @@
   <splash density="port-xxhdpi" src="res/screen/android/drawable-port-xxhdpi-screen.png" />
   <splash density="port-xxxhdpi" src="res/screen/android/drawable-port-xxxhdpi-screen.png" />
 </platform>
--->
+
 <platform name="ios">
   <icon height="57" platform="ios" src="res/icon/ios/icon.png" width="57" />
   <icon height="114" platform="ios" src="res/icon/ios/icon@2x.png" width="114" />
