@@ -43,39 +43,49 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
+    alert(1);
 
+    SmsReceiver.isSupported((supported) => {
+      if (supported) {
+        alert("SMS supported!")
+      } else {
+        alert("SMS not supported")
+      }
+    }, () => {
+      alert("Error while checking the SMS support")
+    })
 
     // GPS enabled?
     /*
     if (device.platform != "iOS") {
-      cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
-        if (!enabled) { geoIP(); }
-      }, function (error) {
-        alert("The following error occurred: " + error);
-      });
-    }
-    */
-    phonegap.receivedEvent('deviceready');
+    cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
+    if (!enabled) { geoIP(); }
+  }, function (error) {
+  alert("The following error occurred: " + error);
+});
+}
+*/
+phonegap.receivedEvent('deviceready');
 
-    // SPLASHSCREEN (CONFIG.XML BUGFIX)
-    setTimeout(function () {
-      //navigator.splashscreen.hide();
-      //StatusBar.hide();
-    }, 500);
+// SPLASHSCREEN (CONFIG.XML BUGFIX)
+setTimeout(function () {
+  //navigator.splashscreen.hide();
+  //StatusBar.hide();
+}, 500);
 
-    
 
-    start();
-    //geo();
 
-  },
-  // Update DOM on a Received Event
-  receivedEvent: function (id) {
-    /*var parentElement = document.getElementById(id);
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');*/
-    console.log('Received Event: ' + id);
-  }
+start();
+//geo();
+
+},
+// Update DOM on a Received Event
+receivedEvent: function (id) {
+  /*var parentElement = document.getElementById(id);
+  var listeningElement = parentElement.querySelector('.listening');
+  var receivedElement = parentElement.querySelector('.received');
+  listeningElement.setAttribute('style', 'display:none;');
+  receivedElement.setAttribute('style', 'display:block;');*/
+  console.log('Received Event: ' + id);
+}
 };
