@@ -47,7 +47,8 @@ $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");
   console.log(id);
   sessionStorage.auto_id = id;
-  app.router.navigate("/home-refresh/");
+  //app.router.navigate("/home-refresh/");
+  window.location.href="index.html";
 });
 $$(document).on('click', '.link', function (e) {
   console.log(0);
