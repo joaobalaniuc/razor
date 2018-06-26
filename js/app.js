@@ -18,6 +18,10 @@ var app  = new Framework7({
   },
   // App routes
   routes: routes,
+  // Others
+  statusbar: {
+    iosOverlaysWebView: true,
+  }
 });
 app.on('pageInit', function (page) {
   // do something on page init
@@ -27,9 +31,12 @@ app.on('pageInit', function (page) {
   /*
   var jsFile = "pages/"+page.name+".js";
   if (page.name !== null && doesFileExist(jsFile)) {
-    $.getScript(jsFile);
-  }
-  */
+  $.getScript(jsFile);
+}
+*/
+});
+app.on('panelOpen', function (panel) {
+  console.log('Panel ' + panel.side + ': open');
 });
 
 // Init/Create views
@@ -39,4 +46,9 @@ var indexView = app.views.create('#view-index');
 $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");
   console.log(id);
+  sessionStorage.auto_id = id;
+  app.router.navigate("/home-refresh/");
+});
+$$(document).on('click', '.link', function (e) {
+  console.log(0);
 });

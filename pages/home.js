@@ -13,7 +13,13 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   var marker = new mapboxgl.Marker()
   .setLngLat([lat, lng])
   .addTo(map);
-  autoList(true);
+  //autoList(true);
+});
+
+$$(document).on('page:init', '.page[data-name="home-refresh"]', function (e) {
+  setTimeout(function() {
+    app.router.navigate("/home/");
+  },2000);
 });
 
 function autoList(read) {
@@ -62,13 +68,13 @@ function autoList(read) {
         sessionStorage.setItem("autoType_"+i, val.auto_type);
         x = 1;
       });
-      autoListCb();
-
       // INDEX PRELOADER - GO HOME?
       if (typeof autoRead !== "undefined") {
         var auto_id = sessionStorage.getItem("autoId_"+x);
-        autoRead(auto_id);
+        sessionStorage.auto_id = auto_id;
+        //autoRead(auto_id);
       }
+      autoListCb();
 
     } // res not null
   }); // after ajax
@@ -97,10 +103,13 @@ function autoListCb() {
       else {
         ico = '<i class="iicon material-icons">directions_car</i>';
       }
-
+      var css = "";
+      if (sessionStorage.auto_id == sessionStorage.getItem("autoId_"+i)) {
+        css = "tab-link-active";
+      }
       var html = "";
       html += '<li>';
-      html += '<a href="#" data-id="'+sessionStorage.getItem("autoId_"+i)+'">';
+      html += '<a href="#" data-id="'+sessionStorage.getItem("autoId_"+i)+'" class="'+css+'">';
       html += '<div class="item-content '+muted+'">';
       html += '<div class="item-media">'+ico+'</div>';
       html += '<div class="item-inner">';

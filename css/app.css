@@ -10,7 +10,7 @@ body { font-family: 'Montserrat', sans-serif !important; }
 
 /* Toolbar */
 #rz-bar a { padding-top:15px;padding-bottom:12px; }
-#rz-bar a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
+a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 
 /* Links */
 .md .color-theme-black a { color:#fff;font-weight:600 }

@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <div id="preloader1" style="display:none;background-color:#000000;background-image:url(img/step1.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%">
+        <div id="preloader1" style="display:none;background-color:#000000;background-image:url(img/step2.gif);background-size:150%;background-position:center;background-repeat:no-repeat;height:100%">
 
           <div class="page-content login-screen-content">
             <div id="logo" style="background-image:url(img/razor-shield3.png);background-size:50%;background-position:center;background-repeat:no-repeat;height:100%">
@@ -97,37 +97,39 @@
 
 <script>
 //localStorage.clear();sessionStorage.clear();
-//start();
+start();
 //return;
 //phonegap.initialize();
+app.router.navigate("/home/");
 setTimeout(function() {
   $("#preloader0").fadeOut("slow", function() {
     $("#preloader1").fadeIn("slow", function() {
-      $("#txt0").fadeIn("slow");
+      /*$("#txt0").fadeIn("slow");
       setTimeout(function() {
-        $("#txt0").fadeOut("slow", function() {
-          $("#txt1").fadeIn("slow");
-        });
-        setTimeout(function() {
-          $("#txt1").fadeOut("slow", function() {
-            $("#preloader1").css("background-image", "url(img/test.gif)");
-          });
-
-          setTimeout(function() {
-            $("#preloader1").fadeOut("slow", function() {
-              if (localStorage.cli_id > 0) {
-                app.router.navigate("/home/");
-              }
-              else {
-                app.router.navigate("/login/");
-              }
-            });
-          },1000);
-        },1000);
-      },1000);
+      $("#txt0").fadeOut("slow", function() {
+      $("#txt1").fadeIn("slow");
     });
-  });
-},3000);
+    setTimeout(function() {
+    $("#txt1").fadeOut("slow", function() {
+    $("#preloader1").css("background-image", "url(img/test.gif)");
+  });*/
+
+  setTimeout(function() {
+    $("#preloader1").fadeOut("slow", function() {
+      if (localStorage.cli_id > 0) {
+        app.router.navigate("/home/");
+      }
+      else {
+        app.router.navigate("/login/");
+      }
+    });
+  },1000);
+  /*
+},1000);
+},1000);*/
+});
+});
+},2000);
 </script>
 </body>
 </html>
