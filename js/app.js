@@ -24,19 +24,17 @@ app.on('pageInit', function (page) {
   console.log('pageInit: '+page.name);
   sessionStorage.page = page.name;
   initForm();
+  /*
   var jsFile = "pages/"+page.name+".js";
   if (page.name !== null && doesFileExist(jsFile)) {
     $.getScript(jsFile);
   }
+  */
 });
 
 // Init/Create views
 var indexView = app.views.create('#view-index');
 //app.router.navigate("/");
-
-$$(document).on('page:init', '.page[data-name="register"]', function (e) {
-  //alert(1);
-});
 
 $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");

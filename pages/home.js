@@ -1,4 +1,20 @@
-autoList(true);
+$$(document).on('page:init', '.page[data-name="home"]', function (e) {
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
+  var lat = -40.3010497;
+  var lng = -20.3160678;
+  var map = new mapboxgl.Map({
+    container: 'map',
+    //style: 'mapbox://styles/mapbox/streets-v10',
+    //style: 'mapbox://styles/mapbox/basic-v9',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    zoom: 15,
+    center: [lat, lng]
+  });
+  var marker = new mapboxgl.Marker()
+  .setLngLat([lat, lng])
+  .addTo(map);
+  autoList(true);
+});
 
 function autoList(read) {
 
