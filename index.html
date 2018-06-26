@@ -37,9 +37,10 @@
       <div class="page" data-name="preloader" style="background-color:#000000;">
 
 
+        <div id="preloader" style="display:none;background-color:#000000;background-image:url(img/step1.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%">
+        </div>
 
-
-        <div id="preloader0" style="ddisplay:none;background-color:#000010;background-image:url(img/loader3.gif);background-size:80%;background-position:center;background-repeat:no-repeat;height:100%">
+        <div id="preloader0" style="display:none;background-color:#000010;background-image:url(img/loader3.gif);background-size:80%;background-position:center;background-repeat:no-repeat;height:100%">
 
           <div class="page-content login-screen-content">
             <div id="logo" style="background-image:url(img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%">
@@ -69,6 +70,10 @@
 
   </div>
 
+  <script>
+  var isApp = document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1;
+  </script>
+
   <!-- Cordova -->
   <script src="cordova.js"></script>
 
@@ -77,59 +82,66 @@
 
   <!-- jQ -->
   <script src="js/jquery-3.2.1.min.js"></script>
-  <!--
-  <script>window.jQuery || document.write('<script src="https://getbootstrap.com/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
--->
-<!-- Vendor -->
-<script src="js/jquery.mask.js"></script>
 
-<!-- App -->
-<script src="js/funx.js"></script>
-<script src="js/routes.js"></script>
-<script src="js/app.js"></script>
-<script src="js/start.js"></script>
+  <!-- Vendor -->
+  <script src="js/jquery.mask.js"></script>
 
-<!-- Pages -->
-<script src="pages/home.js"></script>
+  <!-- App -->
+  <script src="js/funx.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/start.js"></script>
 
-<!-- General -->
-<script src="index.js"></script>
+  <!-- Pages -->
+  <script src="pages/home.js"></script>
+  <script src="pages/login.js"></script>
+  <script src="pages/register.js"></script>
+  <script src="pages/sync.js"></script>
+  <script src="pages/auto.js"></script>
+  <script src="pages/wait.js"></script>
 
-<script>
-//localStorage.clear();sessionStorage.clear();
-//start();
-//return;
-phonegap.initialize();
-//app.router.navigate("/home/");
-setTimeout(function() {
-  $("#preloader0").fadeOut("slow", function() {
-    $("#preloader1").fadeIn("slow", function() {
-      /*$("#txt0").fadeIn("slow");
-      setTimeout(function() {
-      $("#txt0").fadeOut("slow", function() {
-      $("#txt1").fadeIn("slow");
-    });
+  <!-- General -->
+  <script src="index.js"></script>
+
+  <script>
+  //sessionStorage.clear();
+
+  // DEV
+  if (!isApp) {
+    start();
+  }
+
+  // APP EM USO
+  if (typeof sessionStorage.auto_id !== "undefined") {
+    $("#preloader").show();
     setTimeout(function() {
-    $("#txt1").fadeOut("slow", function() {
-    $("#preloader1").css("background-image", "url(img/test.gif)");
-  });*/
+      app.router.navigate("/home/");
+    }, 1000);
+  }
+  // INICIANDO AGORA
+  else {
+    phonegap.initialize();
+    $("#preloader0").show();
+  }
 
+  // ANIMAÇÕES
   setTimeout(function() {
-    $("#preloader1").fadeOut("slow", function() {
-      if (localStorage.cli_id > 0) {
-        app.router.navigate("/home/");
-      }
-      else {
-        app.router.navigate("/login/");
-      }
+    $("#preloader0").fadeOut("slow", function() {
+      $("#preloader1").fadeIn("slow", function() {
+        setTimeout(function() {
+          $("#preloader1").fadeOut("slow", function() {
+            if (localStorage.cli_id > 0) {
+              app.router.navigate("/home/");
+            }
+            else {
+              app.router.navigate("/login/");
+            }
+          });
+        },1000);
+      });
     });
-  },1000);
-  /*
-},1000);
-},1000);*/
-});
-});
-},2000);
+  },2000);
 </script>
+
 </body>
 </html>

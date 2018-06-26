@@ -1,4 +1,8 @@
-sessionStorage.auto_id_ignore = 1;
+$$(document).on('page:init', '.page[data-name="auto"]', function (e) {
+  sessionStorage.auto_id_ignore = 1;
+  brands();
+  brands("moto");
+});
 
 // SUBMIT FORM
 $$('[data-name="auto"]').on("submit", "form", function(e){
@@ -12,9 +16,6 @@ $$('[data-name="auto"]').on("change", "#carro .cars", function(e){ var id = $(th
 //
 $$('[data-name="auto"]').on("change", "#moto .brands", function(e){ var id = $(this).val(); cars(id, "moto"); });
 $$('[data-name="auto"]').on("change", "#moto .cars", function(e){ var id = $(this).val(); years(id, "moto"); });
-
-brands();
-brands("moto");
 
 // BRANDS
 function brands(tipo) {

@@ -1,4 +1,7 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
+  //===========================
+  // MAPBOX
+  //===========================
   mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
   var lat = -40.3010497;
   var lng = -20.3160678;
@@ -13,18 +16,29 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   var marker = new mapboxgl.Marker()
   .setLngLat([lat, lng])
   .addTo(map);
-  //autoList(true);
+
+  //===========================
+  // INICIANDO AGORA
+  //===========================
+  if (typeof sessionStorage.autoId_0 === "undefined") {
+    autoList();
+  }
+  //===========================
+  // APP EM USO
+  //===========================
+  else {
+    autoListSession();
+    if (typeof localStorage.auto_id === "undefined") {
+      localStorage.auto_id = sessionStorage.autoId_0;
+    }
+    sessionStorage.auto_id = localStorage.auto_id;
+    autoRead(sessionStorage.auto_id);
+  }
 });
 
-$$(document).on('page:init', '.page[data-name="home-refresh"]', function (e) {
-  setTimeout(function() {
-    app.router.navigate("/home/");
-  },2000);
-});
+function autoList() {
 
-function autoList(read) {
-
-  console.log("autoList("+read+")");
+  console.log("autoList()");
 
   // DATA TO SEND
   var data_user = {
@@ -68,19 +82,19 @@ function autoList(read) {
         sessionStorage.setItem("autoType_"+i, val.auto_type);
         x = 1;
       });
-      // INDEX PRELOADER - GO HOME?
-      if (typeof autoRead !== "undefined") {
-        var auto_id = sessionStorage.getItem("autoId_"+x);
-        sessionStorage.auto_id = auto_id;
-        //autoRead(auto_id);
+      if (typeof localStorage.auto_id === "undefined") {
+        localStorage.auto_id = sessionStorage.autoId_0;
+        sessionStorage.auto_id = localStorage.auto_id;
       }
-      autoListCb();
+      autoListSession();
 
     } // res not null
   }); // after ajax
 }
 
-function autoListCb() {
+function autoListSession() {
+
+  console.log("autoListSession()");
 
   if ($("#autoList").length==0) {
     return false;
@@ -121,6 +135,7 @@ function autoListCb() {
       $("#autoList").append(html);
     }
   }
+  autoRead(sessionStorage.auto_id);
 }
 
 function autoRead(auto_id) {
@@ -164,9 +179,10 @@ function autoRead(auto_id) {
       }
       res = res[0];
       if (res) {
-        sessionStorage.auto_id_last = res.auto_id;
         sessionStorage.auto_id = res.auto_id;
         sessionStorage.auto_name = res.auto_name;
+
+        alert(auto_name);
 
         if (res.dev_id==null) {
           app.router.navigate("/sync/");

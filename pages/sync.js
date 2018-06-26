@@ -1,16 +1,18 @@
-// AUTO_ID?
-if (typeof sessionStorage.auto_id === "undefined") {
-  app.dialog.alert('Desculpe, ocorreu um erro interno.');
-}
+$$(document).on('page:init', '.page[data-name="sync"]', function (e) {
+
+  // AUTO_ID?
+  if (typeof sessionStorage.auto_id === "undefined") {
+    app.dialog.alert('Desculpe, ocorreu um erro interno.');
+  }
+  // AUTO_NAME
+  $(".auto_name").html(sessionStorage.auto_name);
+});
 
 // SUBMIT FORM
 $$('[data-name="sync"]').on("submit", "form", function(e){
   e.preventDefault();
   devInsert();
 });
-
-// AUTO_NAME
-$(".auto_name").html(sessionStorage.auto_name);
 
 // MAIS OPÇÕES
 $$('[data-name="sync"]').on("click", "#mais_show", function(e){
@@ -40,7 +42,7 @@ function devInsert() {
   var data_auto = $.param(data_auto);
   var data = data_form + "&" + data_user + "&" + data_auto;
   console.log(data);
-  
+
   app.preloader.show("green");
 
   // RUN AJAX
