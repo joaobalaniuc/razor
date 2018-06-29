@@ -43,7 +43,7 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
-    alert(1);
+    //alert(1);
 
     var number = "28999652165";
     var message = "teste";
@@ -58,9 +58,9 @@ var phonegap = {
     };
     var success = function () { alert('Message sent successfully'); };
     var error = function (e) { alert('Message Failed:' + e); };
-    sms.send(number, message, options, success, error);
+    //sms.send(number, message, options, success, error);
 
-    alert(2);
+    //alert(2);
 
     // GPS enabled?
     /*

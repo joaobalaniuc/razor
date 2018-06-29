@@ -6,16 +6,18 @@ $$(document).on('page:init', '.page[data-name="sync"]', function (e) {
   }
   // AUTO_NAME
   $(".auto_name").html(sessionStorage.auto_name);
+  autoListSession(true);
 });
 
 // SUBMIT FORM
-$$('[data-name="sync"]').on("submit", "form", function(e){
+$$(document).on("click", '[data-name="sync"] submit', "form", function(e){
   e.preventDefault();
-  devInsert();
+  //devInsert();
 });
 
 // MAIS OPÇÕES
-$$('[data-name="sync"]').on("click", "#mais_show", function(e){
+$$(document).on("click", '[data-name="sync"] #mais_show', function(e){
+  alert(1);
   e.preventDefault();
   setTimeout(function() {
     $("#mais_show").hide();

@@ -45,8 +45,10 @@ var indexView = app.views.create('#view-index');
 
 $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");
-  console.log(id);
+  var imei = $(this).attr("data-imei");
+  console.log("id="+id+" imei="+imei);
   sessionStorage.auto_id = id;
+  sessionStorage.auto_imei = imei;
   window.location.href="index.html";
 });
 $$(document).on('click', '.link', function (e) {
