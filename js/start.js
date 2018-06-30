@@ -76,11 +76,26 @@ phonegap.receivedEvent('deviceready');
 
 // SPLASHSCREEN (CONFIG.XML BUGFIX)
 setTimeout(function () {
-  //navigator.splashscreen.hide();
-  //StatusBar.hide();
-}, 5000);
-
-
+  StatusBar.show();
+}, 3000);
+setTimeout(function () {
+  StatusBar.overlaysWebView(false);
+}, 6000);
+setTimeout(function () {
+  StatusBar.overlaysWebView(true);
+}, 9000);
+setTimeout(function () {
+  StatusBar.styleLightContent();
+}, 12000);
+setTimeout(function () {
+  StatusBar.styleBlackTranslucent();
+}, 15000);
+setTimeout(function () {
+  StatusBar.backgroundColorByName("red");
+}, 18000);
+setTimeout(function () {
+  alert(StatusBar.isVisible);
+}, 21000);
 
 //StatusBar.backgroundColorByName("red");
 start();
