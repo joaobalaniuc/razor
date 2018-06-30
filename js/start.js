@@ -81,7 +81,7 @@ setTimeout(function () {
 }, 500);
 
 
-
+StatusBar.show();
 start();
 //geo();
 
