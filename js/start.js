@@ -77,11 +77,11 @@ phonegap.receivedEvent('deviceready');
 // SPLASHSCREEN (CONFIG.XML BUGFIX)
 setTimeout(function () {
   //navigator.splashscreen.hide();
-  //StatusBar.hide();
-}, 500);
+  StatusBar.hide();
+}, 5000);
 
 
-StatusBar.hide();
+
 //StatusBar.backgroundColorByName("red");
 start();
 //geo();
