@@ -81,8 +81,8 @@ setTimeout(function () {
 }, 500);
 
 
-StatusBar.show();
-StatusBar.backgroundColorByName("red");
+StatusBar.hide();
+//StatusBar.backgroundColorByName("red");
 start();
 //geo();
 
