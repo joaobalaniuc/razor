@@ -76,26 +76,26 @@ phonegap.receivedEvent('deviceready');
 
 // SPLASHSCREEN (CONFIG.XML BUGFIX)
 setTimeout(function () {
+  alert("show");
   StatusBar.show();
 }, 3000);
 setTimeout(function () {
+  alert("overlay false");
   StatusBar.overlaysWebView(false);
 }, 6000);
 setTimeout(function () {
+  alert("overlay true");
   StatusBar.overlaysWebView(true);
 }, 9000);
 setTimeout(function () {
+  alert("light");
   StatusBar.styleLightContent();
 }, 12000);
 setTimeout(function () {
+  alert("black");
   StatusBar.styleBlackTranslucent();
 }, 15000);
-setTimeout(function () {
-  StatusBar.backgroundColorByName("red");
-}, 18000);
-setTimeout(function () {
-  alert(StatusBar.isVisible);
-}, 21000);
+
 
 //StatusBar.backgroundColorByName("red");
 start();
