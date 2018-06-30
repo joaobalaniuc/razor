@@ -29,7 +29,7 @@
   <link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' />
 </head>
 <body>
-  
+
   <div id="app" class="page color-theme-black theme-dark">
 
     <div class="statusbar"></div>
@@ -136,6 +136,14 @@
   }
   conex();
 
+  // STATUSBAR
+  if (isApp) {
+    setTimeout(function () {
+      StatusBar.show();
+      StatusBar.overlaysWebView(true);
+      StatusBar.styleLightContent();
+    }, 1000);
+  }
   // ANIMAÇÕES
   setTimeout(function() {
     $("#preloader0").fadeOut("slow", function() {

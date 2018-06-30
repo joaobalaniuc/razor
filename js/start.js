@@ -74,13 +74,6 @@ var phonegap = {
 */
 phonegap.receivedEvent('deviceready');
 
-// STATUSBAR
-setTimeout(function () {
-  StatusBar.show();
-  StatusBar.overlaysWebView(true);
-  StatusBar.styleLightContent();
-}, 1000);
-
 start();
 
 },
