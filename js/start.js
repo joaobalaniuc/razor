@@ -82,6 +82,7 @@ setTimeout(function () {
 
 
 StatusBar.show();
+StatusBar.backgroundColorByName("red");
 start();
 //geo();
 
