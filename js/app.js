@@ -19,9 +19,10 @@ var app  = new Framework7({
   // App routes
   routes: routes,
   // Others
+  /*
   statusbar: {
     iosOverlaysWebView: true,
-  }
+  }*/
 });
 app.on('pageInit', function (page) {
   // do something on page init
