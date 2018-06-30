@@ -39,6 +39,11 @@ function autoList() {
 
   console.log("autoList()");
 
+  if (sessionStorage.online == "false") {
+    setTimeout(function() {autoList();},1000);
+    return false;
+  }
+
   // DATA TO SEND
   var data_user = {
     cli_id: localStorage.cli_id,
@@ -150,6 +155,11 @@ function autoRead(auto_id) {
 
   console.log("autoRead("+auto_id+")");
 
+  if (sessionStorage.online == "false") {
+    setTimeout(function() {autoRead(auto_id);},1000);
+    return false;
+  }
+
   // DATA TO SEND
   var data_user = {
     auto_id: auto_id,
@@ -206,6 +216,11 @@ function autoRead(auto_id) {
 function autoCheck(auto_imei) {
 
   console.log("autoCheck("+auto_imei+")");
+
+  if (sessionStorage.online == "false") {
+    setTimeout(function() {autoCheck(auto_imei);},1000);
+    return false;
+  }
 
   // DATA TO SEND
   var data_user = {

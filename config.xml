@@ -32,7 +32,6 @@
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
   <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
   <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
-  <plugin name="cordova-plugin-statusbar" source="npm" spec="~2.1.2" />
 
   <platform name="android">
     <icon density="ldpi" src="res/icon/android/drawable-ldpi-icon.png" />
@@ -103,7 +102,7 @@
   <plugin name="cordova-plugin-statusbar" source="npm" />
   <preference name="StatusBarOverlaysWebView" value="true" />
   <preference name="StatusBarBackgroundColor" value="#000000" />
-  <preference name="StatusBarStyle" value="lightcontent" />
+  <preference name="StatusBarStyle" value="blacktranslucent" />
 
   <plugin name="cordova-sms-plugin" source="npm" />
 

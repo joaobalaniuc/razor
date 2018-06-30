@@ -29,7 +29,9 @@
   <link rel="stylesheet" href='https://api.mapbox.com/mapbox-gl-js/v0.46.0/mapbox-gl.css' />
 </head>
 <body>
+  
   <div id="app" class="page color-theme-black theme-dark">
+
     <div class="statusbar"></div>
 
     <div id="view-index" class="view view-main tab tab-active">
@@ -128,10 +130,9 @@
   function conex() {
     if (sessionStorage.online == "false") { $("#offline").show(); }
     else { $("#offline").hide(); }
-    alert(sessionStorage.online);
     setTimeout(function() {
       conex();
-    },5000);
+    },1500);
   }
   conex();
 
