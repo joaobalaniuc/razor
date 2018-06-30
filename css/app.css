@@ -76,9 +76,13 @@ ul .item-media {min-width:0 !important}
   50% { color : blue }*/
   100% { color: #fff; }
 }
-.blink {
-  animation: blink 0.5s linear infinite;
+.blink { animation: blink 0.5s linear infinite; }
+@keyframes bw {
+  0% { color  : #666; }
+  50% { color : #fff }
+  100% { color: #666; }
 }
+.bw { animation: bw 1s linear infinite; }
 
 /* General */
 .preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
@@ -87,3 +91,15 @@ ul .item-media {min-width:0 !important}
 [data-name="preloader"] .txt {
   display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
 }
+
+/* Offline Div */
+#offline {
+  display:none;
+  animation: bw 1s linear infinite;
+  text-align:center;font-weight:600;
+  position:absolute;top:0;left:0;height:100%;width:100%;
+  background:rgba(0,0,0,.5);z-index:999999;
+}
+#offline div { position:relative;top:50%;margin-top:-100px; }
+#offline div i { font-size:80px }
+#offline span { display:block;margin-top:24px;font-size:24px }

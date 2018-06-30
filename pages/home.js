@@ -1,9 +1,9 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
+
   //===========================
   // MAPBOX
   //===========================
   mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
-
   var lat = 0;
   var lng = 0;
   map = new mapboxgl.Map({
@@ -12,7 +12,8 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
     zoom: 0,
     center: [lat, lng]
   });
-
+  sessionStorage.lat = lat;
+  sessionStorage.lng = lng;
 
   //===========================
   // INICIANDO AGORA
@@ -108,7 +109,7 @@ function autoListSession(halt) {
 
       var muted = "";
       if (sessionStorage.getItem("autoImei_"+i) == "null") {
-        muted="muted";
+        //muted="muted";
       }
 
       var ico = "";
@@ -227,16 +228,18 @@ function autoCheck(auto_imei) {
     timeout: localStorage.timeout
   })
   .always(function () {
-    //app.preloader.hide();
+
   })
 
   .fail(function () {
-    app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
+    setTimeout(function() {
+      autoCheck(auto_imei);
+    }, 5000);
+    notificationConex.open();
   })
 
   .done(function (res) {
     if (res !== null) {
-      console.log(res);
       if (res.error) {
         app.dialog.alert(res.error, 'Ops!');
         return;
@@ -244,9 +247,12 @@ function autoCheck(auto_imei) {
       res = res[0];
       if (res) {
         console.log(res);
-
-          var lat = parseFloat(res.log_lng);
-          var lng = parseFloat(res.log_lat);
+        var lat = parseFloat(res.log_lng);
+        var lng = parseFloat(res.log_lat);
+        if (lat != sessionStorage.lat && lng != sessionStorage.lng) {
+          console.log("NEW LAT/LNG = "+lat+"/"+lng);
+          sessionStorage.lat = lat;
+          sessionStorage.lng = lng;
           map.easeTo({
             center: [lat, lng],
             zoom: 15
@@ -257,12 +263,12 @@ function autoCheck(auto_imei) {
             .addTo(map);
           }
           marker.setLngLat([lat, lng]).addTo(map);
-
-
+        }
+        setTimeout(function() {
+          autoCheck(auto_imei);
+        }, 15000);
       }
-      else {
-        //app.router.navigate("/auto/");
-      }
+
     } // res not null
   }); // after ajax
 }

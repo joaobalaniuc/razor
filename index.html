@@ -111,18 +111,29 @@
     start();
   }
 
+  // INICIALIZAÇÃO
+  if (typeof sessionStorage.auto_id === "undefined") {
+    phonegap.initialize();
+    $("#preloader0").show();
+  }
   // APP EM USO
-  if (typeof sessionStorage.auto_id !== "undefined") {
+  else {
     $("#preloader").show();
     setTimeout(function() {
       app.router.navigate("/home/");
     }, 1000);
   }
-  // INICIANDO AGORA
-  else {
-    phonegap.initialize();
-    $("#preloader0").show();
+
+  // VERIFICAR CONEXÃO
+  function conex() {
+    if (sessionStorage.online == "false") { $("#offline").show(); }
+    else { $("#offline").hide(); }
+    alert(sessionStorage.online);
+    setTimeout(function() {
+      conex();
+    },5000);
   }
+  conex();
 
   // ANIMAÇÕES
   setTimeout(function() {

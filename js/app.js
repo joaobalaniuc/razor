@@ -28,21 +28,30 @@ app.on('pageInit', function (page) {
   console.log('pageInit: '+page.name);
   sessionStorage.page = page.name;
   initForm();
-  /*
-  var jsFile = "pages/"+page.name+".js";
-  if (page.name !== null && doesFileExist(jsFile)) {
-  $.getScript(jsFile);
-}
-*/
 });
 app.on('panelOpen', function (panel) {
   console.log('Panel ' + panel.side + ': open');
 });
 
+// Notifications
+var notificationConex = app.notification.create({
+  icon: '<i class="fas fa-exclamation-triangle"></i>',
+  title: 'Razor',
+  titleRightText: 'agora',
+  subtitle: 'A conexão falhou',
+  text: 'Tentando novamente...',
+  closeTimeout: 3000,
+  closeOnClick: true,
+  closeButton: true
+});
+$$(document).on('click', '.open-full', function (e) {
+  notificationConex.open();
+});
+
 // Init/Create views
 var indexView = app.views.create('#view-index');
-//app.router.navigate("/");
 
+// Global events
 $$(document).on('click', '#autoList a', function (e) {
   var id = $(this).attr("data-id");
   var imei = $(this).attr("data-imei");
@@ -52,5 +61,5 @@ $$(document).on('click', '#autoList a', function (e) {
   window.location.href="index.html";
 });
 $$(document).on('click', '.link', function (e) {
-  console.log(0);
+  console.log("click .link");
 });
