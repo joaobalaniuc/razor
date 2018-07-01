@@ -11,6 +11,8 @@ body { font-family: 'Montserrat', sans-serif !important; }
 /* Toolbar */
 #rz-bar a { padding-top:15px;padding-bottom:12px; }
 a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
+.txt-green {color:#49f892 !important}
+.shad-green {text-shadow:0 0 15px #76bf93}
 
 /* Links */
 .md .color-theme-black a { color:#fff;font-weight:600 }
