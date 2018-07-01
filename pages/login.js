@@ -1,7 +1,7 @@
 //================================================
 // SUBMIT FORM
 //================================================
-$$('[data-name="login"]').on("submit", "form", function(e){
+$$(document).on("submit", "#loginForm", function(e){
   e.preventDefault();
   userLogin();
 });
@@ -45,6 +45,7 @@ function userLogin() {
         localStorage.cli_id = res.id;
         localStorage.cli_email = res.email;
         localStorage.cli_pass = res.pass;
+        localStorage.cli_phone = res.phone;
         app.router.navigate("/home/");
       }
 

@@ -27,6 +27,12 @@ function doesFileExist(urlToFile) {
 //----------------------------------------------
 // JQUERY MASK INPUT / VALIDATION
 //----------------------------------------------
+function txtPhone() {
+  $(".cel").text(function(i, text) {
+    text = text.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+    return text;
+  });
+}
 function initForm() {
   $('.date').mask('00/00/0000');
   $('.time').mask('00:00:00');

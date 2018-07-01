@@ -182,6 +182,7 @@ function autoRead(auto_id) {
   })
   .always(function () {
     app.preloader.hide();
+    txtPhone();
   })
 
   .fail(function () {
@@ -195,22 +196,72 @@ function autoRead(auto_id) {
         app.dialog.alert(res.error, 'Ops!');
         return;
       }
-      res = res[0];
-      if (res) {
-        sessionStorage.auto_id = res.auto_id;
-        sessionStorage.auto_name = res.auto_name;
+      auto = res["auto"];
+      adm = res["adm"];
 
-        console.log("auto_name="+sessionStorage.auto_name);
+      if (auto) {
+        sessionStorage.auto_id = auto.auto_id;
+        sessionStorage.auto_name = auto.auto_name;
+        console.log("*** auto_name: "+sessionStorage.auto_name);
 
-        if (res.auto_imei==null) {
-          app.router.navigate("/sync/");
+        // Sou proprietário do veiculo
+        if (auto.cli_id == localStorage.cli_id) {
+          console.log("*** i'm owner");
+          $(".verify-owner").each(function(i) { $(this).show(); });
         }
+        // Dados do veiculo
+        $(".auto_name").each(function(i) { $(this).html(auto["auto_name"]); });
+        if (auto["auto_brand"] && auto["auto_model"]) {
+          $(".auto_model").each(function(i) { $(this).html(auto["auto_brand"]+" "+auto["auto_model"]); });
+        }
+        $(".auto_phone").each(function(i) { $(this).html(auto["auto_phone"]); });
+
+        // Ainda não sincronizou veiculo
+        if (auto.auto_imei==null) { app.router.navigate("/sync/"); }
       }
-      else {
-        app.router.navigate("/auto/");
-      }
+
+      // Ainda não cadastrou um veiculo
+      else { app.router.navigate("/auto/"); }
+
+      // Adm list
+      if (adm) { admList(adm); }
+
     } // res not null
   }); // after ajax
+}
+
+function admList(adm) {
+  $.each(adm, function(i, val) {
+
+    var html = "";
+    var muted = "";
+    var icon = "user-circle";
+    var title = adm[i]["cli_name"];
+
+    if (!adm[i]["cli_name"]) {
+      title = "-";
+      muted = "muted";
+      icon = "question";
+    }
+    html += '<li class="swipeout">';
+    html += '<div class="item-content swipeout-content" style="">';
+    html += '<div class="item-media"><i class="fas fa-'+icon+'"></i>';
+    html += '</div>';
+    html += '<div class="item-inner">';
+    html += '<div class="item-title">'+title+'</div>';
+    html += '<div class="item-subtitle cel '+muted+'">'+adm[i]["cli_phone"]+'</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="swipeout-actions-right">';
+    html += '<a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete" style="">Delete</a>';
+    html += '</div>';
+    html += '</li>';
+
+    $("#admList").append(html);
+    txtPhone();
+  });
+
+
 }
 
 function autoCheck(auto_imei) {
@@ -259,14 +310,30 @@ function autoCheck(auto_imei) {
         app.dialog.alert(res.error, 'Ops!');
         return;
       }
-      res = res[0];
-      if (res) {
-        var lat = parseFloat(res.log_lng);
-        var lng = parseFloat(res.log_lat);
+
+      log = res["log"];
+      gprs = res["gprs"];
+
+      if (log) {
+
+        // gprs status?
+        if (gprs) {
+          sessionStorage.gprs = gprs.server_ip;
+            $(".auto_gprs").each(function(i) { $(this).html('<span class="txt-green shad-green">ON</span>'); });
+        }
+        else {
+          sessionStorage.removeItem("gprs");
+          $(".auto_gprs").each(function(i) { $(this).html("OFF"); });
+        }
+
+        // geo
+        var lat = parseFloat(log.log_lng);
+        var lng = parseFloat(log.log_lat);
         if (lat != sessionStorage.lat && lng != sessionStorage.lng) {
 
-          console.log("NEW LAT/LNG = "+lat+"/"+lng);
-          console.log(res);
+          console.log("*** new geolocation = "+lat+"/"+lng);
+          console.log(log);
+          console.log(gprs);
 
           sessionStorage.lat = lat;
           sessionStorage.lng = lng;

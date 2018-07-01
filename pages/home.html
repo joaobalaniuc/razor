@@ -182,8 +182,8 @@
                 <div class="item-media"><i class="material-icons">motorcycle</i></div>
                 <div class="item-inner">
                   <div class="item-title">
-                    <div class="item-header">VOLKSWAGEN 2.0 SEM FREIO</div>
-                    TESTE OK
+                    <div class="auto_model item-header">...</div>
+                    <span class="auto_name">...</span>
                   </div>
                   <!--<div class="item-after"></div>-->
                 </div>
@@ -192,48 +192,24 @@
           </ul>
         </div>
 
-        <div class="block-title">Admin</div>
-        <div class="list">
-          <ul>
-            <li class="swipeout">
-              <div class="item-content swipeout-content" style="">
-                <div class="item-media"><i class="fas fa-user-circle"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Juliana Porto</div>
-                  <div class="item-subtitle">(27) 99965-2165</div>
-                </div>
-              </div>
-              <div class="swipeout-actions-right">
-                <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete" style="">Delete</a>
-              </div>
-            </li>
-            <li class="swipeout swipeout-transitioning">
-              <div class="item-content swipeout-content" style="">
-                <div class="item-media"> <i class="fas fa-question"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">-</div>
-                  <div class="item-subtitle muted">(27) 99965-2165</div>
-                </div>
-              </div>
-              <div class="swipeout-actions-right">
-                <a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete" style="transform: translate3d(0px, 0px, 0px);">Delete</a>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="block list links-list">
-          <ul>
-            <li>
-              <a href="/adm/">
-                <div class="item-media"><i class="fas fa-user-plus"></i></div>
-                <div class="item-inner">
-                  <div class="item-title" style="font-weight:600">Novo admin</div>
-                </div>
-              </a>
-            </li>
-          </ul>
+        <div class="verify-owner">
+          <div class="block-title">Admin</div>
+          <div class="list">
+            <ul id="admList">
+            </ul>
+          </div>
+          <div class="block list links-list">
+            <ul>
+              <li>
+                <a href="/adm/">
+                  <div class="item-media"><i class="fas fa-user-plus"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title" style="font-weight:600">Novo admin</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="block-title">Dispositivo</div>
@@ -241,52 +217,57 @@
           <ul>
             <!--
             <li class="item-content">
-              <div class="item-media"><i class="fas fa-microchip"></i></div>
-              <div class="item-inner">
-                <div class="item-title">
-                  <div class="item-header" style="color:#999">IMEI</div>
-                    38294892384923
-                </div>
-              </div>
-            </li>-->
-            <li class="item-content">
-              <div class="item-media"><i class="fas fa-phone"></i></div>
-              <div class="item-inner">
-                <div class="item-title">
-                  <div class="item-header" style="color:#999">TELEFONE</div>
-                    (28) 99965-2165
-                </div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="fas fa-rss"></i></div>
-              <div class="item-inner">
-                <div class="item-title">
-                  <div class="item-header" style="color:#999">GPRS</div>
-                    <span class="txt-green shad-green">ON</span>
-                </div>
-              </div>
-            </li>
-          </ul>
+            <div class="item-media"><i class="fas fa-microchip"></i></div>
+            <div class="item-inner">
+            <div class="item-title">
+            <div class="item-header" style="color:#999">IMEI</div>
+            38294892384923
+          </div>
         </div>
-        <div class="block list links-list">
-          <ul>
-            <li>
-              <a href="/adm/">
-                <div class="item-media"></div>
-                <div class="item-inner">
-                  <div class="item-title" style="font-weight:600">Mais informações</div>
-                </div>
-              </a>
-            </li>
-          </ul>
+      </li>-->
+      <li class="item-content">
+        <div class="item-media"><i class="fas fa-phone"></i></div>
+        <div class="item-inner">
+          <div class="item-title">
+            <div class="item-header" style="color:#999">TELEFONE</div>
+            <span class="auto_phone cel">
+              ...
+            </span>
+          </div>
         </div>
-
-
-      </div><!-- /tab-conf -->
-
-
-    </div>
+      </li>
+      <li class="item-content">
+        <div class="item-media"><i class="fas fa-rss"></i></div>
+        <div class="item-inner">
+          <div class="item-title">
+            <div class="item-header" style="color:#999">GPRS</div>
+            <span class="auto_gprs">
+              ...
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
+  <!--
+  <div class="block list links-list">
+  <ul>
+  <li>
+  <a href="/info_dev/">
+  <div class="item-media"></div>
+  <div class="item-inner">
+  <div class="item-title" style="font-weight:600">Mais informações</div>
+</div>
+</a>
+</li>
+</ul>
+</div>
+-->
+
+</div><!-- /tab-conf -->
+
+
+</div>
+</div>
 
 </div>

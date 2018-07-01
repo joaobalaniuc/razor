@@ -89,6 +89,7 @@ ul .item-media {min-width:0 !important}
 
 /* General */
 .preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
+.verify-owner {display:none}
 
 /* Preloader Page */
 [data-name="preloader"] .txt {

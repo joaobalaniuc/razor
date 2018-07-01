@@ -46,6 +46,7 @@ function userInsert() {
         localStorage.cli_id = res.id;
         localStorage.cli_email = res.email;
         localStorage.cli_pass = res.pass;
+        localStorage.cli_phone = res.phone;
         app.router.navigate("/home/");
       }
 
