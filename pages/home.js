@@ -103,7 +103,6 @@ function autoList() {
   }); // after ajax
 }
 
-
 function autoListSession(halt) {
 
   console.log("autoListSession()");
@@ -150,7 +149,7 @@ function autoListSession(halt) {
   if (typeof halt !== "undefined") {
     return false;
   }
-  if (typeof sessionStorage.auto_imei !== "undefined") {
+  if (typeof sessionStorage.auto_imei !== "undefined" && sessionStorage.auto_imei != "null") {
     autoCheck(sessionStorage.auto_imei);
   }
   autoRead(sessionStorage.auto_id);
@@ -207,6 +206,7 @@ function autoRead(auto_id) {
       if (auto) {
         sessionStorage.auto_id = auto.auto_id;
         sessionStorage.auto_name = auto.auto_name;
+        sessionStorage.auto_imei = auto.auto_imei;
         console.log("*** auto_name: "+sessionStorage.auto_name);
 
         // Sou proprietário do veiculo

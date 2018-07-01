@@ -90,6 +90,7 @@ ul .item-media {min-width:0 !important}
 /* General */
 .preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
 .verify-owner {display:none}
+.smart-select-page .navbar .title {text-align:left !important}
 
 /* Preloader Page */
 [data-name="preloader"] .txt {
