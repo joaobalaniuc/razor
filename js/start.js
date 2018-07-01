@@ -43,7 +43,7 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
-    //alert(1);
+    alert(1);
 
     var number = "28999652165";
     var message = "teste";
