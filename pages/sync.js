@@ -24,6 +24,16 @@ $$(document).on("click", '[data-name="sync"] #mais_show', function(e){
   },250);
 });
 
+$$(document).on("click", '#autoDelete', function(e){
+  e.preventDefault();
+  app.dialog.confirm('Tem certeza que deseja remover este veículo?', 'Remover veículo', function () {
+    app.dialog.confirm('Todos os dados serão perdidos.', 'Atenção!', function () {
+      autoDelete();
+    });
+  });
+
+});
+
 // INSERT
 function devInsert() {
 

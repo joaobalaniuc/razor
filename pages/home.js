@@ -1,42 +1,38 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
+  
+  //===========================
+  // MAPBOX
+  //===========================
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
+  var lat = 0;
+  var lng = 0;
+  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v9',
+    zoom: 0,
+    center: [lat, lng]
+  });
+  sessionStorage.lat = lat;
+  sessionStorage.lng = lng;
 
-  /*if (sessionStorage.smartselect_bugfix=="1") {
-  console.log("smart select bugfix");
-  return false;
-}*/
-//===========================
-// MAPBOX
-//===========================
-mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
-var lat = 0;
-var lng = 0;
-map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox/dark-v9',
-  zoom: 0,
-  center: [lat, lng]
-});
-sessionStorage.lat = lat;
-sessionStorage.lng = lng;
-
-//===========================
-// INICIANDO AGORA
-//===========================
-if (typeof sessionStorage.autoId_0 === "undefined") {
-  autoList();
-}
-//===========================
-// APP EM USO
-//===========================
-else {
-  autoListSession();
-  if (typeof localStorage.auto_id === "undefined") {
-    localStorage.auto_id = sessionStorage.autoId_0;
-    localStorage.auto_imei = sessionStorage.autoImei_0;
+  //===========================
+  // INICIANDO AGORA
+  //===========================
+  if (typeof sessionStorage.autoId_0 === "undefined") {
+    autoList();
   }
-  sessionStorage.auto_id = localStorage.auto_id;
-  sessionStorage.auto_imei = localStorage.auto_imei;
-}
+  //===========================
+  // APP EM USO
+  //===========================
+  else {
+    autoListSession();
+    if (typeof localStorage.auto_id === "undefined") {
+      localStorage.auto_id = sessionStorage.autoId_0;
+      localStorage.auto_imei = sessionStorage.autoImei_0;
+    }
+    sessionStorage.auto_id = localStorage.auto_id;
+    sessionStorage.auto_imei = localStorage.auto_imei;
+  }
 });
 
 function autoList() {
@@ -478,6 +474,62 @@ function admDelete(adm_phone) {
       if (res.success) {
         console.log("*** Adm deleted");
       }
+    } // res not null
+  }); // after ajax
+}
+
+function autoDelete() {
+
+  var auto_id = sessionStorage.auto_id;
+
+  console.log("autoDelete("+auto_id+")");
+
+  if (sessionStorage.online == "false") {
+    return false;
+  }
+
+  // DATA TO SEND
+  var data_user = {
+    auto_id: auto_id,
+    //
+    cli_id: localStorage.cli_id,
+    cli_email: localStorage.cli_email,
+    cli_pass: localStorage.cli_pass
+  };
+  var data = data_user;
+  app.preloader.show("green");
+
+  // RUN AJAX
+  $.ajax({
+    url: localStorage.server + "/auto_delete.php",
+    data: data,
+    type: 'GET',
+    dataType: 'jsonp',
+    jsonp: 'callback',
+    timeout: localStorage.timeout
+  })
+  .always(function () {
+    app.preloader.hide();
+    txtPhone();
+  })
+
+  .fail(function () {
+    app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
+  })
+
+  .done(function (res) {
+    if (res !== null) {
+      console.log(res);
+      if (res.error) {
+        app.dialog.alert(res.error, 'Ops!');
+        return;
+      }
+
+      if (res.success) {
+        sessionStorage.clear();
+        window.location.href="index.html";
+      }
+
     } // res not null
   }); // after ajax
 }

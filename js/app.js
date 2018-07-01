@@ -55,10 +55,12 @@ $$(document).on('click', '.open-adm', function () {
     app.dialog.alert("Remova um administrador para adicionar outro.", 'Limite atingido.');
     return false;
   }
-  app.dialog.prompt('Digite o telefone do novo administrador:', function (name) {
-    app.dialog.confirm('Esta pessoa terá acesso irrestrito ao seu rastreador. Deseja continuar?', function () {
-      admInsert(name);
-    });
+  app.dialog.prompt('Informe o celular do novo administrador:', function (name) {
+    if (name) {
+      app.dialog.confirm('Esta pessoa terá acesso irrestrito ao seu rastreador. Deseja continuar?', function () {
+        admInsert(name);
+      });
+    }
   });
   $(".dialog-input").addClass("phone_with_ddd").css("color", "#666").css("font-weight", "bold").focus();
   initForm();
@@ -77,10 +79,10 @@ $$(document).on('swipeout:deleted', '.deleted-callback', function () {
 // BUGFIX: Smart select
 /*
 $$(document).on('click', '.smart-select-page .back', function (e) {
-  sessionStorage.smartselect_bugfix=1;
-  setTimeout(function() {
-    sessionStorage.smartselect_bugfix=0;
-  },1000);
+sessionStorage.smartselect_bugfix=1;
+setTimeout(function() {
+sessionStorage.smartselect_bugfix=0;
+},1000);
 });*/
 
 // Init/Create views
