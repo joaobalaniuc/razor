@@ -1,42 +1,42 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 
   /*if (sessionStorage.smartselect_bugfix=="1") {
-    console.log("smart select bugfix");
-    return false;
-  }*/
-  //===========================
-  // MAPBOX
-  //===========================
-  mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
-  var lat = 0;
-  var lng = 0;
-  map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/dark-v9',
-    zoom: 0,
-    center: [lat, lng]
-  });
-  sessionStorage.lat = lat;
-  sessionStorage.lng = lng;
+  console.log("smart select bugfix");
+  return false;
+}*/
+//===========================
+// MAPBOX
+//===========================
+mapboxgl.accessToken = 'pk.eyJ1Ijoiam9hb2JhbGFuaXVjIiwiYSI6ImNqaXFnb2RyMjA0b3ozdm12NmNva2hjNXUifQ.SSIY_rae1SE0Xsb_XYyn1Q';
+var lat = 0;
+var lng = 0;
+map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/dark-v9',
+  zoom: 0,
+  center: [lat, lng]
+});
+sessionStorage.lat = lat;
+sessionStorage.lng = lng;
 
-  //===========================
-  // INICIANDO AGORA
-  //===========================
-  if (typeof sessionStorage.autoId_0 === "undefined") {
-    autoList();
+//===========================
+// INICIANDO AGORA
+//===========================
+if (typeof sessionStorage.autoId_0 === "undefined") {
+  autoList();
+}
+//===========================
+// APP EM USO
+//===========================
+else {
+  autoListSession();
+  if (typeof localStorage.auto_id === "undefined") {
+    localStorage.auto_id = sessionStorage.autoId_0;
+    localStorage.auto_imei = sessionStorage.autoImei_0;
   }
-  //===========================
-  // APP EM USO
-  //===========================
-  else {
-    autoListSession();
-    if (typeof localStorage.auto_id === "undefined") {
-      localStorage.auto_id = sessionStorage.autoId_0;
-      localStorage.auto_imei = sessionStorage.autoImei_0;
-    }
-    sessionStorage.auto_id = localStorage.auto_id;
-    sessionStorage.auto_imei = localStorage.auto_imei;
-  }
+  sessionStorage.auto_id = localStorage.auto_id;
+  sessionStorage.auto_imei = localStorage.auto_imei;
+}
 });
 
 function autoList() {
@@ -138,7 +138,7 @@ function autoListSession(halt) {
       html += '<div class="item-content '+muted+'">';
       html += '<div class="item-media">'+ico+'</div>';
       html += '<div class="item-inner">';
-      html += '<div class="item-title">'+sessionStorage.getItem("autoName_"+i)+'</div>';
+      html += '<div class="item-title" style="font-weight:500">'+sessionStorage.getItem("autoName_"+i)+'</div>';
       html += '</div>';
       html += '</div>';
       html += '</a>';
@@ -353,6 +353,7 @@ function admList(adm) {
       title = adm[i]["cli_name"];
       name = adm[i]["cli_name"];
     }
+
     html += '<li class="swipeout deleted-callback" data-phone="'+adm[i]["cli_phone"]+'">';
     html += '<div class="item-content swipeout-content" style="">';
     html += '<div class="item-media"><i class="fas fa-'+icon+'"></i>';
@@ -362,8 +363,10 @@ function admList(adm) {
     html += '<div class="item-subtitle cel '+muted+'">'+adm[i]["cli_phone"]+'</div>';
     html += '</div>';
     html += '</div>';
-    html += '<div class="swipeout-actions-right">';
-    html += '<a href="#" data-confirm="Remover '+name+'?" class="swipeout-delete" style="">Delete</a>';
+    if (adm[i]["cli_phone"]!=localStorage.cli_phone) {
+      html += '<div class="swipeout-actions-right">';
+      html += '<a href="#" data-confirm="Remover '+name+'?" class="swipeout-delete" style="">Delete</a>';
+    }
     html += '</div>';
     html += '</li>';
 

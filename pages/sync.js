@@ -17,7 +17,6 @@ $$(document).on("click", '[data-name="sync"] submit', "form", function(e){
 
 // MAIS OPÇÕES
 $$(document).on("click", '[data-name="sync"] #mais_show', function(e){
-  alert(1);
   e.preventDefault();
   setTimeout(function() {
     $("#mais_show").hide();
