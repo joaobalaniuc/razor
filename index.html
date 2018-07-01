@@ -112,10 +112,12 @@
   if (!isApp) {
     start();
   }
+  else {
+    phonegap.initialize();
+  }
 
   // INICIALIZAÇÃO
   if (typeof sessionStorage.auto_id === "undefined") {
-    phonegap.initialize();
     $("#preloader0").show();
   }
   // APP EM USO
@@ -128,12 +130,12 @@
 
   // VERIFICAR CONEXÃO
   function conex() {
-    alert(sessionStorage.online);
+    //alert(sessionStorage.online);
     if (sessionStorage.online == "false") { $("#offline").show(); }
     else { $("#offline").hide(); }
     setTimeout(function() {
       conex();
-    },5000);
+    },1000);
   }
   conex();
 
