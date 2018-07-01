@@ -1,5 +1,9 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 
+  /*if (sessionStorage.smartselect_bugfix=="1") {
+    console.log("smart select bugfix");
+    return false;
+  }*/
   //===========================
   // MAPBOX
   //===========================
@@ -98,6 +102,7 @@ function autoList() {
     } // res not null
   }); // after ajax
 }
+
 
 function autoListSession(halt) {
 
@@ -230,40 +235,6 @@ function autoRead(auto_id) {
   }); // after ajax
 }
 
-function admList(adm) {
-  $.each(adm, function(i, val) {
-
-    var html = "";
-    var muted = "";
-    var icon = "user-circle";
-    var title = adm[i]["cli_name"];
-
-    if (!adm[i]["cli_name"]) {
-      title = "-";
-      muted = "muted";
-      icon = "question";
-    }
-    html += '<li class="swipeout">';
-    html += '<div class="item-content swipeout-content" style="">';
-    html += '<div class="item-media"><i class="fas fa-'+icon+'"></i>';
-    html += '</div>';
-    html += '<div class="item-inner">';
-    html += '<div class="item-title">'+title+'</div>';
-    html += '<div class="item-subtitle cel '+muted+'">'+adm[i]["cli_phone"]+'</div>';
-    html += '</div>';
-    html += '</div>';
-    html += '<div class="swipeout-actions-right">';
-    html += '<a href="#" data-confirm="Are you sure you want to delete this item?" class="swipeout-delete" style="">Delete</a>';
-    html += '</div>';
-    html += '</li>';
-
-    $("#admList").append(html);
-    txtPhone();
-  });
-
-
-}
-
 function autoCheck(auto_imei) {
 
   console.log("autoCheck("+auto_imei+")");
@@ -319,7 +290,7 @@ function autoCheck(auto_imei) {
         // gprs status?
         if (gprs) {
           sessionStorage.gprs = gprs.server_ip;
-            $(".auto_gprs").each(function(i) { $(this).html('<span class="txt-green shad-green">ON</span>'); });
+          $(".auto_gprs").each(function(i) { $(this).html('<span class="txt-green shad-green">ON</span>'); });
         }
         else {
           sessionStorage.removeItem("gprs");
@@ -356,9 +327,154 @@ function autoCheck(auto_imei) {
         }
         setTimeout(function() {
           autoCheck(auto_imei);
-        }, 15000);
+        }, 10000);
       }
 
+    } // res not null
+  }); // after ajax
+}
+
+function admList(adm) {
+
+  $.each(adm, function(i, val) {
+
+    var html = "";
+    var muted = "";
+    var icon = "user-circle";
+    var title = "";
+
+    if (!adm[i]["cli_name"]) {
+      title = "-";
+      muted = "muted";
+      icon = "question";
+      name = "este admin";
+    }
+    else {
+      title = adm[i]["cli_name"];
+      name = adm[i]["cli_name"];
+    }
+    html += '<li class="swipeout deleted-callback" data-phone="'+adm[i]["cli_phone"]+'">';
+    html += '<div class="item-content swipeout-content" style="">';
+    html += '<div class="item-media"><i class="fas fa-'+icon+'"></i>';
+    html += '</div>';
+    html += '<div class="item-inner">';
+    html += '<div class="item-title">'+title+'</div>';
+    html += '<div class="item-subtitle cel '+muted+'">'+adm[i]["cli_phone"]+'</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="swipeout-actions-right">';
+    html += '<a href="#" data-confirm="Remover '+name+'?" class="swipeout-delete" style="">Delete</a>';
+    html += '</div>';
+    html += '</li>';
+
+    $("#admList").append(html);
+    txtPhone();
+  });
+
+
+}
+
+function admInsert(adm_phone) {
+
+  console.log("admInsert("+adm_phone+")");
+
+  if (sessionStorage.online == "false") {
+    return false;
+  }
+
+  // DATA TO SEND
+  var data_user = {
+    auto_id: sessionStorage.auto_id,
+    adm_phone: adm_phone,
+    //
+    cli_id: localStorage.cli_id,
+    cli_email: localStorage.cli_email,
+    cli_pass: localStorage.cli_pass
+  };
+  var data = data_user;
+  app.preloader.show("green");
+
+  // RUN AJAX
+  $.ajax({
+    url: localStorage.server + "/adm_insert.php",
+    data: data,
+    type: 'GET',
+    dataType: 'jsonp',
+    jsonp: 'callback',
+    timeout: localStorage.timeout
+  })
+  .always(function () {
+    app.preloader.hide();
+  })
+
+  .fail(function () {
+    app.dialog.alert("Ocorreu um erro interno. Tente novamente mais tarde.", 'Ops!');
+  })
+
+  .done(function (res) {
+    if (res !== null) {
+      if (res.error) {
+        app.dialog.alert(res.error, 'Ops!');
+        return;
+      }
+      if (res.success) {
+        console.log("*** Adm inserted");
+        var adm = [{
+          cli_phone: adm_phone,
+          cli_name: res["cli_name"]
+        }];
+        admList(adm);
+      }
+    } // res not null
+  }); // after ajax
+}
+
+function admDelete(adm_phone) {
+
+  console.log("admDelete("+adm_phone+")");
+
+  if (sessionStorage.online == "false") {
+    return false;
+  }
+
+  // DATA TO SEND
+  var data_user = {
+    auto_id: sessionStorage.auto_id,
+    adm_phone: adm_phone,
+    //
+    cli_id: localStorage.cli_id,
+    cli_email: localStorage.cli_email,
+    cli_pass: localStorage.cli_pass
+  };
+  var data = data_user;
+  //app.preloader.show("green");
+
+  // RUN AJAX
+  $.ajax({
+    url: localStorage.server + "/adm_delete.php",
+    data: data,
+    type: 'GET',
+    dataType: 'jsonp',
+    jsonp: 'callback',
+    timeout: localStorage.timeout
+  })
+  .always(function () {
+    //app.preloader.hide();
+  })
+
+  .fail(function () {
+    app.dialog.alert("Ocorreu um erro interno. Tente novamente mais tarde.", 'Ops!');
+  })
+
+  .done(function (res) {
+    if (res !== null) {
+      if (res.error) {
+        app.dialog.alert(res.error, 'Ops!');
+        return;
+      }
+      if (res.success) {
+        console.log("*** Adm deleted");
+      }
     } // res not null
   }); // after ajax
 }

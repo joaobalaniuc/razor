@@ -11,11 +11,11 @@ $$('[data-name="auto"]').on("submit", "form", function(e){
 });
 
 // CHANGE
-$$('[data-name="auto"]').on("change", "#carro .brands", function(e){ var id = $(this).val(); cars(id); });
-$$('[data-name="auto"]').on("change", "#carro .cars", function(e){ var id = $(this).val(); years(id); });
+$$(document).on('change', '#carro .brands', function(e){ var id = $(this).val(); cars(id); });
+$$(document).on('change', '#carro .cars', function(e){ var id = $(this).val(); years(id); });
 //
-$$('[data-name="auto"]').on("change", "#moto .brands", function(e){ var id = $(this).val(); cars(id, "moto"); });
-$$('[data-name="auto"]').on("change", "#moto .cars", function(e){ var id = $(this).val(); years(id, "moto"); });
+$$(document).on('change', '#moto .brands', function(e){ var id = $(this).val(); cars(id, "moto"); });
+$$(document).on('change', '#moto .cars', function(e){ var id = $(this).val(); years(id, "moto"); });
 
 // BRANDS
 function brands(tipo) {

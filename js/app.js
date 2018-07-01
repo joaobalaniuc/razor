@@ -48,6 +48,37 @@ $$(document).on('click', '.open-full', function (e) {
   notificationConex.open();
 });
 
+// Dialogs
+$$(document).on('click', '.open-adm', function () {
+  var count = $("#admList li").length;
+  if (count>=5) {
+    app.dialog.alert("Remova um administrador para adicionar outro.", 'Limite atingido.');
+    return false;
+  }
+  app.dialog.prompt('Digite o telefone do novo administrador:', function (name) {
+    app.dialog.confirm('Esta pessoa terá acesso irrestrito ao seu rastreador. Deseja continuar?', function () {
+      admInsert(name);
+    });
+  });
+  $(".dialog-input").addClass("phone_with_ddd").css("color", "#666").css("font-weight", "bold").focus();
+  initForm();
+});
+
+// Swipeout callbacks
+$$(document).on('swipeout:deleted', '.deleted-callback', function () {
+  var adm_phone = $(this).attr("data-phone");
+  admDelete(adm_phone);
+});
+
+// BUGFIX: Smart select
+/*
+$$(document).on('click', '.smart-select-page .back', function (e) {
+  sessionStorage.smartselect_bugfix=1;
+  setTimeout(function() {
+    sessionStorage.smartselect_bugfix=0;
+  },1000);
+});*/
+
 // Init/Create views
 var indexView = app.views.create('#view-index');
 
@@ -62,4 +93,7 @@ $$(document).on('click', '#autoList a', function (e) {
 });
 $$(document).on('click', '.link', function (e) {
   console.log("click .link");
+});
+$$(document).on('click', '.index', function (e) {
+  window.location.href="index.html";
 });
