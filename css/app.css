@@ -54,7 +54,8 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 /* Listview */
 ul .item-media {min-width:0 !important}
 .md .links-list a {padding-left:0 !important}
-.list {margin-top:0 !important}
+.list {margin:0 !important}
+.block-title {text-transform:uppercase;color:#49f892 !important}
 
 /* Menu Icons */
 #icons .col {text-align:center !important;padding:16px;text-shadow:1px 1px 1px #000;font-weight:600;font-size:12px}

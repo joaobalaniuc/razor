@@ -261,21 +261,29 @@ function autoCheck(auto_imei) {
       }
       res = res[0];
       if (res) {
-        console.log(res);
         var lat = parseFloat(res.log_lng);
         var lng = parseFloat(res.log_lat);
         if (lat != sessionStorage.lat && lng != sessionStorage.lng) {
+
           console.log("NEW LAT/LNG = "+lat+"/"+lng);
+          console.log(res);
+
           sessionStorage.lat = lat;
           sessionStorage.lng = lng;
-          map.easeTo({
-            center: [lat, lng],
-            zoom: 15
-          });
+
           if (typeof marker === "undefined") {
+            map.easeTo({
+              center: [lat, lng],
+              zoom: 15
+            });
             marker = new mapboxgl.Marker()
             .setLngLat([0, 0])
             .addTo(map);
+          }
+          else {
+            map.easeTo({
+              center: [lat, lng]
+            });
           }
           marker.setLngLat([lat, lng]).addTo(map);
         }

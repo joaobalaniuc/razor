@@ -1,6 +1,6 @@
 /**
  * RAZOR:
- * #171717 -> #333 (fundo preto -> cinza escuro)
+ * #171717 -> #222 (fundo preto -> cinza escuro)
  * #49f892 -> (fundo verde -> verde razor)
  * -
  * Framework7 3.0.0-beta.2
@@ -500,7 +500,7 @@ html.with-statusbar.device-iphone-x .framework7-root {
 }
 .ios .theme-dark .page,
 .page.ios .theme-dark {
-  background: #333;
+  background: #222;
 }
 @-webkit-keyframes ios-page-next-to-current {
   from {
@@ -717,7 +717,7 @@ html.with-statusbar.device-iphone-x .framework7-root {
 }
 .md .theme-dark .page,
 .page.md .theme-dark {
-  background: #333;
+  background: #222;
 }
 @-webkit-keyframes md-page-next-to-current {
   from {
@@ -4484,7 +4484,7 @@ html.device-pixel-ratio-3 .ios li:last-child li .item-inner:after {
 }
 .ios .theme-dark .item-divider,
 .ios .theme-dark .list-group-title {
-  background-color: #111;
+  background-color: #222;
 }
 .ios .theme-dark .links-list a:after,
 .ios .theme-dark .simple-list li:after,
@@ -5291,7 +5291,7 @@ html.device-pixel-ratio-3 .md li:last-child li .item-inner:after {
 }
 .md .theme-dark .item-divider,
 .md .theme-dark .list-group-title {
-  background-color: #111;
+  background-color: #222;
   color: #fff;
 }
 .md .theme-dark .links-list a:after,
@@ -9103,7 +9103,7 @@ html.with-statusbar.md:not(.device-ios):not(.device-android) .login-screen {
 }
 .ios .theme-dark .sheet-modal,
 .sheet-modal.ios .theme-dark {
-  background-color: #333;
+  background-color: #222;
 }
 .ios .theme-dark .sheet-modal .toolbar,
 .sheet-modal.ios .theme-dark .toolbar {
@@ -11245,7 +11245,7 @@ html.device-android-4 .accordion-item-content {
 }
 .ios .theme-dark .contacts-list .list-group-title,
 .contacts-list.ios .theme-dark .list-group-title {
-  background-color: #111;
+  background-color: #222;
   color: #fff;
 }
 .md .contacts-list {
@@ -13811,7 +13811,7 @@ input[type="button"].md .card-footer a.link {
   margin-right: -6px;
 }
 .ios .theme-dark .chip {
-  background-color: #333;
+  background-color: #222;
 }
 .ios .chip.color-red {
   background: #ff3b30;
@@ -13877,7 +13877,7 @@ input[type="button"].md .card-footer a.link {
   margin-right: -8px;
 }
 .md .theme-dark .chip {
-  background: #333;
+  background: #222;
   color: rgba(255, 255, 255, 0.87);
 }
 .md .theme-dark .chip-delete {
@@ -21720,7 +21720,7 @@ label.item-radio.disabled,
   color: #fff;
 }
 .ios .theme-dark .calendar-day.calendar-day-today:not(.calendar-day-selected) span {
-  background: #333;
+  background: #222;
 }
 .ios .theme-dark .calendar-day.calendar-day-disabled {
   color: #8E8E93;
@@ -21732,7 +21732,7 @@ label.item-radio.disabled,
 .ios .theme-dark .calendar-modal,
 .calendar-modal.ios .theme-dark,
 .ios .theme-dark .calendar-sheet {
-  background: #333;
+  background: #222;
 }
 .ios .color-theme-red .calendar-day.calendar-day-selected span,
 .ios .color-red .calendar-day.calendar-day-selected span {
@@ -25014,7 +25014,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active) .table
 .searchbar.ios .theme-dark input[type="search"],
 .ios .theme-dark .searchbar input[type="text"],
 .searchbar.ios .theme-dark input[type="text"] {
-  background-color: #333;
+  background-color: #222;
   color: #fff;
 }
 .ios .color-theme-red .searchbar-disable-button {
@@ -25783,13 +25783,13 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active) .table
 }
 .ios .theme-dark .message-received.message-typing .message-content:after,
 .ios .theme-dark .message-received.message-typing .message-content:before {
-  background: #333;
+  background: #222;
 }
 .ios .theme-dark .message-typing-indicator > div {
   background-color: #fff;
 }
 .ios .theme-dark .message-received .message-bubble {
-  background-color: #333;
+  background-color: #222;
   color: #fff;
 }
 @media (orientation: landscape) {
@@ -25894,7 +25894,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active) .table
   margin-left: 8px;
 }
 .md .message-received .message-bubble {
-  color: #333;
+  color: #222;
   background: #fff;
 }
 .md .message-received .message-avatar + .message-content {
@@ -25918,7 +25918,7 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active) .table
   margin-right: 8px;
 }
 .md .message-sent .message-bubble {
-  color: #333;
+  color: #222;
   background: #c8e6c9;
 }
 .md .message-sent .message-avatar + .message-content {
@@ -26281,12 +26281,12 @@ html.device-desktop .data-table .sortable-cell:not(.sortable-cell-active) .table
 .md .messagebar textarea {
   padding: 5px 8px;
   height: 32px;
-  color: #333;
+  color: #222;
   font-size: 16px;
   line-height: 22px;
 }
 .md .messagebar a.link {
-  color: #333;
+  color: #222;
 }
 .md .messagebar a.link:before {
   content: '';
@@ -28305,7 +28305,7 @@ html.with-statusbar.device-iphone-x .notification {
   background-color: #1c1c1d;
 }
 .ios .theme-dark .searchbar-input-wrap .autocomplete-dropdown {
-  background-color: #333;
+  background-color: #222;
 }
 .md .autocomplete-page .navbar .autocomplete-preloader {
   margin-right: 16px;
