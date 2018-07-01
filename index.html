@@ -128,11 +128,12 @@
 
   // VERIFICAR CONEXÃO
   function conex() {
+    alert(sessionStorage.online);
     if (sessionStorage.online == "false") { $("#offline").show(); }
     else { $("#offline").hide(); }
     setTimeout(function() {
       conex();
-    },1500);
+    },5000);
   }
   conex();
 
