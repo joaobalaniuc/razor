@@ -103,7 +103,7 @@ function autoListSession(halt) {
         ico = '<i class="iicon material-icons">motorcycle</i>';
       }
       else {
-        ico = '<i class="iicon material-icons">directions_car</i>';
+        ico = '<i class="fas fa-car"></i>';
       }
       var css = "";
       if (sessionStorage.auto_id == sessionStorage.getItem("autoId_"+i)) {
@@ -185,6 +185,12 @@ function autoReadCbHome(data) {
     }
     $(".auto_edit").each(function(i) { $(this).attr("data-id", auto["auto_id"]); });
     $(".auto_phone").each(function(i) { $(this).html(auto["auto_phone"]); });
+    if (auto["auto_type"]=="carro") {
+      $(".auto_type").each(function(i) { $(this).html('<i class="fas fa-car"></i>') });
+    }
+    else {
+      $(".auto_type").each(function(i) { $(this).html('<i class="material-icons">motorcycle</i>') });
+    }
 
     // Ainda não sincronizou veiculo
     if (auto.auto_imei==null) { app.router.navigate("/sync/"); }
@@ -198,6 +204,11 @@ function autoReadCbHome(data) {
 }
 
 function autoCheck(auto_imei) {
+
+  if ($("#map").is(":hidden") || app.views.main.router.url !== "/home/") {
+    setTimeout(function() {autoCheck(auto_imei);},1000);
+    return false;
+  }
 
   var fn = Hello(auto_imei);
 

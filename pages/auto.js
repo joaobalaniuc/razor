@@ -1,35 +1,14 @@
 $$(document).on('page:init', '.page[data-name="auto"]', function (e) {
   if (typeof sessionStorage.auto_edit !== "undefined") {
     autoRead(sessionStorage.auto_edit, autoReadCbEdit);
+    $("#carro, #moto").prepend("<input type='hidden' name='auto_id' value='"+sessionStorage.auto_edit+"' />");
+    $('[data-name="auto"] [type=submit]').html("Salvar alterações");
+    $('[data-name="auto"] .title').html("Editar veículo");
   }
   brands();
   brands("moto");
   sessionStorage.removeItem("auto_edit");
 });
-
-function autoReadCbEdit(data) {
-
-  Hello();
-  var fn = fname();
-
-  var res = data;
-  var auto = res["auto"];
-  var adm = res["adm"];
-
-  if (auto) {
-
-    // Dados do veiculo
-    $('[name="auto_name"]').val(auto["auto_name"]);
-    //$('[name="auto_name"]').val(auto["auto_name"]);
-
-  }
-
-  // Ainda não cadastrou um veiculo
-  //else { app.router.navigate("/auto/"); }
-
-  // Adm list
-  //if (adm) { admList(adm); }
-}
 
 // SUBMIT FORM
 $$(document).on("submit", '[data-name="auto"] form', function(e){
@@ -45,10 +24,20 @@ $$(document).on('click', '.auto_edit', function () {
 });
 
 // CHANGE
-$$(document).on('change', '#carro .brands', function(e){ var id = $(this).val(); cars(id); });
+$$(document).on('change', '#carro .brands', function(e){
+  var id = $(this).val();
+  $("#carro .cars").html("");
+  $("#carro .years").html("");
+  cars(id);
+});
 $$(document).on('change', '#carro .cars', function(e){ var id = $(this).val(); years(id); });
 //
-$$(document).on('change', '#moto .brands', function(e){ var id = $(this).val(); cars(id, "moto"); });
+$$(document).on('change', '#moto .brands', function(e){
+  var id = $(this).val();
+  $("#moto .cars").html("");
+  $("#moto .years").html("");
+  cars(id, "moto");
+});
 $$(document).on('change', '#moto .cars', function(e){ var id = $(this).val(); years(id, "moto"); });
 
 // BRANDS
@@ -149,10 +138,47 @@ function autoInsert($el) {
     ajaxLog(fn, res);
     if (!ajaxError(res)) {
       if (res.success) {
-        sessionStorage.auto_id = res.id;
-        sessionStorage.auto_name = $el.find("[name=auto_name]").val().toUpperCase();
-        app.router.navigate("/sync/");
+        // INSERT
+        if (res.id) {
+          sessionStorage.auto_id = res.id;
+          sessionStorage.auto_name = $el.find("[name=auto_name]").val().toUpperCase();
+          app.router.navigate("/sync/");
+        }
+        // UPDATE
+        else {
+          window.location.href="index.html";
+        }
       }
     }
   }); // after ajax
+}
+
+function autoReadCbEdit(data) {
+
+  var fn = Hello();
+
+  var res = data;
+  var auto = res["auto"];
+  var adm = res["adm"];
+
+  if (auto) {
+    // Dados do veiculo
+    $("[name=auto_name]").val(auto["auto_name"]);
+    $("[name=auto_brand_id]").append("<option selected value='"+auto["auto_brand_id"]+"'>"+auto["auto_brand"]+"</option>");
+    $("[name=auto_model_id]").html("<option selected value='"+auto["auto_model_id"]+"'>"+auto["auto_model"]+"</option>");
+    $("[name=auto_year_id]").html("<option selected value='"+auto["auto_year_id"]+"'>"+auto["auto_year"]+"</option>");
+    //
+    $(".auto_brand").html(auto["auto_brand"]);
+    $(".auto_model").html(auto["auto_model"]);
+    $(".auto_year").html(auto["auto_year"]);
+    //
+    if (auto["auto_type"]=="moto") {
+      $(".tab1").removeClass("tab-link-active");
+      $(".tab2").addClass("tab-link-active");
+    }
+  }
+
+  //brands();
+  //brands("moto");
+
 }

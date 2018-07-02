@@ -4,7 +4,6 @@
 app.on('pageInit', function (page) {
   // do something on page init
   console.log('pageInit: '+page.name);
-  sessionStorage.page = page.name;
   initForm();
 });
 app.on('panelOpen', function (panel) {

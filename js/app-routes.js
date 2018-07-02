@@ -30,6 +30,10 @@ routes = [
     url: './pages/test.html?'+ts,
   },
   {
+    path: '/profile/',
+    url: './pages/profile.html?'+ts,
+  },
+  {
     path: '/home/',
     url: './pages/home.html?'+ts,
     on: {

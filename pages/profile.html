@@ -1,0 +1,77 @@
+<div class="page" data-name="profile" style="bbackground:url(img/bkg0.jpg);background-size:cover;background-position:center">
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left">
+        <a href="#" class="link back iindex">
+          <i class="icon icon-back"></i>
+          <span class="ios-only">Back</span>
+        </a>
+      </div>
+      <div class="title left">Meus dados</div>
+      <div class="right">
+        <i class="icon icon-bback"></i>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="page-content tab tab-active">
+    <div class="block">
+
+      <form id="registerForm">
+
+        <div class="list">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Seu Nome</div>
+                <div class="item-input-wrap">
+                  <input required validate type="text" class="ucwords" name="cli_name" placeholder="Nome completo">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Telefone Móvel</div>
+                <div class="item-input-wrap">
+                  <input required validate class="phone_with_ddd" type="tel" name="cli_phone" placeholder="(00) 00000-0000">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Seu e-mail</div>
+                <div class="item-input-wrap">
+                  <input required validate type="email" name="cli_email" placeholder="voce@email.com">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Senha</div>
+                <div class="item-input-wrap">
+                  <input id="pass1" required validate minlength="8" type="password" name="cli_pass" placeholder="*****">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Confirme a Senha</div>
+                <div class="item-input-wrap">
+                  <input id="pass2" required validate minlength="8" type="password" placeholder="*****">
+                </div>
+
+                <button id="submit" style="margin-top:30px" class="col button button-fill color-green">Criar conta grátis</button>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>
