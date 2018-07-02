@@ -1,5 +1,5 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
-  
+
   //===========================
   // MAPBOX
   //===========================
@@ -37,7 +37,7 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 
 function autoList() {
 
-  console.log("autoList()");
+  var fn = Hello();
 
   if (sessionStorage.online == "false") {
     setTimeout(function() {autoList();},1000);
@@ -45,39 +45,20 @@ function autoList() {
   }
 
   // DATA TO SEND
-  var data_user = {
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
+  var data = ajaxUserData();
 
   app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/auto_list.php",
-    data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    data: data
   })
-  .always(function () {
-    app.preloader.hide();
-  })
-
-  .fail(function () {
-    app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
-  })
-
   .done(function (res) {
-    if (res !== null) {
-      console.log(res);
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
+
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
+
       var x = 0;
       $.each(res, function(i, val) {
         sessionStorage.setItem("autoId_"+i, val.auto_id);
@@ -94,14 +75,14 @@ function autoList() {
       sessionStorage.auto_imei = localStorage.auto_imei;
       //
       autoListSession();
+    }
 
-    } // res not null
   }); // after ajax
 }
 
 function autoListSession(halt) {
 
-  console.log("autoListSession()");
+  var fn = Hello(halt);
 
   if ($("#autoList").length==0) {
     return false;
@@ -148,12 +129,12 @@ function autoListSession(halt) {
   if (typeof sessionStorage.auto_imei !== "undefined" && sessionStorage.auto_imei != "null") {
     autoCheck(sessionStorage.auto_imei);
   }
-  autoRead(sessionStorage.auto_id);
+  autoRead(sessionStorage.auto_id, autoReadCbHome);
 }
 
-function autoRead(auto_id) {
+function autoRead(auto_id, cb) {
 
-  console.log("autoRead("+auto_id+")");
+  var fn = Hello(auto_id);
 
   if (sessionStorage.online == "false") {
     setTimeout(function() {autoRead(auto_id);},1000);
@@ -161,79 +142,64 @@ function autoRead(auto_id) {
   }
 
   // DATA TO SEND
-  var data_user = {
-    auto_id: auto_id,
-    //
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
+  var data = ajaxUserData();
+  data.auto_id = auto_id;
+
   app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/auto_read.php",
-    data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    data: data
   })
-  .always(function () {
-    app.preloader.hide();
-    txtPhone();
-  })
-
-  .fail(function () {
-    app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
-  })
-
   .done(function (res) {
-    if (res !== null) {
-      console.log(res);
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
-      auto = res["auto"];
-      adm = res["adm"];
-
-      if (auto) {
-        sessionStorage.auto_id = auto.auto_id;
-        sessionStorage.auto_name = auto.auto_name;
-        sessionStorage.auto_imei = auto.auto_imei;
-        console.log("*** auto_name: "+sessionStorage.auto_name);
-
-        // Sou proprietário do veiculo
-        if (auto.cli_id == localStorage.cli_id) {
-          console.log("*** i'm owner");
-          $(".verify-owner").each(function(i) { $(this).show(); });
-        }
-        // Dados do veiculo
-        $(".auto_name").each(function(i) { $(this).html(auto["auto_name"]); });
-        if (auto["auto_brand"] && auto["auto_model"]) {
-          $(".auto_model").each(function(i) { $(this).html(auto["auto_brand"]+" "+auto["auto_model"]); });
-        }
-        $(".auto_phone").each(function(i) { $(this).html(auto["auto_phone"]); });
-
-        // Ainda não sincronizou veiculo
-        if (auto.auto_imei==null) { app.router.navigate("/sync/"); }
-      }
-
-      // Ainda não cadastrou um veiculo
-      else { app.router.navigate("/auto/"); }
-
-      // Adm list
-      if (adm) { admList(adm); }
-
-    } // res not null
+    txtPhone();
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) { if (typeof cb === "function") { cb(res); } }
   }); // after ajax
+}
+
+function autoReadCbHome(data) {
+
+  var fn = Hello();
+
+  var res = data;
+  var auto = res["auto"];
+  var adm = res["adm"];
+
+  if (auto) {
+    sessionStorage.auto_id = auto.auto_id;
+    sessionStorage.auto_name = auto.auto_name;
+    sessionStorage.auto_imei = auto.auto_imei;
+    console.log(fn+" *** auto_name: "+sessionStorage.auto_name);
+
+    // Sou proprietário do veiculo
+    if (auto.cli_id == localStorage.cli_id) {
+      console.log(fn+" *** i'm owner");
+      $(".verify-owner").each(function(i) { $(this).show(); });
+    }
+    // Dados do veiculo
+    $(".auto_name").each(function(i) { $(this).html(auto["auto_name"]); });
+    if (auto["auto_brand"] && auto["auto_model"]) {
+      $(".auto_model").each(function(i) { $(this).html(auto["auto_brand"]+" "+auto["auto_model"]); });
+    }
+    $(".auto_edit").each(function(i) { $(this).attr("data-id", auto["auto_id"]); });
+    $(".auto_phone").each(function(i) { $(this).html(auto["auto_phone"]); });
+
+    // Ainda não sincronizou veiculo
+    if (auto.auto_imei==null) { app.router.navigate("/sync/"); }
+  }
+
+  // Ainda não cadastrou um veiculo
+  else { app.router.navigate("/auto/"); }
+
+  // Adm list
+  if (adm) { admListSession(adm); }
 }
 
 function autoCheck(auto_imei) {
 
-  console.log("autoCheck("+auto_imei+")");
+  var fn = Hello(auto_imei);
 
   if (sessionStorage.online == "false") {
     setTimeout(function() {autoCheck(auto_imei);},1000);
@@ -241,42 +207,25 @@ function autoCheck(auto_imei) {
   }
 
   // DATA TO SEND
-  var data_user = {
-    auto_imei: auto_imei,
-    //
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
-  //app.preloader.show("green");
+  var data = ajaxUserData();
+  data.auto_imei = auto_imei;
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/auto_check.php",
     data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    error: function() {} // não usar fail default (alert)
   })
-  .always(function () {
-
-  })
-
   .fail(function () {
     setTimeout(function() {
       autoCheck(auto_imei);
     }, 5000);
     notificationConex.open();
   })
-
   .done(function (res) {
-    if (res !== null) {
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
+
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
 
       log = res["log"];
       gprs = res["gprs"];
@@ -298,9 +247,7 @@ function autoCheck(auto_imei) {
         var lng = parseFloat(log.log_lat);
         if (lat != sessionStorage.lat && lng != sessionStorage.lng) {
 
-          console.log("*** new geolocation = "+lat+"/"+lng);
-          console.log(log);
-          console.log(gprs);
+          console.log(fn+" *** new geolocation = "+lat+"/"+lng);
 
           sessionStorage.lat = lat;
           sessionStorage.lng = lng;
@@ -330,7 +277,9 @@ function autoCheck(auto_imei) {
   }); // after ajax
 }
 
-function admList(adm) {
+function admListSession(adm) {
+
+  var fn = Hello();
 
   $.each(adm, function(i, val) {
 
@@ -375,54 +324,29 @@ function admList(adm) {
 
 function admInsert(adm_phone) {
 
-  console.log("admInsert("+adm_phone+")");
-
-  if (sessionStorage.online == "false") {
-    return false;
-  }
+  var fn = Hello(adm_phone);
 
   // DATA TO SEND
-  var data_user = {
-    auto_id: sessionStorage.auto_id,
-    adm_phone: adm_phone,
-    //
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
+  var data = ajaxUserData();
+  data.auto_id = sessionStorage.auto_id;
+  data.adm_phone = adm_phone;
+
   app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/adm_insert.php",
-    data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    data: data
   })
-  .always(function () {
-    app.preloader.hide();
-  })
-
-  .fail(function () {
-    app.dialog.alert("Ocorreu um erro interno. Tente novamente mais tarde.", 'Ops!');
-  })
-
   .done(function (res) {
-    if (res !== null) {
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
       if (res.success) {
-        console.log("*** Adm inserted");
         var adm = [{
           cli_phone: adm_phone,
           cli_name: res["cli_name"]
         }];
-        admList(adm);
+        admListSession(adm);
       }
     } // res not null
   }); // after ajax
@@ -430,106 +354,46 @@ function admInsert(adm_phone) {
 
 function admDelete(adm_phone) {
 
-  console.log("admDelete("+adm_phone+")");
-
-  if (sessionStorage.online == "false") {
-    return false;
-  }
+  var fn = Hello(adm_phone);
 
   // DATA TO SEND
-  var data_user = {
-    auto_id: sessionStorage.auto_id,
-    adm_phone: adm_phone,
-    //
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
-  //app.preloader.show("green");
+  var data = ajaxUserData();
+  data.auto_id = sessionStorage.auto_id;
+  data.adm_phone = adm_phone;
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/adm_delete.php",
-    data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    data: data
   })
-  .always(function () {
-    //app.preloader.hide();
-  })
-
-  .fail(function () {
-    app.dialog.alert("Ocorreu um erro interno. Tente novamente mais tarde.", 'Ops!');
-  })
-
   .done(function (res) {
-    if (res !== null) {
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
-      if (res.success) {
-        console.log("*** Adm deleted");
-      }
-    } // res not null
+    ajaxLog(fn, res);
+    ajaxError(res);
   }); // after ajax
 }
 
 function autoDelete() {
 
-  var auto_id = sessionStorage.auto_id;
-
-  console.log("autoDelete("+auto_id+")");
-
-  if (sessionStorage.online == "false") {
-    return false;
-  }
+  var fn = Hello();
 
   // DATA TO SEND
-  var data_user = {
-    auto_id: auto_id,
-    //
-    cli_id: localStorage.cli_id,
-    cli_email: localStorage.cli_email,
-    cli_pass: localStorage.cli_pass
-  };
-  var data = data_user;
+  var data = ajaxUserData();
+  data.auto_id = sessionStorage.auto_id;
+
   app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/auto_delete.php",
-    data: data,
-    type: 'GET',
-    dataType: 'jsonp',
-    jsonp: 'callback',
-    timeout: localStorage.timeout
+    data: data
   })
-  .always(function () {
-    app.preloader.hide();
-    txtPhone();
-  })
-
-  .fail(function () {
-    app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
-  })
-
   .done(function (res) {
-    if (res !== null) {
-      console.log(res);
-      if (res.error) {
-        app.dialog.alert(res.error, 'Ops!');
-        return;
-      }
-
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
       if (res.success) {
         sessionStorage.clear();
         window.location.href="index.html";
       }
-
     } // res not null
   }); // after ajax
 }

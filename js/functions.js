@@ -1,4 +1,15 @@
 //----------------------------------------------
+// GET FUNCTION NAME
+//----------------------------------------------
+function Hello(data) {
+  var fname = Hello.caller.name;
+  if (typeof data === "undefined") { data = ""; }
+  console.log(fname+"("+data+")");
+  return fname;
+}
+function fname() { return fname.caller.name; }
+
+//----------------------------------------------
 // SERIALIZE FORM TO ARRAY
 //----------------------------------------------
 function serial(el) {

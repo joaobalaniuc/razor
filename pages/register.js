@@ -1,6 +1,6 @@
 
 // SUBMIT FORM
-$$('[data-name="register"]').on("submit", "form", function(e){
+$$(document).on("submit", "#registerForm", function(e){
   e.preventDefault();
   if ($("#pass1").val()!=$("#pass2").val()) {
     app.dialog.alert('As senhas não coincidem.');

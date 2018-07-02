@@ -23,83 +23,96 @@ var app  = new Framework7({
     iosOverlaysWebView: true,
   }
 });
-app.on('pageInit', function (page) {
-  // do something on page init
-  console.log('pageInit: '+page.name);
-  sessionStorage.page = page.name;
-  initForm();
-});
-app.on('panelOpen', function (panel) {
-  console.log('Panel ' + panel.side + ': open');
-});
-
-// Notifications
-var notificationConex = app.notification.create({
-  icon: '<i class="fas fa-exclamation-triangle"></i>',
-  title: 'Razor',
-  titleRightText: 'agora',
-  subtitle: 'A conexão falhou',
-  text: 'Tentando novamente...',
-  closeTimeout: 3000,
-  closeOnClick: true,
-  closeButton: true
-});
-$$(document).on('click', '.open-full', function (e) {
-  notificationConex.open();
-});
-
-// Dialogs
-$$(document).on('click', '.open-adm', function () {
-  var count = $("#admList li").length;
-  if (count>=5) {
-    app.dialog.alert("Remova um administrador para adicionar outro.", 'Limite atingido.');
-    return false;
-  }
-  app.dialog.prompt('Informe o celular do novo administrador:', function (name) {
-    if (name) {
-      app.dialog.confirm('Esta pessoa terá acesso irrestrito ao seu rastreador. Deseja continuar?', function () {
-        admInsert(name);
-      });
-    }
-  });
-  $(".dialog-input").addClass("phone_with_ddd").css("color", "#666").css("font-weight", "bold").focus();
-  initForm();
-});
-
-// Swipeout callbacks
-$$(document).on('swipeout:deleted', '.deleted-callback', function () {
-  var adm_phone = $(this).attr("data-phone");
-  if (adm_phone == localStorage.cli_phone) {
-    app.dialog.alert("Você não pode remover a si mesmo.");
-    return false;
-  }
-  admDelete(adm_phone);
-});
-
-// BUGFIX: Smart select
-/*
-$$(document).on('click', '.smart-select-page .back', function (e) {
-sessionStorage.smartselect_bugfix=1;
-setTimeout(function() {
-sessionStorage.smartselect_bugfix=0;
-},1000);
-});*/
 
 // Init/Create views
 var indexView = app.views.create('#view-index');
 
-// Global events
-$$(document).on('click', '#autoList a', function (e) {
-  var id = $(this).attr("data-id");
-  var imei = $(this).attr("data-imei");
-  console.log("id="+id+" imei="+imei);
-  sessionStorage.auto_id = id;
-  sessionStorage.auto_imei = imei;
-  window.location.href="index.html";
+//--------------------------------------------
+// INICIAR DISPOSITIVO
+//--------------------------------------------
+function start() {
+
+  // App config
+  localStorage.appname = "Razor";
+  localStorage.version = "1.0.0";
+
+  // Server
+  localStorage.server = "http://nickford.com.br/razor/";
+  localStorage.server_img = "/upload/";
+
+  // Dev
+  sessionStorage.debug = 1;
+
+  // Ajax timeout
+  localStorage.timeout = 5000; // ajax
+
+  // Login?
+  if (typeof localStorage.cli_id === "undefined") { localStorage.cli_id = 0; }
+
+  console.log(localStorage);
+  console.log(sessionStorage);
+}
+
+var phonegap = {
+
+  // Application Constructor
+  initialize: function () {
+    this.bindEvents();
+  },
+
+  // Bind Event Listeners
+  bindEvents: function () {
+    document.addEventListener('deviceready', this.onDeviceReady, false);
+    document.addEventListener("online", onOnline, false);
+    function onOnline() { sessionStorage.online = true; }
+    document.addEventListener("offline", onOffline, false);
+    function onOffline() { sessionStorage.online = false; }
+  },
+
+  // deviceready Event Handler
+  onDeviceReady: function () {
+
+    //alert(1);
+
+    var number = "28999652165";
+    var message = "teste";
+
+    //CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+            intent: 'INTENT'  // send SMS with the native android SMS messaging
+            //intent: '' // send SMS without open any other app
+        }
+    };
+    var success = function () { alert('Message sent successfully'); };
+    var error = function (e) { alert('Message Failed:' + e); };
+    //sms.send(number, message, options, success, error);
+
+    //alert(2);
+
+    // GPS enabled?
+    /*
+    if (device.platform != "iOS") {
+    cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
+    if (!enabled) { geoIP(); }
+  }, function (error) {
+  alert("The following error occurred: " + error);
 });
-$$(document).on('click', '.link', function (e) {
-  console.log("click .link");
-});
-$$(document).on('click', '.index', function (e) {
-  window.location.href="index.html";
-});
+}
+*/
+phonegap.receivedEvent('deviceready');
+
+start();
+
+},
+// Update DOM on a Received Event
+receivedEvent: function (id) {
+  /*var parentElement = document.getElementById(id);
+  var listeningElement = parentElement.querySelector('.listening');
+  var receivedElement = parentElement.querySelector('.received');
+  listeningElement.setAttribute('style', 'display:none;');
+  receivedElement.setAttribute('style', 'display:block;');*/
+  console.log('Received Event: ' + id);
+}
+};
