@@ -29,7 +29,7 @@ function admListSession(adm) {
     html += '<div class="item-subtitle cel '+muted+'">'+adm[i]["cli_phone"]+'</div>';
     html += '</div>';
     html += '</div>';
-    if (adm[i]["cli_phone"]!=localStorage.cli_phone) {
+    if (adm[i]["cli_phone"] != localStorage.cli_phone) {
       html += '<div class="swipeout-actions-right">';
       html += '<a href="#" data-confirm="Remover '+name+'?" class="swipeout-delete" style="">Delete</a>';
     }
