@@ -4,8 +4,22 @@ $$(document).on('page:init', '.page[data-name="profile"]', function (e) {
 });
 
 $$(document).on('click', '#profileButton', function (e) {
-  $("#profileShow").fadeOut("slow", function() {
-    $("#profileForm").fadeIn("slow");
+  $("#profileShow").fadeOut("fast", function() {
+    $("#profileForm").fadeIn("fast");
+  });
+});
+
+$$(document).on('click', '#profileCancel', function (e) {
+  $("#profileForm").fadeOut("fast", function() {
+    $("#profileShow").fadeIn("fast");
+  });
+});
+
+$$(document).on('click', '#logout', function (e) {
+  app.dialog.confirm('Tem certeza que deseja sair?', function () {
+    localStorage.clear();
+    sessionStorage.clear();
+    window.location.href="index.html";
   });
 });
 

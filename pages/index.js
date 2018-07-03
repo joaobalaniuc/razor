@@ -52,7 +52,6 @@ $$(document).on('click', '.open-adm', function () {
 //================================================
 $$(document).on('swipeout:deleted', '.deleted-callback', function () {
   var adm_phone = $(this).attr("data-phone");
-  alert(adm_phone+" "+localStorage.cli_phone);return false;
   if (adm_phone == localStorage.cli_phone) {
     app.dialog.alert("Você não pode remover a si mesmo.");
     return false;
