@@ -1,24 +1,26 @@
 $$(document).on('page:init', '.page[data-name="profile"]', function (e) {
-  userRead();
+  userRead(userReadCb);
+  $("[name=cli_id]").val(localStorage.cli_id);
 });
 
-function userRead() {
+$$(document).on('click', '#profileButton', function (e) {
+  $("#profileShow").fadeOut("slow", function() {
+    $("#profileForm").fadeIn("slow");
+  });
+});
 
-  var fn = Hello();
-
-  // DATA TO SEND
-  var data = ajaxUserData();
-
-  app.preloader.show("green");
-
-  // RUN AJAX
-  $.ajax({
-    url: localStorage.server + "/user_read.php",
-    data: data
-  })
-  .done(function (res) {
-    txtPhone();
-    ajaxLog(fn, res);
-    if (!ajaxError(res)) { if (typeof cb === "function") { cb(res); } }
-  }); // after ajax
-}
+$$(document).on('submit', '#profileForm', function (e) {
+  e.preventDefault();
+  sessionStorage.removeItem("pass1");
+  var pass1 = $("#pass1").val();
+  var pass2 = $("#pass2").val();
+  if (pass1 != "") {
+    if (pass1 != pass2) {
+      app.dialog.alert("Os campos da nova senha não coincidem.", 'Ops!');
+      return false;
+    }
+    else { sessionStorage.pass1 = pass1; }
+  }
+  sessionStorage.cli_email = $("#profileForm [name=cli_email]").val();
+  userUpdate();
+});

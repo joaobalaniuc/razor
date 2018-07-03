@@ -86,10 +86,12 @@ $.ajaxSetup({
   jsonp: 'callback',
   timeout: localStorage.timeout,
   beforeSend: function(xhr, options) {
+    //console.log("--> sending data: "+options.url);
     if (sessionStorage.online == "false") {
       xhr.abort();
       console.log("*** ajax abort (offline)");
     }
+    else {app.preloader.show("green");}
   },
   complete: function() { app.preloader.hide(); },
   success: function(data) { },

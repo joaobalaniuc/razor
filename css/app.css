@@ -17,7 +17,7 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 
 /* Links */
 .md .color-theme-black a { color:#fff;font-weight:600 }
-.md .color-theme-black a.green { color:#49f892 !important }
+.green { color:#49f892 !important }
 
 /* Inputs */
 .item-input-focused .item-label{ color:#fff !important }

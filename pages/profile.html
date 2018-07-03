@@ -8,7 +8,7 @@
           <span class="ios-only">Back</span>
         </a>
       </div>
-      <div class="title left">Meus dados</div>
+      <div class="title left">Minha conta</div>
       <div class="right">
         <i class="icon icon-bback"></i>
       </div>
@@ -19,16 +19,14 @@
 
   <div class="page-content tab tab-active">
     <div class="block">
-
-      <form id="registerForm">
-
+      <form id="profileShow">
         <div class="list">
           <ul>
             <li class="item-content item-input">
               <div class="item-inner">
                 <div class="item-title item-label">Seu Nome</div>
                 <div class="item-input-wrap">
-                  <input required validate type="text" class="ucwords" name="cli_name" placeholder="Nome completo">
+                  <input disabled type="text" class="ucwords" name="cli_name">
                 </div>
               </div>
             </li>
@@ -36,7 +34,56 @@
               <div class="item-inner">
                 <div class="item-title item-label">Telefone Móvel</div>
                 <div class="item-input-wrap">
-                  <input required validate class="phone_with_ddd" type="tel" name="cli_phone" placeholder="(00) 00000-0000">
+                  <input disabled class="phone_with_ddd cel" type="tel" name="cli_phone">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Seu e-mail</div>
+                <div class="item-input-wrap">
+                  <input disabled type="email" name="cli_email">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Assinatura</div>
+                <div class="item-input-wrap">
+                  <input disabled type="text" class="ucwords green" value="Free">
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Data de Cadastro</div>
+                <div class="item-input-wrap">
+                  <input disabled type="text" name="cli_date">
+                </div>
+              </div>
+            </li>
+
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <button type="button" id="profileButton" class="col button button-big button-fill color-black">Alterar meus dados</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </form>
+
+      <form id="profileForm" style="display:none">
+
+        <input type="hidden" name="cli_id" value="" />
+
+        <div class="list">
+          <div class="block-title">Dados pessoais</div>
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Seu Nome</div>
+                <div class="item-input-wrap">
+                  <input required validate type="text" class="ucwords" name="cli_name" placeholder="Nome completo">
                 </div>
               </div>
             </li>
@@ -50,21 +97,34 @@
             </li>
             <li class="item-content item-input">
               <div class="item-inner">
-                <div class="item-title item-label">Senha</div>
+                <div class="item-title item-label">Senha atual</div>
                 <div class="item-input-wrap">
-                  <input id="pass1" required validate minlength="8" type="password" name="cli_pass" placeholder="*****">
+                  <input name="cli_pass" id="pass0" required validate minlength="8" type="password" placeholder="*****">
+                </div>
+              </div>
+            </li>
+
+            <div class="block-title">Alterar senha</div>
+
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Nova senha</div>
+                <div class="item-input-wrap">
+                  <input id="pass1" validate minlength="8" type="password" name="cli_pass1" placeholder="*****">
                 </div>
               </div>
             </li>
             <li class="item-content item-input">
               <div class="item-inner">
-                <div class="item-title item-label">Confirme a Senha</div>
+                <div class="item-title item-label">Confirmar nova senha</div>
                 <div class="item-input-wrap">
-                  <input id="pass2" required validate minlength="8" type="password" placeholder="*****">
+                  <input id="pass2" validate minlength="8" type="password" placeholder="*****">
                 </div>
-
-                <button id="submit" style="margin-top:30px" class="col button button-fill color-green">Criar conta grátis</button>
-
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <button id="submit" class="col button-big button button-fill color-green">Salvar alterações</button>
               </div>
             </li>
           </ul>
