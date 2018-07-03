@@ -51,7 +51,8 @@ function brands(tipo) {
   // RUN AJAX
   $.ajax({
     url: "http://fipeapi.appspot.com/api/1/"+tipo+"s/marcas.json",
-    complete: function() {} // não apagar preloader
+    complete: function() {}, // não apagar preloader
+    beforeSend: function() {} // não mostrar preloader
   })
   .done(function (res) {
     ajaxLog(fn, res);

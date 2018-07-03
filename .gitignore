@@ -2,7 +2,7 @@
 *.psd
 *.zip
 *.rar
-img/backup
+assets/img/backup
 backup/
 server/
 nbproject/
