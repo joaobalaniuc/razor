@@ -99,7 +99,18 @@ $.ajaxSetup({
 });
 function ajaxError(res) {
   if (res===null) { return true; }
-  if (res.error) { app.dialog.alert(res.error, 'Ops!'); return true; }
+  if (res.error) {
+    if (res.error == "1") {
+      alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.";
+      sessionStorage.clear();
+      localStorage.clear();
+      window.location.href="index.html";
+    }
+    else {
+      app.dialog.alert(res.error, 'Ops!');
+    }
+    return true;
+  }
   return false;
 }
 function ajaxLog(fn, res) {
@@ -116,6 +127,7 @@ function ajaxUserData(send) {
     data_user.cli_id = localStorage.cli_id;
     data_user.cli_email = localStorage.cli_email;
     data_user.cli_pass = localStorage.cli_pass;
+    data_user.dev_id = localStorage.dev_id;
   }
   return data_user;
 }

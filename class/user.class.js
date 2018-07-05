@@ -1,9 +1,11 @@
 function userLogin() {
 
   // DATA TO SEND
-  var data_form = $("form").serialize();
-  var data = data_form;
-  console.log(data);
+  var data_form = $("#loginForm").serialize();
+  var data_dev = $.param(device);
+  alert(data_dev);
+  return false;
+  var data = data_form + "&" + data_dev;
 
   app.preloader.show("green");
 
@@ -32,15 +34,21 @@ function userLogin() {
         return;
       }
       if (res.success) {
-        localStorage.cli_id = res.id;
-        localStorage.cli_email = res.email;
-        localStorage.cli_pass = res.pass;
-        localStorage.cli_phone = res.phone;
+        userSave(res);
         app.router.navigate("/home/");
       }
 
     } // res not null
   }); // after ajax
+}
+
+// localStorage
+function userSave(res) {
+  localStorage.cli_id = res.cli_id;
+  localStorage.cli_email = res.cli_email;
+  localStorage.cli_pass = res.cli_pass;
+  localStorage.cli_phone = res.cli_phone;
+  localStorage.dev_id = res.dev_id;
 }
 
 function userInsert() {
@@ -63,10 +71,7 @@ function userInsert() {
         return;
       }
       if (res.success) {
-        localStorage.cli_id = res.id;
-        localStorage.cli_email = res.email;
-        localStorage.cli_pass = res.pass;
-        localStorage.cli_phone = res.phone;
+        userSave(res);
         app.router.navigate("/home/");
       }
     } // res not null
@@ -106,7 +111,6 @@ function userReadCb(res) {
 
 }
 
-// UPDATE USER
 function userUpdate() {
 
   var fn = Hello();
