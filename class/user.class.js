@@ -2,6 +2,7 @@ function userLogin() {
 
   // DATA TO SEND
   var data_form = $("#loginForm").serialize();
+  alert(device.platform);
   var data_dev = $.param(device);
   alert(data_dev);
   return false;
@@ -55,8 +56,8 @@ function userInsert() {
 
   // DATA TO SEND
   var data_form = $("#registerForm").serialize();
-  var data = data_form;
-  console.log(data);
+  var data_dev = $.param(device);
+  var data = data_form + "&" + data_dev;
 
   // RUN AJAX
   $.ajax({
