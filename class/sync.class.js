@@ -35,10 +35,11 @@ function syncPlay(start) {
     error: function() { }, // prevent dialog
     beforeSend: function() { } // prevent preloader
   })
-  .fail(function() {
-    var res = {};
-    res.step_txt = "Não foi possível estabelecer uma conexão segura. Por favor, tente novamente.";
-    syncShow("Error", res);
+  .fail(function () {
+    setTimeout(function() {
+      syncPlay();
+    }, 5000);
+    notificationConex.open();
   })
   .done(function (res) {
     ajaxLog(fn, res);

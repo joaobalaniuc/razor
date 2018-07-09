@@ -72,7 +72,7 @@
   <script src="js/vendor/jquery-3.2.1.min.js"></script>
   <script src="js/vendor/jquery.mask.js"></script>
   <script src="js/vendor/jquery.validate.min.js"></script>
-
+  <script src="js/vendor/NoSleep.min.js"></script>
   <!-- App -->
   <script src="js/functions.js"></script>
   <script src="js/app-routes.js"></script>
@@ -96,18 +96,13 @@
   <script src="pages/index.js"></script>
 
   <script>
-  //sessionStorage.clear();
-  //localStorage.clear();
 
-  // DEV
-  if (!isApp) {
-    start();
-  }
-  else {
-    phonegap.initialize();
-  }
+  // DEV MODE
+  if (!isApp) { start(); }
+  // PRODUCTION
+  else { phonegap.initialize(); }
 
-  // INICIALIZAÇÃO
+  // BOOT
   if (typeof sessionStorage.auto_id === "undefined") {
     $("#preloader0").show();
   }
@@ -129,6 +124,14 @@
     },3000);
   }
   conex();
+
+  // NO SLEEP
+  var noSleep = new NoSleep();
+  function enableNoSleep() {
+    noSleep.enable();
+    document.removeEventListener('touchstart', enableNoSleep, false);
+  }
+  document.addEventListener('touchstart', enableNoSleep, false);
 
   // STATUSBAR
   if (isApp) {

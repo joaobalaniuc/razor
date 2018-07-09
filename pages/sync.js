@@ -16,8 +16,7 @@ $$(document).on("submit", '#syncForm', function(e){
 
 // CONCLUIR
 $$(document).on('click', '#syncDone', function (e) {
-  //sessionStorage.clear();
-  sessionStorage.removeItem("autoId_0");
+  sessionStorage.clear();
   window.location.href='index.html';
 });
 

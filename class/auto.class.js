@@ -166,7 +166,7 @@ function autoReadCbHome(data) {
     }
 
     // Ainda não sincronizou veiculo
-    if (auto.auto_imei==null) { app.router.navigate("/sync/"); }
+    if (auto.auto_phone==null) { app.router.navigate("/sync/"); }
   }
 
   // Ainda não cadastrou um veiculo

@@ -92,31 +92,19 @@ var phonegap = {
     var success = function () { alert('Message sent successfully'); };
     var error = function (e) { alert('Message Failed:' + e); };
     //sms.send(number, message, options, success, error);
-
     //alert(2);
 
     // GPS enabled?
-    /*
     if (device.platform != "iOS") {
-    cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) {
-    if (!enabled) { geoIP(); }
-  }, function (error) {
-  alert("The following error occurred: " + error);
-});
-}
-*/
-phonegap.receivedEvent('deviceready');
+      //cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) { if (!enabled) { geoIP(); } }, function (error) { alert("The following error occurred: " + error); });
+    }
+    phonegap.receivedEvent('deviceready');
 
-start();
+    start();
 
-},
-// Update DOM on a Received Event
-receivedEvent: function (id) {
-  /*var parentElement = document.getElementById(id);
-  var listeningElement = parentElement.querySelector('.listening');
-  var receivedElement = parentElement.querySelector('.received');
-  listeningElement.setAttribute('style', 'display:none;');
-  receivedElement.setAttribute('style', 'display:block;');*/
-  console.log('Received Event: ' + id);
-}
+  },
+  // Update DOM on a Received Event
+  receivedEvent: function (id) {
+    console.log('Received Event: ' + id);
+  }
 };
