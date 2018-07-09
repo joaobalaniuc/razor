@@ -77,30 +77,39 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
+
+    app.push = PushNotification.init({
+      "android": {},
+      "ios": {
+        "sound": true,
+        "vibration": true,
+        "badge": true
+      },
+      "windows": {}
+    });
     alert(0);
-    var push = PushNotification.init({
-      //android: {},
-      browser: {
-        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-      },
-      ios: {
-        alert: "true",
-        badge: true,
-        sound: 'false'
-      },
-      windows: {}
+    app.push.on("registration", function(data) {
+      alert("registration event: " + data.registrationId);
+      //document.getElementById("regId").innerHTML = data.registrationId;
+      var oldRegId = localStorage.getItem("registrationId");
+      if (oldRegId !== data.registrationId) {
+        // Save new registration ID
+        localStorage.setItem("registrationId", data.registrationId);
+        // Post registrationId to your app server as the value has changed
+      }
     });
     alert(1);
-    push.on('registration', function(data) {
-      alert(data.registrationId);
-    });
-    push.on('notification', function(data) {
-      alert(data.title+" Message: " +data.message);
-    });
-    push.on('error', function(e) {
-      alert(e);
+    app.push.on("error", function(e) {
+      alert("push error = " + e.message);
     });
     alert(2);
+    app.push.on("notification", function(data) {
+      alert("notification event");
+
+    });
+
+
+
 
     var number = "28999652165";
     var message = "teste";
