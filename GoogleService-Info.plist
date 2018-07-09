@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>549517709931-fvj58jqng8el0jfoftp4g668cl696gji.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.549517709931-fvj58jqng8el0jfoftp4g668cl696gji</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBPwBMc4fMNddlRhFFcb40df8tekP3cawU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>549517709931</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.nickford.razor</string>
+	<key>PROJECT_ID</key>
+	<string>razor-1529700412052</string>
+	<key>STORAGE_BUCKET</key>
+	<string>razor-1529700412052.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:549517709931:ios:0b02ec73ad7e24b5</string>
+	<key>DATABASE_URL</key>
+	<string>https://razor-1529700412052.firebaseio.com</string>
+</dict>
+</plist>

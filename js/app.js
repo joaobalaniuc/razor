@@ -78,6 +78,15 @@ var phonegap = {
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
 
+    window.FirebasePlugin.getToken(function(token) {
+      // save this server-side and use it to push notifications to this device
+      alert(token);
+      console.log(token);
+    }, function(error) {
+      alert("error:"+error);
+      console.error(error);
+    });
+
     //alert(1);
     var number = "28999652165";
     var message = "teste";

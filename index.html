@@ -129,8 +129,8 @@
   conex();
 
   // PREVENT SLEEP SCREEN
-  setTimeout(function() { window.plugins.insomnia.keepAwake(); },5000);
-
+  if (isApp) { setTimeout(function() { window.plugins.insomnia.keepAwake(); },5000); }
+  
   // STATUSBAR
   if (isApp) {
     setTimeout(function () {
