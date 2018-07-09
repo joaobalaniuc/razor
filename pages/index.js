@@ -155,7 +155,7 @@ function ajaxDevData() {
     var data = {
       dev_model:0,
       dev_platform:0,
-      dev_version:0,
+      dev_platform_ver:0,
       dev_manufacturer:0,
       dev_cordova:0,
       dev_uuid:0,

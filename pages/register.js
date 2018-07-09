@@ -6,5 +6,5 @@ $$(document).on("submit", "#registerForm", function(e){
     app.dialog.alert('As senhas não coincidem.');
     return false;
   }
-  userInsert();
+  userInsert(userSave);
 });
