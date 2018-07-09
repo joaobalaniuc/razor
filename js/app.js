@@ -69,6 +69,12 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
+    if (typeof device === "undefined") {
+      alert("dev not found");
+    }
+    alert(device);
+    alert(device.platform);
+
     //alert(1);
 
     var number = "28999652165";
@@ -76,11 +82,11 @@ var phonegap = {
 
     //CONFIGURATION
     var options = {
-        replaceLineBreaks: false, // true to replace \n by a new line, false by default
-        android: {
-            intent: 'INTENT'  // send SMS with the native android SMS messaging
-            //intent: '' // send SMS without open any other app
-        }
+      replaceLineBreaks: false, // true to replace \n by a new line, false by default
+      android: {
+        intent: 'INTENT'  // send SMS with the native android SMS messaging
+        //intent: '' // send SMS without open any other app
+      }
     };
     var success = function () { alert('Message sent successfully'); };
     var error = function (e) { alert('Message Failed:' + e); };
