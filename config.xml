@@ -108,6 +108,6 @@
 
   <plugin name="cordova-sms-plugin" source="npm" />
   <plugin name="cordova-plugin-insomnia" source="npm" />
-  <plugin name="cordova-plugin-firebase" source="npm" />
+  <!--<plugin name="cordova-plugin-firebase" source="npm" />-->
 
 </widget>
