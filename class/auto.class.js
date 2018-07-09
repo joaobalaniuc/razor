@@ -27,23 +27,30 @@ function autoList() {
     ajaxLog(fn, res);
     if (!ajaxError(res)) {
 
-      var x = 0;
-      $.each(res, function(i, val) {
-        sessionStorage.setItem("autoId_"+i, val.auto_id);
-        sessionStorage.setItem("autoName_"+i, val.auto_name);
-        sessionStorage.setItem("autoImei_"+i, val.auto_imei);
-        sessionStorage.setItem("autoType_"+i, val.auto_type);
-        x = 1;
-      });
-      //
-      localStorage.auto_id = sessionStorage.autoId_0;
-      localStorage.auto_imei = sessionStorage.autoImei_0;
-      //
-      sessionStorage.auto_id = localStorage.auto_id;
-      sessionStorage.auto_imei = localStorage.auto_imei;
-      //
-      autoListSession();
-    }
+      if (typeof res[0] !== "undefined") {
+        var x = 0;
+        $.each(res, function(i, val) {
+          sessionStorage.setItem("autoId_"+i, val.auto_id);
+          sessionStorage.setItem("autoName_"+i, val.auto_name);
+          sessionStorage.setItem("autoImei_"+i, val.auto_imei);
+          sessionStorage.setItem("autoType_"+i, val.auto_type);
+          x = 1;
+        });
+        //
+        localStorage.auto_id = sessionStorage.autoId_0;
+        localStorage.auto_imei = sessionStorage.autoImei_0;
+        //
+        sessionStorage.auto_id = localStorage.auto_id;
+        sessionStorage.auto_imei = localStorage.auto_imei;
+        //
+        autoListSession();
+      } // auto > 0
+      else {
+        $("[href='#tab-conf']").addClass("disabled");
+        $("[href='#tab-menu']").addClass("disabled");
+        app.router.navigate("/auto/");
+      } // auto = null
+    } // res success
 
   }); // after ajax
 }
