@@ -72,7 +72,7 @@
   <script src="js/vendor/jquery-3.2.1.min.js"></script>
   <script src="js/vendor/jquery.mask.js"></script>
   <script src="js/vendor/jquery.validate.min.js"></script>
-  <script src="js/vendor/Insomnia.js"></script>
+  <!--<script src="js/vendor/Insomnia.js"></script>-->
   <!-- App -->
   <script src="js/functions.js"></script>
   <script src="js/app-routes.js"></script>
@@ -125,9 +125,8 @@
   }
   conex();
 
-  setTimeout(function() {
-    window.plugins.insomnia.keepAwake();
-  },5000);
+  // PREVENT SLEEP SCREEN
+  setTimeout(function() { window.plugins.insomnia.keepAwake(); },5000);
 
   // STATUSBAR
   if (isApp) {

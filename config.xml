@@ -107,11 +107,6 @@
   </feature>
 
   <plugin name="cordova-sms-plugin" source="npm" />
-  
   <plugin name="cordova-plugin-insomnia" source="npm" />
-  <feature name="Insomnia">
-    <param name="ios-package" value="Insomnia" />
-    <param name="android-package" value="nl.xservices.plugins.Insomnia" />
-  </feature>
 
 </widget>
