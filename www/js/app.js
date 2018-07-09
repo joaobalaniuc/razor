@@ -77,44 +77,31 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
-
-
-
-    const push = PushNotification.init({
-      android: {},
+    alert(0);
+    var push = PushNotification.init({
+      //android: {},
       browser: {
         pushServiceURL: 'http://push.api.phonegap.com/v1/push'
       },
       ios: {
-        alert: 'true',
+        alert: "true",
         badge: true,
         sound: 'false'
       },
       windows: {}
     });
-
-    alert(0);
-
-    PushNotification.hasPermission(data => {
-      if (data.isEnabled) {
-        alert('isEnabled');
-      }
-    });
-
     alert(1);
-
-    push.on('notification', data => {
-      alert("msg="+data.message);
-      console.log(data.message);
-      console.log(data.title);
-      console.log(data.count);
-      console.log(data.sound);
-      console.log(data.image);
-      console.log(data.additionalData);
+    push.on('registration', function(data) {
+      alert(data.registrationId);
     });
-
+    push.on('notification', function(data) {
+      alert(data.title+" Message: " +data.message);
+    });
+    push.on('error', function(e) {
+      alert(e);
+    });
     alert(2);
-    
+
     var number = "28999652165";
     var message = "teste";
     //CONFIGURATION
