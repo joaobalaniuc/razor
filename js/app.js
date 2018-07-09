@@ -70,13 +70,13 @@ var phonegap = {
   onDeviceReady: function () {
 
     // device info
-    sessionStorage.device_model = data.dev_model;
-    sessionStorage.device_platform = data.dev_platform;
-    sessionStorage.device_version = data.dev_platform_ver;
-    sessionStorage.device_manufacturer = data.dev_manufacturer;
-    sessionStorage.device_cordova = data.dev_cordova;
-    sessionStorage.device_uuid = data.dev_uuid;
-    sessionStorage.device_serial = data.dev_serial;
+    sessionStorage.device_model = device.model;
+    sessionStorage.device_platform = device.platform;
+    sessionStorage.device_version = device.version;
+    sessionStorage.device_manufacturer = device.manufacturer;
+    sessionStorage.device_cordova = device.cordova;
+    sessionStorage.device_uuid = device.uuid;
+    sessionStorage.device_serial = device.serial;
 
     //alert(1);
     var number = "28999652165";
