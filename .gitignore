@@ -2,6 +2,7 @@
 *.psd
 *.zip
 *.rar
+*backup*
 assets/img/backup
 backup/
 server/
