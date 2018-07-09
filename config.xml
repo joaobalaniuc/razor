@@ -100,12 +100,18 @@
 
   <plugin name="cordova-plugin-statusbar" source="npm" />
   <preference name="StatusBarOverlaysWebView" value="true" />
-    <!--<preference name="StatusBarBackgroundColor" value="#000000" />-->
-    <preference name="StatusBarStyle" value="lightcontent" />
-    <feature name="StatusBar">
-        <param name="ios-package" value="CDVStatusBar" onload="true" />
-    </feature>
+  <!--<preference name="StatusBarBackgroundColor" value="#000000" />-->
+  <preference name="StatusBarStyle" value="lightcontent" />
+  <feature name="StatusBar">
+    <param name="ios-package" value="CDVStatusBar" onload="true" />
+  </feature>
 
   <plugin name="cordova-sms-plugin" source="npm" />
+  
+  <plugin name="cordova-plugin-insomnia" source="npm" />
+  <feature name="Insomnia">
+    <param name="ios-package" value="Insomnia" />
+    <param name="android-package" value="nl.xservices.plugins.Insomnia" />
+  </feature>
 
 </widget>

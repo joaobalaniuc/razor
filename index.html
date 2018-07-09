@@ -72,7 +72,7 @@
   <script src="js/vendor/jquery-3.2.1.min.js"></script>
   <script src="js/vendor/jquery.mask.js"></script>
   <script src="js/vendor/jquery.validate.min.js"></script>
-  <script src="js/vendor/NoSleep.min.js"></script>
+  <script src="js/vendor/Insomnia.js"></script>
   <!-- App -->
   <script src="js/functions.js"></script>
   <script src="js/app-routes.js"></script>
@@ -125,15 +125,9 @@
   }
   conex();
 
-  // NO SLEEP
-  var noSleep = new NoSleep();
-  function enableNoSleep() {
-    alert(1);
-    noSleep.enable();
-    document.removeEventListener('touchstart', enableNoSleep, false);
-  }
-  //setTimeout(function() { enableNoSleep(); }, 5000);
-  document.addEventListener('touchstart', enableNoSleep, false);
+  setTimeout(function() {
+    window.plugins.insomnia.keepAwake();
+  },5000);
 
   // STATUSBAR
   if (isApp) {
