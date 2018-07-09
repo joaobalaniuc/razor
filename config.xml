@@ -108,9 +108,9 @@
 
   <plugin name="cordova-sms-plugin" source="npm" />
   <plugin name="cordova-plugin-insomnia" source="npm" />
-  <plugin name="phonegap-plugin-push" spec="2.0.0" />
-  <platform name="ios">
-    <resource-file src="GoogleService-Info.plist" />
-  </platform>
-
+  <plugin name="phonegap-plugin-push" spec="~1.5.3" />
+  <!--<platform name="ios">
+  <resource-file src="GoogleService-Info.plist" />
+</platform>
+-->
 </widget>
