@@ -132,9 +132,7 @@
     noSleep.enable();
     document.removeEventListener('touchstart', enableNoSleep, false);
   }
-  setTimeout(function() {
-    enableNoSleep();
-  }, 5000);
+  //setTimeout(function() { enableNoSleep(); }, 5000);
   document.addEventListener('touchstart', enableNoSleep, false);
 
   // STATUSBAR
