@@ -150,24 +150,26 @@ function ajaxUserData(send) {
 }
 function ajaxDevData() {
   var data = {};
-  if (typeof device === "undefined") {
+  if (typeof sessionStorage.device_model === "undefined") {
     alert("Device undefined");
-    var device = {
-      model:0,
-      platform:0,
-      version:0,
-      manufacturer:0,
-      cordova:0,
-      uuid:0,
-      serial:0
+    var data = {
+      dev_model:0,
+      dev_platform:0,
+      dev_version:0,
+      dev_manufacturer:0,
+      dev_cordova:0,
+      dev_uuid:0,
+      dev_serial:0
     };
   }
-  data.dev_model = device.model;
-  data.dev_platform = device.platform;
-  data.dev_platform_ver = device.version;
-  data.dev_manufacturer = device.manufacturer;
-  data.dev_cordova = device.cordova;
-  data.dev_uuid = device.uuid;
-  data.dev_serial = device.serial;
+  else {
+    data.dev_model = sessionStorage.device_model;
+    data.dev_platform = sessionStorage.device_platform;
+    data.dev_platform_ver = sessionStorage.device_version;
+    data.dev_manufacturer = sessionStorage.device_manufacturer;
+    data.dev_cordova = sessionStorage.device_cordova;
+    data.dev_uuid = sessionStorage.device_uuid;
+    data.dev_serial = sessionStorage.device_serial;
+  }
   return data;
 }

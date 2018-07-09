@@ -69,17 +69,18 @@ var phonegap = {
   // deviceready Event Handler
   onDeviceReady: function () {
 
-    if (typeof device === "undefined") {
-      alert("dev not found");
-    }
-    alert(device);
-    alert(device.platform);
+    // device info
+    sessionStorage.device_model = data.dev_model;
+    sessionStorage.device_platform = data.dev_platform;
+    sessionStorage.device_version = data.dev_platform_ver;
+    sessionStorage.device_manufacturer = data.dev_manufacturer;
+    sessionStorage.device_cordova = data.dev_cordova;
+    sessionStorage.device_uuid = data.dev_uuid;
+    sessionStorage.device_serial = data.dev_serial;
 
     //alert(1);
-
     var number = "28999652165";
     var message = "teste";
-
     //CONFIGURATION
     var options = {
       replaceLineBreaks: false, // true to replace \n by a new line, false by default
