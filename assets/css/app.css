@@ -1,25 +1,20 @@
-/* Color: #49f892 */
-/* Your app styles here */
-.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
-  display: none;
-}
-.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
-  display: none;
-}
-/* Razor */
+/* RAZOR GREEN: #49f892 */
+/*--------------------------------
+ RAZOR
+--------------------------------*/
 body { font-family: 'Montserrat', sans-serif !important; }
 
-/* Toolbar */
+/*--------------------------------
+ TOOLBARS
+--------------------------------*/
 #rz-bar a { padding-top:15px;padding-bottom:12px; }
 a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 .txt-green {color:#49f892 !important}
 .shad-green {text-shadow:0 0 15px #76bf93}
 
-/* Links */
-.md .color-theme-black a { color:#fff;font-weight:600 }
-.green { color:#49f892 !important }
-
-/* Inputs */
+/*--------------------------------
+ FORM INPUTS
+--------------------------------*/
 .item-input-focused .item-label{ color:#fff !important }
 .item-input-focused .item-input-wrap:after{ background:#66d492 !important; }
 .right-input-link {
@@ -34,7 +29,7 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
   text-align: right;
   font-weight:400 !important;
 }
-.item-input-error-message {color:#ffc700 !important}
+.item-input-error-message {color:#ffc700 !important;pposition:relative !important;}
 .item-input-invalid .item-label {ccolor:#ffc700 !important}
 .item-input-info {color:#999 !important}
 .label-bold .item-title {
@@ -48,23 +43,40 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
   box-shadow:0 0 16px #49f892;
 }
 
-/* Buttons */
+/*--------------------------------
+ BUTTONS
+--------------------------------*/
 .button {font-weight:600;text-transform:none !important}
-.button.color-green {color:#000 !important;}
+.button.color-green:not(.button-outline) {color:#000 !important;}
 .button-big {text-transform:uppercase !important}
 
-/* Text */
+/*--------------------------------
+ TEXT
+--------------------------------*/
 .ucwords {text-transform:capitalize;}
 .navbar .title:not(.def) {width:100% !important;margin-left:auto !important;margin-right:auto !important;text-align:center !important}
 .muted {color:#999 !important}
+.truncate {
+  max-width:95%;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.red {color:#fa574b}
+.md .color-theme-black a { color:#fff;font-weight:600 }
+.green { color:#49f892 !important }
 
-/* Listview */
+/*--------------------------------
+ LISTVIEW
+--------------------------------*/
 ul .item-media {min-width:0 !important}
 .md .links-list a {padding-left:0 !important}
 .list {margin:0 !important}
 .block-title {text-transform:uppercase;color:#49f892 !important}
 
-/* Menu Icons */
+/*--------------------------------
+ MENU ICONS
+--------------------------------*/
 #icons .col {text-align:center !important;padding:16px;text-shadow:1px 1px 1px #000;font-weight:600;font-size:12px}
 #icons .col .fas {font-size:48px;position:relative;margin-bottom:10px}
 #icons .link {
@@ -77,7 +89,9 @@ ul .item-media {min-width:0 !important}
   }
 }
 
-/* Animations */
+/*--------------------------------
+ ANIMATIONS
+--------------------------------*/
 @keyframes blink {
   0% { color  : red; }
   /*49% { color : red; }
@@ -92,17 +106,16 @@ ul .item-media {min-width:0 !important}
 }
 .bw { animation: bw 1s linear infinite; }
 
-/* General */
+/*--------------------------------
+ GENERAL
+--------------------------------*/
 .preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
 .verify-owner {display:none}
 .smart-select-page .navbar .title {text-align:left !important}
 
-/* Preloader Page */
-[data-name="preloader"] .txt {
-  display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
-}
-
-/* Offline Div */
+/*--------------------------------
+ OFFLINE ALERT
+--------------------------------*/
 #offline {
   display:none;
   animation: bw 1s linear infinite;
@@ -113,3 +126,71 @@ ul .item-media {min-width:0 !important}
 #offline div { position:relative;top:50%;margin-top:-100px; }
 #offline div i { font-size:80px }
 #offline span { display:block;margin-top:24px;font-size:24px }
+
+/*--------------------------------
+ F7
+--------------------------------*/
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+
+/*--------------------------------
+ SYNC
+--------------------------------*/
+#syncArea {
+  display:none;position:absolute;left:0;top:0;width:100%;height:100%;
+  background-color:#000;z-index:99999;
+}
+.sync_area {
+  display:none;position:absolute;left:0;top:0;width:100%;height:100%;
+  background-size:100%;background-position:center;background-repeat:no-repeat;
+  z-index:99999;
+}
+.sync_title {
+  position:absolute;top:10%;width:100%;bborder:1px solid red;
+  text-align:center;font-size:24px;font-weight:800;
+}
+.sync_title div {padding:24px}
+.sync_subtitle {
+  position:absolute;top:18%;width:100%;bborder:1px solid red;
+  text-align:center;font-size:16px;font-weight:600;
+}
+.sync_subtitle div {padding:24px}
+.sync_foot {
+  position:absolute;bottom:10%;width:100%;
+  text-align:center;font-size:24px;
+}
+.sync_foot a {
+  display:inline-block !important;
+  width:auto !important;
+}
+/* Sync Styles */
+.stepGears {background-color:#000;background-image:url(../img/stepGears.gif);}
+.stepStars {background-color:#000;background-image:url(../img/stepStars.gif);}
+.stepBall {background-color:#000;background-image:url(../img/stepBall.gif);}
+.stepError {background-color:#de0239;bbackground-image:url(../img/error.gif);bbackground-size:50%;}
+.stepDone {background-color:#002129;background-image:url(../img/success.gif);background-size:150%;}
+
+/*--------------------------------
+ PRELOADER PAGE
+--------------------------------*/
+/* Stars preloader */
+#preloader {display:none;background-color:#000000;background-image:url(../img/stepParticles.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%}
+div.preloaderParticles {background-color:#000000;background-image:url(../img/stepParticles.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%}
+
+/* Nickford preloader */
+#preloader0 {display:none;background-color:#000010;background-image:url(../img/loaderBlue.gif);background-size:80%;background-position:center;background-repeat:no-repeat;height:100%}
+
+/* Explosion preloader */
+#preloader1 {display:none;background-color:#000000;background-image:url(../img/stepBoom.gif);background-size:150%;background-position:center;background-repeat:no-repeat;height:100%}
+
+[data-name="preloader"] {background-color:#000000;}
+[data-name="preloader"] .txt {
+  display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
+}
+#logoNickford {background-image:url(../img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%}
+#logoApp {background-image:url(../img/razor-shield3.png);background-size:50%;background-position:center;background-repeat:no-repeat;height:100%}
+#logoTxt {display:block;font-weight:600;bottom:10%}

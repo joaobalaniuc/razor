@@ -7,20 +7,17 @@ var app  = new Framework7({
   id: 'br.com.nickford.razor', // App bundle ID
   name: 'Razor', // App name
   theme: 'md', // Automatic theme detection
-  cache: false, /* disable caching */
-  cacheDuration: 0, /* set caching expire time to 0 */
-  //domCache: false,
-  // App root methods
-  methods: {
-    helloWorld: function () {
-      app.dialog.alert('Hello World!');
-    },
-  },
-  // App routes
-  routes: routes,
+  cache: false, // Disable caching
+  cacheDuration: 0, // Set caching expire time to 0
+  domCache: false,
+  routes: routes, // App routes
   // Others
   statusbar: {
     iosOverlaysWebView: true,
+  },
+  smartSelect: {
+    closeOnSelect: true,
+    openIn: 'popup'
   }
 });
 

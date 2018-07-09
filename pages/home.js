@@ -1,5 +1,4 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
-
   //===========================
   // MAPBOX
   //===========================
@@ -14,11 +13,9 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   });
   sessionStorage.lat = lat;
   sessionStorage.lng = lng;
-
   if (typeof marker !== "undefined") {
     delete marker;
   }
-
   //===========================
   // INICIANDO AGORA
   //===========================

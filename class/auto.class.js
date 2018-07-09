@@ -7,10 +7,15 @@ function autoList() {
     return false;
   }
 
+  for (i=0;i<=10;i++) {
+    sessionStorage.removeItem("autoId_"+i);
+    sessionStorage.removeItem("autoName_"+i);
+    sessionStorage.removeItem("autoImei_"+i);
+    sessionStorage.removeItem("autoType_"+i);
+  }
+
   // DATA TO SEND
   var data = ajaxUserData();
-
-  app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
@@ -107,8 +112,6 @@ function autoRead(auto_id, cb) {
   // DATA TO SEND
   var data = ajaxUserData();
   data.auto_id = auto_id;
-
-  app.preloader.show("green");
 
   // RUN AJAX
   $.ajax({
@@ -269,8 +272,6 @@ function autoInsert($el) {
   var data = data_form + "&" + data_user + "&" + data_auto;
   console.log(fn+" --> sending data: "+data);
 
-  app.preloader.show("green");
-
   // RUN AJAX
   $.ajax({
     url: localStorage.server + "/auto_insert.php",
@@ -284,6 +285,7 @@ function autoInsert($el) {
         if (res.id) {
           sessionStorage.auto_id = res.id;
           sessionStorage.auto_name = $el.find("[name=auto_name]").val().toUpperCase();
+          sessionStorage.removeItem("auto_imei");
           app.router.navigate("/sync/");
         }
         // UPDATE
@@ -332,8 +334,8 @@ function autoDelete() {
   // DATA TO SEND
   var data = ajaxUserData();
   data.auto_id = sessionStorage.auto_id;
-
-  app.preloader.show("green");
+  console.log(fn+" --> sending data...");
+  console.log(data);
 
   // RUN AJAX
   $.ajax({

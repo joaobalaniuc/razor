@@ -5,7 +5,7 @@ function admListSession(adm) {
   $.each(adm, function(i, val) {
 
     var html = "";
-    var muted = "";
+    var muted = ""; var muted_adm="";
     var icon = "user-circle";
     var title = "";
 
@@ -19,8 +19,9 @@ function admListSession(adm) {
       title = adm[i]["cli_name"];
       name = adm[i]["cli_name"];
     }
+    //if (i==0) { muted_adm="muted"; }
 
-    html += '<li class="swipeout deleted-callback" data-phone="'+adm[i]["cli_phone"]+'">';
+    html += '<li class="'+muted_adm+' swipeout deleted-callback" data-phone="'+adm[i]["cli_phone"]+'">';
     html += '<div class="item-content swipeout-content" style="">';
     html += '<div class="item-media"><i class="fas fa-'+icon+'"></i>';
     html += '</div>';

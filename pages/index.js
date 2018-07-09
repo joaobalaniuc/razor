@@ -5,6 +5,22 @@ app.on('pageInit', function (page) {
   // do something on page init
   console.log('pageInit: '+page.name);
   initForm();
+
+  // JQUERY VALIDATION
+  $("form").validate({
+    errorElement: 'div',
+    errorPlacement: function(error, element) {
+      error.addClass("item-input-error-message").insertAfter(element);
+    },
+    highlight: function(element, errorClass, validClass) {
+      $(element).closest("li").addClass("item-input-with-error-message");
+      $(element).closest("div").find(".item-input-info").hide();
+    },
+    unhighlight: function(element, errorClass, validClass) {
+      $(element).closest("li").removeClass("item-input-with-error-message");
+      $(element).closest("div").find(".item-input-info").show();
+    }
+  });
 });
 app.on('panelOpen', function (panel) {
   console.log('Panel ' + panel.side + ': open');
@@ -101,13 +117,13 @@ function ajaxError(res) {
   if (res===null) { return true; }
   if (res.error) {
     if (res.error == "1") {
-      alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.";
+      alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.");
       sessionStorage.clear();
       localStorage.clear();
       window.location.href="index.html";
     }
     else {
-      app.dialog.alert(res.error, 'Ops!');
+      app.dialog.alert(res.error, 'Erro externo');
     }
     return true;
   }
@@ -127,7 +143,31 @@ function ajaxUserData(send) {
     data_user.cli_id = localStorage.cli_id;
     data_user.cli_email = localStorage.cli_email;
     data_user.cli_pass = localStorage.cli_pass;
+    data_user.cli_phone = localStorage.cli_phone;
     data_user.dev_id = localStorage.dev_id;
   }
   return data_user;
+}
+function ajaxDevData() {
+  var data = {};
+  if (typeof device === "undefined") {
+    alert("Device undefined");
+    var device = {
+      model:0,
+      platform:0,
+      version:0,
+      manufacturer:0,
+      cordova:0,
+      uuid:0,
+      serial:0
+    };
+  }
+  data.dev_model = device.model;
+  data.dev_platform = device.platform;
+  data.dev_platform_ver = device.version;
+  data.dev_manufacturer = device.manufacturer;
+  data.dev_cordova = device.cordova;
+  data.dev_uuid = device.uuid;
+  data.dev_serial = device.serial;
+  return data;
 }

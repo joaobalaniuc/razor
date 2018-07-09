@@ -1,33 +1,22 @@
 <div class="page" data-name="sync" style="bbackground:url(assets/img/bkg0.jpg);background-size:cover;background-position:center">
 
+  <div id="syncArea" class="preloaderParticles"></div>
+
   <div class="navbar">
     <div class="navbar-inner">
       <div class="left">
-        <a href="#" class="link back">
-          <i class="icon icon-back"></i>
-          <span class="ios-only">Back</span>
-        </a>
       </div>
-      <div class="title">
-        Sincronização
-      </div>
+      <div class="title">Sincronizar</div>
       <div class="right">
-        <a href="#" class="link icon-only panel-open" data-panel="right">
-          <i class="icon f7-icons ios-only">menu</i>
-          <i class="icon material-icons md-only">person</i><!--person,person_pin,how_to_reg,perm_identity-->
-        </a>
       </div>
-
-
     </div>
   </div>
-
 
   <div class="page-content">
 
     <div class="block">
 
-      <form id="sync">
+      <form id="syncForm">
 
         <div class="auto_name block-title" style="font-weight:bold;text-align:center"></div>
         <div style="clear:both"></div>
@@ -39,7 +28,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Telefone do Rastreador</div>
                 <div class="item-input-wrap">
-                  <input name="dev_phone" required validate type="text" maxlength="32" placeholder="(99) 99999-9999" class="phone_with_ddd">
+                  <input name="auto_phone" required type="text" maxlength="15" placeholder="(99) 99999-9999" class="phone_with_ddd">
                   <span class="input-clear-button"></span>
                   <!--<div class="item-input-info">Número do chip inserido no rastreador</div>-->
                 </div>
@@ -50,7 +39,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Operadora</div>
                 <div class="item-input-wrap input-dropdown-wrap">
-                  <select name="dev_op" placeholder="Selecione..." class="input-with-value">
+                  <select required name="auto_op" placeholder="Selecione..." class="input-with-value">
                     <option value="vivo">Vivo</option>
                   </select>
                 </div>
@@ -61,7 +50,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Senha</div>
                 <div class="item-input-wrap">
-                  <input name="dev_password" type="text" maxlength="32" placeholder="123456" class="">
+                  <input name="auto_password" required type="text" maxlength="32" placeholder="123456" value="123456" class="">
                   <span class="input-clear-button"></span>
                 </div>
               </div>
@@ -71,7 +60,7 @@
               <div class="item-inner">
                 <div class="item-title item-label">Modelo do Rastreador</div>
                 <div class="item-input-wrap input-dropdown-wrap">
-                  <select name="dev_model" placeholder="Selecione..." class="input-with-value">
+                  <select required name="auto_gps_model" placeholder="Selecione..." class="input-with-value">
                     <option value="tk303">TK 303</option>
                   </select>
                 </div>
