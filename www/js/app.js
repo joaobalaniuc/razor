@@ -77,17 +77,44 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
-    /*
-    window.FirebasePlugin.getToken(function(token) {
-      // save this server-side and use it to push notifications to this device
-      alert(token);
-      console.log(token);
-    }, function(error) {
-      alert("error:"+error);
-      console.error(error);
+
+
+
+    const push = PushNotification.init({
+      android: {},
+      browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      },
+      ios: {
+        alert: 'true',
+        badge: true,
+        sound: 'false'
+      },
+      windows: {}
     });
-    */
-    alert("ok");
+
+    alert(0);
+
+    PushNotification.hasPermission(data => {
+      if (data.isEnabled) {
+        alert('isEnabled');
+      }
+    });
+
+    alert(1);
+
+    push.on('notification', data => {
+      alert("msg="+data.message);
+      console.log(data.message);
+      console.log(data.title);
+      console.log(data.count);
+      console.log(data.sound);
+      console.log(data.image);
+      console.log(data.additionalData);
+    });
+
+    alert(2);
+    
     var number = "28999652165";
     var message = "teste";
     //CONFIGURATION
