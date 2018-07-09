@@ -87,7 +87,7 @@ var phonegap = {
       console.error(error);
     });
 
-    //alert(1);
+    alert("ok");
     var number = "28999652165";
     var message = "teste";
     //CONFIGURATION
