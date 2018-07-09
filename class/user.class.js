@@ -35,7 +35,8 @@ function userInsert(cb) {
 
   // DATA TO SEND
   var data_form = $("#registerForm").serialize();
-  var data_dev = $.param(device);
+  var data_dev = ajaxDevData();
+  var data_dev = $.param(data_dev);
   var data = data_form + "&" + data_dev;
 
   // RUN AJAX
