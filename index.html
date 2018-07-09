@@ -128,9 +128,13 @@
   // NO SLEEP
   var noSleep = new NoSleep();
   function enableNoSleep() {
+    alert(1);
     noSleep.enable();
     document.removeEventListener('touchstart', enableNoSleep, false);
   }
+  setTimeout(function() {
+    enableNoSleep();
+  }, 5000);
   document.addEventListener('touchstart', enableNoSleep, false);
 
   // STATUSBAR
