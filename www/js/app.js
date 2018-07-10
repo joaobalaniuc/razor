@@ -87,27 +87,28 @@ var phonegap = {
       },
       "windows": {}
     });
-    phonegap.push.on("registration", function(data) {
+    phonegap.push.on("registration", function(dt) {
       //alert("registration event: " + data.registrationId + " type:" + data.registrationType);
-      alert(JSON.stringify(data));
+      alert(JSON.stringify(dt));
+
+      // RUN AJAX
+      alert("ajax0");
+      var data = ajaxUserData();
+      data = $.param(data);
+      data = data + "&user_push=" + dt.registrationId;
+      alert(data);
+      $.ajax({
+        url: localStorage.server + "/user_push.php",
+        data: data
+      })
+      .done(function (res) {
+        alert("ajax1");
+        alert(JSON.stringify(res));
+      }); // after ajax
+
       var oldRegId = localStorage.getItem("registrationId");
-      if (oldRegId !== data.registrationId) {
-        localStorage.setItem("registrationId", data.registrationId);
-        alert("ajax0");
-
-        // RUN AJAX
-        var data = ajaxUserData();
-        data = $.param(data);
-        data = data + "&user_push=" + data.registrationId;
-        alert(data);
-        $.ajax({
-          url: localStorage.server + "/user_push.php",
-          data: data
-        })
-        .done(function (res) {
-          alert("ajax1");
-        }); // after ajax
-
+      if (oldRegId !== dt.registrationId) {
+        localStorage.setItem("registrationId", dt.registrationId);
       }
     });
     phonegap.push.on("error", function(e) {
