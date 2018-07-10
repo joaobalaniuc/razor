@@ -87,28 +87,35 @@ var phonegap = {
       },
       "windows": {}
     });
-    alert(0);
     phonegap.push.on("registration", function(data) {
-      alert("registration event: " + data.registrationId + " type:" + data.registrationType);
-      //document.getElementById("regId").innerHTML = data.registrationId;
+      //alert("registration event: " + data.registrationId + " type:" + data.registrationType);
+      alert(JSON.stringify(data));
       var oldRegId = localStorage.getItem("registrationId");
       if (oldRegId !== data.registrationId) {
-        // Save new registration ID
         localStorage.setItem("registrationId", data.registrationId);
-        // Post registrationId to your app server as the value has changed
+        alert("ajax0");
+
+        // RUN AJAX
+        var data = ajaxUserData();
+        data = $.param(data);
+        data = data + "&user_push=" + data.registrationId;
+        alert(data);
+        $.ajax({
+          url: localStorage.server + "/user_push.php",
+          data: data
+        })
+        .done(function (res) {
+          alert("ajax1");
+        }); // after ajax
+
       }
     });
-    alert(1);
     phonegap.push.on("error", function(e) {
       alert("push error = " + e.message);
     });
-    alert(2);
     phonegap.push.on("notification", function(data) {
       alert("notification event");
-
     });
-
-
 
 
     var number = "28999652165";
