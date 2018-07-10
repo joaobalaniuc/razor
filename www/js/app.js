@@ -77,6 +77,7 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
+    alert(device.cordova);
     /*
     phonegap.push = PushNotification.init({
     "android": {},
