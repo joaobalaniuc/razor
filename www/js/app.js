@@ -78,7 +78,7 @@ var phonegap = {
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
 
-    app.push = PushNotification.init({
+    phonegap.push = PushNotification.init({
       "android": {},
       "ios": {
         "sound": true,
@@ -88,8 +88,8 @@ var phonegap = {
       "windows": {}
     });
     alert(0);
-    app.push.on("registration", function(data) {
-      alert("registration event: " + data.registrationId);
+    phonegap.push.on("registration", function(data) {
+      alert("registration event: " + data.registrationId + " type:" + data.registrationType);
       //document.getElementById("regId").innerHTML = data.registrationId;
       var oldRegId = localStorage.getItem("registrationId");
       if (oldRegId !== data.registrationId) {
@@ -99,11 +99,11 @@ var phonegap = {
       }
     });
     alert(1);
-    app.push.on("error", function(e) {
+    phonegap.push.on("error", function(e) {
       alert("push error = " + e.message);
     });
     alert(2);
-    app.push.on("notification", function(data) {
+    phonegap.push.on("notification", function(data) {
       alert("notification event");
 
     });
