@@ -77,74 +77,93 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
-
+    /*
     phonegap.push = PushNotification.init({
-      "android": {},
-      "ios": {
-        "sound": true,
-        "vibration": true,
-        "badge": true
-      },
-      "windows": {}
-    });
-    phonegap.push.on("registration", function(dt) {
-      //alert("registration event: " + data.registrationId + " type:" + data.registrationType);
-      alert(JSON.stringify(dt));
-
-      // RUN AJAX
-      alert("ajax0");
-      var data = ajaxUserData();
-      data = $.param(data);
-      data = data + "&user_push=" + dt.registrationId;
-      alert(data);
-      $.ajax({
-        url: localStorage.server + "/user_push.php",
-        data: data
-      })
-      .done(function (res) {
-        alert("ajax1");
-        alert(JSON.stringify(res));
-      }); // after ajax
-
-      var oldRegId = localStorage.getItem("registrationId");
-      if (oldRegId !== dt.registrationId) {
-        localStorage.setItem("registrationId", dt.registrationId);
-      }
-    });
-    phonegap.push.on("error", function(e) {
-      alert("push error = " + e.message);
-    });
-    phonegap.push.on("notification", function(data) {
-      alert("notification event");
-    });
-
-
-    var number = "28999652165";
-    var message = "teste";
-    //CONFIGURATION
-    var options = {
-      replaceLineBreaks: false, // true to replace \n by a new line, false by default
-      android: {
-        intent: 'INTENT'  // send SMS with the native android SMS messaging
-        //intent: '' // send SMS without open any other app
-      }
-    };
-    var success = function () { alert('Message sent successfully'); };
-    var error = function (e) { alert('Message Failed:' + e); };
-    //sms.send(number, message, options, success, error);
-    //alert(2);
-
-    // GPS enabled?
-    if (device.platform != "iOS") {
-      //cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) { if (!enabled) { geoIP(); } }, function (error) { alert("The following error occurred: " + error); });
-    }
-    phonegap.receivedEvent('deviceready');
-
-    start();
-
+    "android": {},
+    "ios": {
+    "sound": true,
+    "vibration": true,
+    "badge": true
   },
-  // Update DOM on a Received Event
-  receivedEvent: function (id) {
-    console.log('Received Event: ' + id);
+  "windows": {}
+});
+phonegap.push.on("registration", function(dt) {
+alert(JSON.stringify(dt));
+
+// RUN AJAX
+alert("ajax0");
+var data = ajaxUserData();
+data = $.param(data);
+data = data + "&user_push=" + dt.registrationId;
+alert(data);
+$.ajax({
+url: localStorage.server + "/user_push.php",
+data: data
+})
+.done(function (res) {
+alert("ajax1");
+alert(JSON.stringify(res));
+}); // after ajax
+
+var oldRegId = localStorage.getItem("registrationId");
+if (oldRegId !== dt.registrationId) {
+localStorage.setItem("registrationId", dt.registrationId);
+}
+});
+phonegap.push.on("error", function(e) {
+alert("push error = " + e.message);
+});
+phonegap.push.on("notification", function(data) {
+alert("notification event");
+});
+*/
+
+var number = "28999652165";
+var message = "teste";
+//CONFIGURATION
+var options = {
+  replaceLineBreaks: false, // true to replace \n by a new line, false by default
+  android: {
+    intent: 'INTENT'  // send SMS with the native android SMS messaging
+    //intent: '' // send SMS without open any other app
   }
+};
+var success = function () { alert('Message sent successfully'); };
+var error = function (e) { alert('Message Failed:' + e); };
+//sms.send(number, message, options, success, error);
+//alert(2);
+
+// GPS enabled?
+if (device.platform != "iOS") {
+  //cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) { if (!enabled) { geoIP(); } }, function (error) { alert("The following error occurred: " + error); });
+}
+phonegap.receivedEvent('deviceready');
+
+var onSuccess = function(position) {
+  alert('Latitude: '          + position.coords.latitude          + '\n' +
+  'Longitude: '         + position.coords.longitude         + '\n' +
+  'Altitude: '          + position.coords.altitude          + '\n' +
+  'Accuracy: '          + position.coords.accuracy          + '\n' +
+  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+  'Heading: '           + position.coords.heading           + '\n' +
+  'Speed: '             + position.coords.speed             + '\n' +
+  'Timestamp: '         + position.timestamp                + '\n');
+};
+
+// onError Callback receives a PositionError object
+//
+function onError(error) {
+  alert('code: '    + error.code    + '\n' +
+  'message: ' + error.message + '\n');
+}
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+start();
+
+},
+// Update DOM on a Received Event
+receivedEvent: function (id) {
+  console.log('Received Event: ' + id);
+}
 };

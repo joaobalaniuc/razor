@@ -136,22 +136,21 @@ function ajaxLog(fn, res) {
 function ajaxFail() {
   app.dialog.alert('Desculpe, a conexão falhou. Tente novamente mais tarde.');
 }
-function ajaxUserData(send) {
-  if (typeof send === "undefined") { send = true; }
+function ajaxUserData() {
   var data_user = {};
-  if (send) {
-    data_user.cli_id = localStorage.cli_id;
-    data_user.cli_email = localStorage.cli_email;
-    data_user.cli_pass = localStorage.cli_pass;
-    data_user.cli_phone = localStorage.cli_phone;
-    data_user.dev_id = localStorage.dev_id;
+  data_user.cli_id = localStorage.cli_id;
+  data_user.cli_email = localStorage.cli_email;
+  data_user.cli_pass = localStorage.cli_pass;
+  data_user.cli_phone = localStorage.cli_phone;
+  if (typeof sessionStorage.auth_token !== "undefined") {
+    data_user.auth_token = sessionStorage.auth_token;
   }
   return data_user;
 }
 function ajaxDevData() {
   var data = {};
   if (typeof sessionStorage.device_model === "undefined") {
-    alert("Device undefined");
+    alert("Device 0");
     var data = {
       dev_model:0,
       dev_platform:0,

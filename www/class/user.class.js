@@ -1,12 +1,50 @@
+// Get token
+function Auth(cb) {
+  var fn = Hello();
+
+  if (sessionStorage.online == "false") {
+    setTimeout(function() {Auth(cb);},1000);
+    return false;
+  }
+
+  // DATA TO SEND
+  var user_data = ajaxUserData();
+  var user_data = $.param(user_data);
+  var dev_data = ajaxDevData();
+  var dev_data = $.param(dev_data);
+  var geo_data = ajaxGeoData();
+  var geo_data = $.param(geo_data);
+  var data = user_data + "&" + geo_data + "&" + dev_data;
+
+  // RUN AJAX
+  $.ajax({
+    url: localStorage.server + "/hello.php",
+    data: data,
+    //beforeSend: function() {}, // não usar preloader
+    error: function() {} // não usar fail default (alert)
+  })
+  .fail(function () {
+    setTimeout(function() {
+      Auth(cb);
+    }, 5000);
+    notificationConex.open();
+  })
+  .done(function (res) {
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
+      alert("token="+res.auth_token);
+      sessionStorage.auth_token = res.auth_token;
+      if (typeof cb === "function") { cb(); }
+    }
+  }); // after ajax
+}
+
 function userLogin(cb) {
 
   var fn = Hello();
 
   // DATA TO SEND
-  var data_form = $("#loginForm").serialize();
-  var data_dev = ajaxDevData();
-  var data_dev = $.param(data_dev);
-  var data = data_form + "&" + data_dev;
+  var data = $("#loginForm").serialize();
 
   // RUN AJAX
   $.ajax({
@@ -34,10 +72,7 @@ function userInsert(cb) {
   var fn = Hello();
 
   // DATA TO SEND
-  var data_form = $("#registerForm").serialize();
-  var data_dev = ajaxDevData();
-  var data_dev = $.param(data_dev);
-  var data = data_form + "&" + data_dev;
+  var data = $("#registerForm").serialize();
 
   // RUN AJAX
   $.ajax({

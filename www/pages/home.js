@@ -20,13 +20,13 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   // INICIANDO AGORA
   //===========================
   if (typeof sessionStorage.autoId_0 === "undefined") {
-    autoList();
+    Auth(autoList());
   }
   //===========================
   // APP EM USO
   //===========================
   else {
-    autoListSession();
+    Auth(autoListSession());
     if (typeof localStorage.auto_id === "undefined") {
       localStorage.auto_id = sessionStorage.autoId_0;
       localStorage.auto_imei = sessionStorage.autoImei_0;
