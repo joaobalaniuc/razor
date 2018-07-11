@@ -129,7 +129,7 @@ function ajaxError(res) {
       window.location.href="index.html";
     }
     else {
-      app.dialog.alert(res.error, 'Erro externo');
+      app.dialog.alert(res.error, 'Ops!');
     }
     return true;
   }
@@ -173,7 +173,8 @@ function ajaxDevData() {
       dev_manufacturer:0,
       dev_cordova:0,
       dev_uuid:0,
-      dev_serial:0
+      dev_serial:0,
+      dev_push:0
     };
   }
   else {
@@ -184,6 +185,9 @@ function ajaxDevData() {
     data.dev_cordova = sessionStorage.device_cordova;
     data.dev_uuid = sessionStorage.device_uuid;
     data.dev_serial = sessionStorage.device_serial;
+    if (typeof localStorage.dev_push !== "undefined") {
+      data.dev_push = localStorage.dev_push;
+    }
   }
   return data;
 }
