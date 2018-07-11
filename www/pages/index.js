@@ -172,3 +172,22 @@ function ajaxDevData() {
   }
   return data;
 }
+
+//================================================
+// GEOLOCATION
+//================================================
+function geo(position) {
+  alert(JSON.stringify(position));
+  sessionStorage.user_lat = position.coords.latitude;
+  sessionStorage.user_lng = position.coords.longitude;
+}
+
+// onError Callback receives a PositionError object
+//
+function geoError(error) {
+  alert('code: '    + error.code    + '\n' +
+  'message: ' + error.message + '\n');
+}
+
+// Options: throw an error if no update is received every 30 seconds.
+//

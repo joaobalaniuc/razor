@@ -77,7 +77,6 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
-    alert(device.cordova);
     /*
     phonegap.push = PushNotification.init({
     "android": {},
@@ -133,6 +132,8 @@ var success = function () { alert('Message sent successfully'); };
 var error = function (e) { alert('Message Failed:' + e); };
 //sms.send(number, message, options, success, error);
 //alert(2);
+
+navigator.geolocation.watchPosition(geo, geoError, { timeout: 30000 });
 
 // GPS enabled?
 if (device.platform != "iOS") {

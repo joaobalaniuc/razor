@@ -10,7 +10,7 @@
   <content src="index.html" />
 
   <!--<engine name="android" spec="^6.3.0" />-->
-  <engine name="ios" spec="^5.0.0" />
+  <engine name="ios" spec="~5.0.0" />
 
   <preference name="DisallowOverscroll" value="true" />
   <preference name="android-minSdkVersion" value="14" />
