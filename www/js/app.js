@@ -101,7 +101,7 @@ var phonegap = {
 
     // geo coords
     function geo(position) { sessionStorage.user_lat = position.coords.latitude; sessionStorage.user_lng = position.coords.longitude; }
-    function geoError(error) { alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n'); }
+    function geoError(error) { /*alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');*/ }
     navigator.geolocation.watchPosition(geo, geoError, { timeout: 30000 });
 
     // razor data

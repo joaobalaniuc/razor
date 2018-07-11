@@ -117,16 +117,18 @@ function ajaxError(res) {
   if (res===null) { return true; }
   if (res.error) {
     if (res.error == "1") {
-      alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.");
-      sessionStorage.clear();
-      localStorage.clear();
-      window.location.href="index.html";
+      app.dialog.alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.", function() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href="index.html";
+      });
     }
     else if (res.error == "2") {
-      alert("Sua conta está sendo usada por outro dispositivo.");
-      sessionStorage.clear();
-      localStorage.clear();
-      window.location.href="index.html";
+      app.dialog.alert("Sua conta está sendo usada por outro dispositivo.", function() {
+        sessionStorage.clear();
+        localStorage.clear();
+        window.location.href="index.html";
+      });
     }
     else {
       app.dialog.alert(res.error, 'Ops!');

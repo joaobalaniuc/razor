@@ -24,7 +24,7 @@ function Auth(cb) {
   .fail(function () {
     setTimeout(function() {
       Auth(cb);
-    }, 5000);
+    }, 3000);
     notificationConex.open();
   })
   .done(function (res) {
@@ -121,8 +121,9 @@ function userReadCb(res) {
   $('[name=cli_email]').each(function(i) { $(this).val(res.cli_email); });
   $('[name=cli_phone]').each(function(i) { $(this).val(res.cli_phone); });
   $('[name=cli_date]').each(function(i) { $(this).val(res.cli_date); });
+  $('.cel').each(function(i) { $(this).html(res.cli_phone); });
   initForm();
-
+  txtPhone();
 }
 
 function userUpdate() {
