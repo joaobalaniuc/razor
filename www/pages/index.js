@@ -122,6 +122,12 @@ function ajaxError(res) {
       localStorage.clear();
       window.location.href="index.html";
     }
+    else if (res.error == "2") {
+      alert("Sua conta está sendo usada por outro dispositivo.");
+      sessionStorage.clear();
+      localStorage.clear();
+      window.location.href="index.html";
+    }
     else {
       app.dialog.alert(res.error, 'Erro externo');
     }
@@ -142,8 +148,17 @@ function ajaxUserData() {
   data_user.cli_email = localStorage.cli_email;
   data_user.cli_pass = localStorage.cli_pass;
   data_user.cli_phone = localStorage.cli_phone;
+
+  // first access?
+  if (typeof localStorage.dev_id !== "undefined") {
+    data_user.dev_id = localStorage.dev_id;
+  }
   if (typeof sessionStorage.auth_token !== "undefined") {
     data_user.auth_token = sessionStorage.auth_token;
+  }
+  if (typeof sessionStorage.user_lat !== "undefined") {
+    data_user.lat = sessionStorage.user_lat;
+    data_user.lng = sessionStorage.user_lng;
   }
   return data_user;
 }
@@ -172,22 +187,3 @@ function ajaxDevData() {
   }
   return data;
 }
-
-//================================================
-// GEOLOCATION
-//================================================
-function geo(position) {
-  alert(JSON.stringify(position));
-  sessionStorage.user_lat = position.coords.latitude;
-  sessionStorage.user_lng = position.coords.longitude;
-}
-
-// onError Callback receives a PositionError object
-//
-function geoError(error) {
-  alert('code: '    + error.code    + '\n' +
-  'message: ' + error.message + '\n');
-}
-
-// Options: throw an error if no update is received every 30 seconds.
-//

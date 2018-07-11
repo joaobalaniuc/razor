@@ -77,15 +77,33 @@ var phonegap = {
     sessionStorage.device_cordova = device.cordova;
     sessionStorage.device_uuid = device.uuid;
     sessionStorage.device_serial = device.serial;
-    /*
-    phonegap.push = PushNotification.init({
-    "android": {},
-    "ios": {
-    "sound": true,
-    "vibration": true,
-    "badge": true
+
+    // geo coords
+    function geo(position) { sessionStorage.user_lat = position.coords.latitude; sessionStorage.user_lng = position.coords.longitude; }
+    function geoError(error) { alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n'); }
+    navigator.geolocation.watchPosition(geo, geoError, { timeout: 30000 });
+
+    // razor data
+    start();
+
+    phonegap.receivedEvent('deviceready');
+
   },
-  "windows": {}
+  // Update DOM on a Received Event
+  receivedEvent: function (id) {
+    console.log('Received Event: ' + id);
+  }
+};
+
+/*
+phonegap.push = PushNotification.init({
+"android": {},
+"ios": {
+"sound": true,
+"vibration": true,
+"badge": true
+},
+"windows": {}
 });
 phonegap.push.on("registration", function(dt) {
 alert(JSON.stringify(dt));
@@ -116,37 +134,19 @@ alert("push error = " + e.message);
 phonegap.push.on("notification", function(data) {
 alert("notification event");
 });
-*/
 
 var number = "28999652165";
 var message = "teste";
 //CONFIGURATION
 var options = {
-  replaceLineBreaks: false, // true to replace \n by a new line, false by default
-  android: {
-    intent: 'INTENT'  // send SMS with the native android SMS messaging
-    //intent: '' // send SMS without open any other app
-  }
+replaceLineBreaks: false, // true to replace \n by a new line, false by default
+android: {
+intent: 'INTENT'  // send SMS with the native android SMS messaging
+//intent: '' // send SMS without open any other app
+}
 };
 var success = function () { alert('Message sent successfully'); };
 var error = function (e) { alert('Message Failed:' + e); };
 //sms.send(number, message, options, success, error);
 //alert(2);
-
-navigator.geolocation.watchPosition(geo, geoError, { timeout: 30000 });
-
-// GPS enabled?
-if (device.platform != "iOS") {
-  //cordova.plugins.diagnostic.isGpsLocationEnabled(function (enabled) { if (!enabled) { geoIP(); } }, function (error) { alert("The following error occurred: " + error); });
-}
-phonegap.receivedEvent('deviceready');
-
-
-start();
-
-},
-// Update DOM on a Received Event
-receivedEvent: function (id) {
-  console.log('Received Event: ' + id);
-}
-};
+*/

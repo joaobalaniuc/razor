@@ -11,8 +11,8 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
     zoom: 0,
     center: [lat, lng]
   });
-  sessionStorage.lat = lat;
-  sessionStorage.lng = lng;
+  sessionStorage.auto_lat = lat;
+  sessionStorage.auto_lng = lng;
   if (typeof marker !== "undefined") {
     delete marker;
   }
@@ -20,13 +20,15 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   // INICIANDO AGORA
   //===========================
   if (typeof sessionStorage.autoId_0 === "undefined") {
-    Auth(autoList());
+    if (typeof sessionStorage.auth_token === "undefined") { Auth(autoList); }
+    else { autoList(); }
   }
   //===========================
   // APP EM USO
   //===========================
   else {
-    Auth(autoListSession());
+    if (typeof sessionStorage.auth_token === "undefined") { Auth(autoListSession); }
+    else { autoListSession(); }
     if (typeof localStorage.auto_id === "undefined") {
       localStorage.auto_id = sessionStorage.autoId_0;
       localStorage.auto_imei = sessionStorage.autoImei_0;

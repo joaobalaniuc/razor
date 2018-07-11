@@ -230,12 +230,12 @@ function autoCheck(auto_imei) {
         // geo
         var lat = parseFloat(log.log_lng);
         var lng = parseFloat(log.log_lat);
-        if (lat != sessionStorage.lat && lng != sessionStorage.lng) {
+        if (lat != sessionStorage.auto_lat && lng != sessionStorage.auto_lng) {
 
           console.log(fn+" *** new geolocation = "+lat+"/"+lng);
 
-          sessionStorage.lat = lat;
-          sessionStorage.lng = lng;
+          sessionStorage.auto_lat = lat;
+          sessionStorage.auto_lng = lng;
 
           if (typeof marker === "undefined") {
             map.easeTo({
@@ -253,10 +253,11 @@ function autoCheck(auto_imei) {
           }
           marker.setLngLat([lat, lng]).addTo(map);
         }
-        setTimeout(function() {
-          autoCheck(auto_imei);
-        }, 10000);
       }
+
+      setTimeout(function() {
+        autoCheck(auto_imei);
+      }, 10000);
 
     } // res not null
   }); // after ajax

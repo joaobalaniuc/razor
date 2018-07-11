@@ -12,9 +12,7 @@ function Auth(cb) {
   var user_data = $.param(user_data);
   var dev_data = ajaxDevData();
   var dev_data = $.param(dev_data);
-  var geo_data = ajaxGeoData();
-  var geo_data = $.param(geo_data);
-  var data = user_data + "&" + geo_data + "&" + dev_data;
+  var data = user_data + "&" + dev_data;
 
   // RUN AJAX
   $.ajax({
@@ -32,8 +30,9 @@ function Auth(cb) {
   .done(function (res) {
     ajaxLog(fn, res);
     if (!ajaxError(res)) {
-      alert("token="+res.auth_token);
+      //alert("token="+res.auth_token+" dev_id"+res.dev_id);
       sessionStorage.auth_token = res.auth_token;
+      localStorage.dev_id = res.dev_id;
       if (typeof cb === "function") { cb(); }
     }
   }); // after ajax
@@ -44,7 +43,11 @@ function userLogin(cb) {
   var fn = Hello();
 
   // DATA TO SEND
-  var data = $("#loginForm").serialize();
+  var data_form = $("#loginForm").serialize();
+  var data_dev = ajaxDevData();
+  var data_dev = $.param(data_dev);
+  var data = data_form + "&" + data_dev;
+  console.log(fn+" --> sending data: "+data);
 
   // RUN AJAX
   $.ajax({
@@ -72,7 +75,11 @@ function userInsert(cb) {
   var fn = Hello();
 
   // DATA TO SEND
-  var data = $("#registerForm").serialize();
+  var data_form = $("#registerForm").serialize();
+  var data_dev = ajaxDevData();
+  var data_dev = $.param(data_dev);
+  var data = data_form + "&" + data_dev;
+  console.log(fn+" --> sending data: "+data);
 
   // RUN AJAX
   $.ajax({
