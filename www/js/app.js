@@ -159,8 +159,8 @@ function nois() {
 
   alert(0);
   // Get a reference to the plugin.
-  var bgGeo = BackgroundGeolocation;
-  alert(BackgroundGeolocation);
+  var bgGeo = navigator.BackgroundGeolocation;
+  alert(window.BackgroundGeolocation);
   alert(navigator.BackgroundGeolocation);
 
   //This callback will be executed every time a geolocation is recorded in the background.
