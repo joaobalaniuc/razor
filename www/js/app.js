@@ -109,86 +109,7 @@ var phonegap = {
 
 
 
-
-
-    alert(0);
-    // Get a reference to the plugin.
-    var bgGeo = window.BackgroundGeolocation;
-    
-    bgGeo.getCurrentPosition((location) => {
-      alert('- current position: '+location);
-    }, (error) => {
-      alert('- location error: '+ error);
-    }, {samples: 1, persist: false});
-
-    //This callback will be executed every time a geolocation is recorded in the background.
-    var callbackFn = function(location) {
-      var coords = location.coords;
-      var lat    = coords.latitude;
-      var lng    = coords.longitude;
-      console.log('- Location: ', JSON.stringify(location));
-      ws("coords:"+lat+","+lng);
-    };
-    alert(1);
-    // This callback will be executed if a location-error occurs.  Eg: this will be called if user disables location-services.
-    var failureFn = function(errorCode) {
-      ws("err:"+errorCode);
-      console.warn('- BackgroundGeoLocation error: ', errorCode);
-    }
-    alert(2);
-    // Listen to location events & errors.
-    bgGeo.on('location', callbackFn, failureFn);
-    // Fired whenever state changes from moving->stationary or vice-versa.
-    bgGeo.on('motionchange', function(isMoving) {
-      console.log('- onMotionChange: ', isMoving);
-    });
-    alert(3);
-    // Fired whenever a geofence transition occurs.
-    bgGeo.on('geofence', function(geofence) {
-      ws("geofence");
-      console.log('- onGeofence: ', geofence.identifier, geofence.location);
-    });
-    // Fired whenever an HTTP response is received from your server.
-    bgGeo.on('http', function(response) {
-      console.log('http success: ', response.responseText);
-    }, function(response) {
-      console.log('http failure: ', response.status);
-    });
-    alert(4);
-    // BackgroundGeoLocation is highly configurable.
-    bgGeo.ready({
-      // Geolocation config
-      desiredAccuracy: 0,
-      distanceFilter: 10,
-      stationaryRadius: 25,
-      // Activity Recognition config
-      activityRecognitionInterval: 10000,
-      stopTimeout: 5,
-      // Application config
-      debug: true,  // <-- Debug sounds & notifications.
-      stopOnTerminate: false,
-      startOnBoot: true,
-      // HTTP / SQLite config
-      url: "http://nickford.com.br/razor/ws.php",
-      method: "GET",
-      autoSync: true,
-      maxDaysToPersist: 3
-    }, function(state) {
-      // This callback is executed when the plugin is ready to use.
-      console.log("BackgroundGeolocation ready: ", state);
-      if (!state.enabled) {
-        bgGeo.start();
-      }
-    });
-    alert(5);
-    // The plugin is typically toggled with some button on your UI.
-    function onToggleEnabled(value) {
-      if (value) {
-        bgGeo.start();
-      } else {
-        bgGeo.stop();
-      }
-    }
+    nois();
 
 
 
@@ -233,8 +154,85 @@ var error = function (e) { alert('Message Failed:' + e); };
 //alert(2);
 */
 
+function nois() {
 
 
-/*
+  alert(0);
+  // Get a reference to the plugin.
+  var bgGeo = window.BackgroundGeolocation;
 
-*/
+  bgGeo.getCurrentPosition((location) => {
+    alert('- current position: '+location);
+  }, (error) => {
+    alert('- location error: '+ error);
+  }, {samples: 1, persist: false});
+
+  //This callback will be executed every time a geolocation is recorded in the background.
+  var callbackFn = function(location) {
+    var coords = location.coords;
+    var lat    = coords.latitude;
+    var lng    = coords.longitude;
+    console.log('- Location: ', JSON.stringify(location));
+    ws("coords:"+lat+","+lng);
+  };
+  alert(1);
+  // This callback will be executed if a location-error occurs.  Eg: this will be called if user disables location-services.
+  var failureFn = function(errorCode) {
+    ws("err:"+errorCode);
+    console.warn('- BackgroundGeoLocation error: ', errorCode);
+  }
+  alert(2);
+  // Listen to location events & errors.
+  bgGeo.on('location', callbackFn, failureFn);
+  // Fired whenever state changes from moving->stationary or vice-versa.
+  bgGeo.on('motionchange', function(isMoving) {
+    console.log('- onMotionChange: ', isMoving);
+  });
+  alert(3);
+  // Fired whenever a geofence transition occurs.
+  bgGeo.on('geofence', function(geofence) {
+    ws("geofence");
+    console.log('- onGeofence: ', geofence.identifier, geofence.location);
+  });
+  // Fired whenever an HTTP response is received from your server.
+  bgGeo.on('http', function(response) {
+    console.log('http success: ', response.responseText);
+  }, function(response) {
+    console.log('http failure: ', response.status);
+  });
+  alert(4);
+  // BackgroundGeoLocation is highly configurable.
+  bgGeo.ready({
+    // Geolocation config
+    desiredAccuracy: 0,
+    distanceFilter: 10,
+    stationaryRadius: 25,
+    // Activity Recognition config
+    activityRecognitionInterval: 10000,
+    stopTimeout: 5,
+    // Application config
+    debug: true,  // <-- Debug sounds & notifications.
+    stopOnTerminate: false,
+    startOnBoot: true,
+    // HTTP / SQLite config
+    url: "http://nickford.com.br/razor/ws.php",
+    method: "GET",
+    autoSync: true,
+    maxDaysToPersist: 3
+  }, function(state) {
+    // This callback is executed when the plugin is ready to use.
+    console.log("BackgroundGeolocation ready: ", state);
+    if (!state.enabled) {
+      bgGeo.start();
+    }
+  });
+  alert(5);
+  // The plugin is typically toggled with some button on your UI.
+  function onToggleEnabled(value) {
+    if (value) {
+      bgGeo.start();
+    } else {
+      bgGeo.stop();
+    }
+  }
+}
