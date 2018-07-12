@@ -41,7 +41,7 @@ function start() {
   sessionStorage.debug = 1;
 
   // Ajax timeout
-  localStorage.timeout = 5000; // ajax
+  localStorage.timeout = 7000; // ajax
 
   // Login?
   if (typeof localStorage.cli_id === "undefined") { localStorage.cli_id = 0; }
@@ -106,7 +106,94 @@ var phonegap = {
 
     // razor data
     start();
+    alert(0);
+    BackgroundGeolocation.configure({
+      desiredAccuracy: 10,
+      stationaryRadius: 50,
+      distanceFilter: 50,
+      notificationTitle: 'Background tracking',
+      notificationText: 'enabled',
+      debug: true,
+      startOnBoot: false,
+      stopOnTerminate: false,
+      locationProvider: BackgroundGeolocation.ACTIVITY_PROVIDER,
+      interval: 10000,
+      fastestInterval: 5000,
+      activitiesInterval: 10000,
+      stopOnStillActivity: false,
+      url: 'http://nickford.com.br/razor/ws.php',
+      httpHeaders: {
+        'X-FOO': 'bar'
+      }
+    });
+    alert(1);
+    BackgroundGeolocation.on('location', (location) => {
+      // handle your locations here
+      // to perform long running operation on iOS
+      // you need to create background task
+      BackgroundGeolocation.startTask(taskKey => {
+        // execute long running task
+        // eg. ajax post location
+        // IMPORTANT: task has to be ended by endTask
+        ws("bla");
+        BackgroundGeolocation.endTask(taskKey);
+      });
+    });
 
+    BackgroundGeolocation.on('stationary', (stationaryLocation) => {
+      // handle stationary locations here
+      Actions.sendLocation(stationaryLocation);
+    });
+
+    BackgroundGeolocation.on('error', (error) => {
+      ws("error");
+      console.log('[ERROR] BackgroundGeolocation error:', error);
+    });
+
+    BackgroundGeolocation.on('start', () => {
+      ws("start");
+      console.log('[INFO] BackgroundGeolocation service has been started');
+    });
+
+    BackgroundGeolocation.on('stop', () => {
+      ws("stop");
+      console.log('[INFO] BackgroundGeolocation service has been stopped');
+    });
+
+    BackgroundGeolocation.on('authorization', (status) => {
+      ws("auth: "+JSON.stringify(status));
+      console.log('[INFO] BackgroundGeolocation authorization status: ' + status);
+      if (status !== BackgroundGeolocation.AUTHORIZED) {
+        Alert.alert('Location services are disabled', 'Would you like to open location settings?', [
+          { text: 'Yes', onPress: () => BackgroundGeolocation.showLocationSettings() },
+          { text: 'No', onPress: () => console.log('No Pressed'), style: 'cancel' }
+        ]);
+      }
+    });
+
+    BackgroundGeolocation.on('background', () => {
+      ws("background");
+      console.log('[INFO] App is in background');
+    });
+
+    BackgroundGeolocation.on('foreground', () => {
+      ws("foreground");
+      console.log('[INFO] App is in foreground');
+    });
+    alert(2);
+    BackgroundGeolocation.checkStatus(status => {
+      console.log('[INFO] BackgroundGeolocation service is running', status.isRunning);
+      console.log('[INFO] BackgroundGeolocation service has permissions', status.hasPermissions);
+      console.log('[INFO] BackgroundGeolocation auth status: ' + status.authorization);
+
+      // you don't need to check status before start (this is just the example)
+      if (!status.isRunning) {
+        BackgroundGeolocation.start(); //triggers start on start event
+      }
+    });
+
+    BackgroundGeolocation.start();
+    alert(3);
     phonegap.receivedEvent('deviceready');
 
   },
@@ -116,9 +203,20 @@ var phonegap = {
   }
 };
 
+function ws(str) {
+  var data = { data:str };
+  $.ajax({
+    url: localStorage.server + "/ws.php",
+    data: data,
+    beforeSend: function() {}, // não usar preloader
+    error: function() { alert("fail"); } // não usar fail default (alert)
+  })
+  .done(function (res) {
+    alert(JSON.stringify(res.data));
+  }); // after ajax
+}
+
 /*
-
-
 var number = "28999652165";
 var message = "teste";
 //CONFIGURATION

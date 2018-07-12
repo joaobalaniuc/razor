@@ -118,16 +118,17 @@ function ajaxError(res) {
   if (res.error) {
     if (res.error == "1") {
       app.dialog.alert("Suas credenciais foram alteradas, o aplicativo será reiniciado.", function() {
-        sessionStorage.clear();
-        localStorage.clear();
-        window.location.href="index.html";
+        userLogout();
       });
     }
     else if (res.error == "2") {
       app.dialog.alert("Sua conta está sendo usada por outro dispositivo.", function() {
-        sessionStorage.clear();
-        localStorage.clear();
-        window.location.href="index.html";
+        userLogout();
+      });
+    }
+    else if (res.error == "3") {
+      app.dialog.alert("O tempo da sessão expirou.", function() {
+        userLogout(true);
       });
     }
     else {

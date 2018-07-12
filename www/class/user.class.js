@@ -60,6 +60,14 @@ function userLogin(cb) {
   }); // after ajax
 }
 
+function userLogout(local) {
+  sessionStorage.clear();
+  if (typeof local === "undefined") {
+    localStorage.clear();
+  }
+  window.location.href="index.html";
+}
+
 // localStorage
 function userSave(res) {
   localStorage.cli_id = res.cli_id;

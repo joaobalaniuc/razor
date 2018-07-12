@@ -117,4 +117,7 @@
   <resource-file src="GoogleService-Info.plist" />
 </platform>
 -->
+<plugin name="@mauron85/cordova-plugin-background-geolocation">
+    <variable name="ALWAYS_USAGE_DESCRIPTION" value="This app requires background tracking enabled Blah" />
+</plugin>
 </widget>
