@@ -104,10 +104,6 @@ var phonegap = {
     function geoError(error) { /*alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');*/ }
     //navigator.geolocation.watchPosition(geo, geoError, { timeout: 30000 });
 
-    window.navigator.geolocation.getCurrentPosition(function(location) {
-      console.log('Location from Phonegap');
-    });
-
     // razor data
     start();
 
@@ -133,13 +129,14 @@ var phonegap = {
       ws("err:"+errorCode);
       console.warn('- BackgroundGeoLocation error: ', errorCode);
     }
-
+    alert(2);
     // Listen to location events & errors.
     bgGeo.on('location', callbackFn, failureFn);
     // Fired whenever state changes from moving->stationary or vice-versa.
     bgGeo.on('motionchange', function(isMoving) {
       console.log('- onMotionChange: ', isMoving);
     });
+    alert(3);
     // Fired whenever a geofence transition occurs.
     bgGeo.on('geofence', function(geofence) {
       ws("geofence");
@@ -151,7 +148,7 @@ var phonegap = {
     }, function(response) {
       console.log('http failure: ', response.status);
     });
-    alert(2);
+    alert(4);
     // BackgroundGeoLocation is highly configurable.
     bgGeo.ready({
       // Geolocation config
@@ -177,7 +174,7 @@ var phonegap = {
         bgGeo.start();
       }
     });
-    alert(3);
+    alert(5);
     // The plugin is typically toggled with some button on your UI.
     function onToggleEnabled(value) {
       if (value) {
