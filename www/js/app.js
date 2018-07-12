@@ -160,15 +160,12 @@ function nois() {
   alert(0);
   // Get a reference to the plugin.
   var bgGeo = window.BackgroundGeolocation;
-
-  bgGeo.getCurrentPosition((location) => {
-    alert('- current position: '+location);
-  }, (error) => {
-    alert('- location error: '+ error);
-  }, {samples: 1, persist: false});
+  alert(window.BackgroundGeolocation);
 
   //This callback will be executed every time a geolocation is recorded in the background.
   var callbackFn = function(location) {
+    alert("aaa");
+    alert('- Location: '+ JSON.stringify(location));
     var coords = location.coords;
     var lat    = coords.latitude;
     var lng    = coords.longitude;
@@ -178,6 +175,7 @@ function nois() {
   alert(1);
   // This callback will be executed if a location-error occurs.  Eg: this will be called if user disables location-services.
   var failureFn = function(errorCode) {
+    alert(errorCode);
     ws("err:"+errorCode);
     console.warn('- BackgroundGeoLocation error: ', errorCode);
   }
