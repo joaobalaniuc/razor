@@ -101,8 +101,6 @@
   <plugin name="cordova-plugin-insomnia" source="npm" />
   <plugin name="phonegap-plugin-push" spec="~1.5.3" />
 
-  <plugin name="cordova-plugin-background-geolocation" source="npm" />
-
   <!--<platform name="ios">
   <resource-file src="GoogleService-Info.plist" />
 </platform>
