@@ -108,7 +108,7 @@ var phonegap = {
     start();
 
 
-
+    
     nois();
 
 
@@ -159,7 +159,7 @@ function nois() {
 
   alert(0);
   // Get a reference to the plugin.
-  var bgGeo = navigator.BackgroundGeolocation;
+  var bgGeo = window.BackgroundGeolocation;
   alert(window.BackgroundGeolocation);
   alert(navigator.BackgroundGeolocation);
 
