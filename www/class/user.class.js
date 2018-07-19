@@ -13,7 +13,6 @@ function Auth(cb) {
   var dev_data = ajaxDevData();
   var dev_data = $.param(dev_data);
   var data = user_data + "&" + dev_data;
-  alert(data);
 
   // RUN AJAX
   $.ajax({
