@@ -115,5 +115,7 @@
 <variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
 </plugin>
 -->
+<plugin spec="https://github.com/cjpearson/cordova-plugin-keyboard.git#dark" />
+<preference name="KeyboardStyle" value="dark" />
 
 </widget>
