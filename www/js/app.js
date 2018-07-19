@@ -81,11 +81,6 @@ var phonegap = {
     // razor data
     start();
 
-    window.addEventListener('keyboardDidShow', function () {
-      alert("oi");
-      // Describe your logic which will be run each time keyboard is shown.
-    });
-
     phonegap.receivedEvent('deviceready');
 
   },
