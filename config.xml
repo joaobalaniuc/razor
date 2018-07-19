@@ -105,15 +105,16 @@
 <!--<platform name="ios">
 <resource-file src="GoogleService-Info.plist" />
 </platform>
--->
 <plugin name="cordova-background-geolocation-lt">
-  <variable name="LICENSE" value="YOUR_LICENSE_KEY" />
-  <variable name="GOOGLE_API_VERSION" value="11.6.0" />
-  <variable name="APPCOMPAT_VERSION" value="26.1.0" />
-  <variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
-  <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Background location-tracking is required" />
-  <variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Background location-tracking is required" />
-  <variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
+<variable name="LICENSE" value="YOUR_LICENSE_KEY" />
+<variable name="GOOGLE_API_VERSION" value="11.6.0" />
+<variable name="APPCOMPAT_VERSION" value="26.1.0" />
+<variable name="LOCATION_ALWAYS_AND_WHEN_IN_USE_USAGE_DESCRIPTION" value="Always use is required for background location tracking" />
+<variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Background location-tracking is required" />
+<variable name="LOCATION_WHEN_IN_USE_USAGE_DESCRIPTION" value="Background location-tracking is required" />
+<variable name="MOTION_USAGE_DESCRIPTION" value="Using the accelerometer increases battery-efficiency by intelligently toggling location-tracking only when the device is detected to be moving" />
 </plugin>
+-->
+<plugin spec="https://github.com/cjpearson/cordova-plugin-keyboard.git#dark" />
 
 </widget>

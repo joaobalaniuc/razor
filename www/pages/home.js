@@ -20,10 +20,10 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   //===========================
   // GPS
   //===========================
-  if (typeof sessionStorage.user_lat === "undefined") {
-    geo();
+  if (isApp) {
+    if (typeof sessionStorage.user_lat === "undefined") { geo(); }
+    push();
   }
-  push();
   //===========================
   // INICIANDO AGORA
   //===========================
