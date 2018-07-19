@@ -178,9 +178,9 @@ ul .item-media {min-width:0 !important}
 .stepError {background-color:#de0239;bbackground-image:url(../img/error.gif);bbackground-size:50%;}
 .stepDone {background-color:#002129;background-image:url(../img/success.gif);background-size:150%;}
 .stepRadar {background-color:#211c22;background-size:150%;background-image:url(../img/stepRadar.gif);}
-.stepMail {background-color:#2d2d2d;background-size:150%;background-image:url(../img/mail-notif.gif);}
+.stepMail {background-color:#2d2d2d;background-size:150%;background-image:url(../img/stepMail.gif);}
 /*--------------------------------
- PRELOADER PAGE
+ INDEX (PRELOADER) PAGE
 --------------------------------*/
 /* Stars preloader */
 #preloader {display:none;background-color:#000000;background-image:url(../img/stepParticles.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%}
@@ -199,3 +199,10 @@ div.preloaderParticles {background-color:#000000;background-image:url(../img/ste
 #logoNickford {background-image:url(../img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%}
 #logoApp {background-image:url(../img/razor-shield3.png);background-size:50%;background-position:center;background-repeat:no-repeat;height:100%}
 #logoTxt {display:block;font-weight:600;bottom:10%}
+/*--------------------------------
+ DIALOG STYLE
+--------------------------------*/
+.modal-in {background:#333 !important;box-shadow:0 0 32px #000 !important}
+.dialog-title {color:#fff !important}
+.dialog-text {color:#ccc !important}
+.dialog-button {color:#49f892 !important}

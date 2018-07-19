@@ -1,14 +1,33 @@
 $$(document).on('page:init', '.page[data-name="turnon"]', function (e) {
-  /*if (isApp) {
-    if (typeof sessionStorage.user_lat === "undefined") { geo(); }
-    push();
-  }*/
-  $("#preloader").fadeIn("fast");
-  alert(0);
+  sessionStorage.turnon = 1;
+  $("#preloader").show();
+  $("#syncArea").show();
+});
+//=====================================================
+// GPS
+//=====================================================
+$$(document).on('click', '#turnonGps', function (e) {
   geo();
+  $("#divGps").fadeOut("slow", function() {
+    $("#divPush").fadeIn("slow");
+  });
+});
+$$(document).on('click', '#ignoreGps', function (e) {
+  $("#divGps").fadeOut("slow", function() {
+    $("#divPush").fadeIn("slow");
+  });
+});
+//=====================================================
+// PUSH
+//=====================================================
+$$(document).on('click', '#turnonPush', function (e) {
   push();
-  alert(1);
-  setTimeout(function() {
+  $("#divPush").fadeOut("slow", function() {
     app.router.navigate("/home/");
-  },5000);
+  });
+});
+$$(document).on('click', '#ignorePush', function (e) {
+  $("#divPush").fadeOut("slow", function() {
+    app.router.navigate("/home/");
+  });
 });
