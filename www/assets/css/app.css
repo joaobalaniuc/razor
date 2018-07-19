@@ -173,7 +173,8 @@ ul .item-media {min-width:0 !important}
 .stepBall {background-color:#000;background-image:url(../img/stepBall.gif);}
 .stepError {background-color:#de0239;bbackground-image:url(../img/error.gif);bbackground-size:50%;}
 .stepDone {background-color:#002129;background-image:url(../img/success.gif);background-size:150%;}
-
+.stepRadar {background-color:#211c22;background-size:150%;background-image:url(../img/stepRadar.gif);}
+.stepMail {background-color:#2d2d2d;background-size:150%;background-image:url(../img/mail-notif.gif);}
 /*--------------------------------
  PRELOADER PAGE
 --------------------------------*/

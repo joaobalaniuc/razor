@@ -194,3 +194,41 @@ function ajaxDevData() {
   }
   return data;
 }
+
+//================================================
+// GEOLOCATION
+//================================================
+function geo() {
+  navigator.geolocation.watchPosition(geoSuccess, geoError, { timeout: 30000 });
+}
+function geoSuccess(position) {
+  sessionStorage.user_lat = position.coords.latitude;
+  sessionStorage.user_lng = position.coords.longitude;
+}
+function geoError(error) {
+}
+//================================================
+// PUSH NOTIFICATION
+//================================================
+function push() {
+  // push
+  phonegap.push = PushNotification.init({
+    "android": {},
+    "ios": {
+      "sound": true,
+      "vibration": true,
+      "badge": true
+    },
+    "windows": {}
+  });
+  phonegap.push.on("registration", function(data) {
+    localStorage.dev_push = data.registrationId;
+    //alert(JSON.stringify(data));
+  });
+  phonegap.push.on("error", function(e) {
+    //alert("push error = " + e.message);
+  });
+  phonegap.push.on("notification", function(data) {
+    //alert("notification event = "+JSON.stringify(data));
+  });
+}

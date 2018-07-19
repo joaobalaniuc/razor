@@ -1,4 +1,5 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
+  $("#syncArea, .sync_area").show();
   //===========================
   // MAPBOX
   //===========================
@@ -16,6 +17,13 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   if (typeof marker !== "undefined") {
     delete marker;
   }
+  //===========================
+  // GPS
+  //===========================
+  if (typeof sessionStorage.user_lat === "undefined") {
+    geo();
+  }
+  push();
   //===========================
   // INICIANDO AGORA
   //===========================
