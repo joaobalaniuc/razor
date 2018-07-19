@@ -21,7 +21,7 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   // GPS
   //===========================
   if (isApp) {
-    if (typeof sessionStorage.user_lat === "undefined" && typeof sessionStorage.turnon === "undefined") {
+    if (typeof localStorage.dev_push === "undefined" && typeof sessionStorage.turnon === "undefined") {
       setTimeout(function() {
         app.router.navigate("/turnon/");
       }, 1000);
