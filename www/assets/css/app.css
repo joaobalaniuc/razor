@@ -42,6 +42,10 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
   background-color:#49f892 !important;
   box-shadow:0 0 16px #49f892;
 }
+.inputDiv {
+  padding-top:7px;
+  color:#fff !important;
+}
 
 /*--------------------------------
  BUTTONS
@@ -188,8 +192,8 @@ div.preloaderParticles {background-color:#000000;background-image:url(../img/ste
 /* Explosion preloader */
 #preloader1 {display:none;background-color:#000000;background-image:url(../img/stepBoom.gif);background-size:150%;background-position:center;background-repeat:no-repeat;height:100%}
 
-[data-name="preloader"] {background-color:#000000;}
-[data-name="preloader"] .txt {
+[data-name="index"] {background-color:#000000;}
+[data-name="index"] .txt {
   display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
 }
 #logoNickford {background-image:url(../img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%}

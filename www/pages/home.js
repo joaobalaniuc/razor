@@ -1,5 +1,5 @@
 $$(document).on('page:init', '.page[data-name="home"]', function (e) {
-  $("#syncArea, .sync_area").show();
+  //$("#syncArea, .sync_area").show();
   //===========================
   // MAPBOX
   //===========================
@@ -17,6 +17,11 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   if (typeof marker !== "undefined") {
     delete marker;
   }
+  setTimeout(function() {
+    app.router.navigate("/turnon/");
+  },1000);
+
+  return false;
   //===========================
   // GPS
   //===========================
