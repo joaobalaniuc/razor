@@ -3,8 +3,6 @@
 *.zip
 *.rar
 *backup*
-assets/img/backup
-backup/
 server/
 nbproject/
 platforms/
@@ -12,8 +10,6 @@ plugins/
 site/
 psd/
 test/
-public_html-old/
-public_html/backup/
 
 # Windows image file caches
 Thumbs.db
