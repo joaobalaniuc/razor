@@ -83,11 +83,6 @@ var phonegap = {
 
     phonegap.receivedEvent('deviceready');
 
-    window.addEventListener('keyboardDidShow', function () {
-      // Describe your logic which will be run each time keyboard is shown.
-      Keyboard.hideFormAccessoryBar(true);
-    });
-
   },
   // Update DOM on a Received Event
   receivedEvent: function (id) {
