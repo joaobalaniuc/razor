@@ -1,0 +1,208 @@
+/* RAZOR GREEN: #49f892 */
+/*--------------------------------
+ RAZOR
+--------------------------------*/
+body { font-family: 'Montserrat', sans-serif !important; }
+
+/*--------------------------------
+ TOOLBARS
+--------------------------------*/
+#rz-bar a { padding-top:15px;padding-bottom:12px; }
+a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
+.txt-green {color:#49f892 !important}
+.shad-green {text-shadow:0 0 15px #76bf93}
+
+/*--------------------------------
+ FORM INPUTS
+--------------------------------*/
+.item-input-focused .item-label{ color:#fff !important }
+.item-input-focused .item-input-wrap:after{ background:#66d492 !important; }
+.right-input-link {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40%;
+  height: 37px;
+  color: rgba(255, 255, 255, 0.54) !important;
+  font-size: 12px;
+  line-height: 37px;
+  text-align: right;
+  font-weight:400 !important;
+}
+.item-input-error-message {color:#ffc700 !important;pposition:relative !important;}
+.item-input-invalid .item-label {ccolor:#ffc700 !important}
+.item-input-info {color:#999 !important}
+.label-bold .item-title {
+  font-weight:600 !important;
+  color:#ccc !important;
+  text-transform:uppercase;
+}
+.label-bold ul:before {background:none !important}
+.md .color-theme-black label.item-radio input[type="radio"]:checked ~ .icon-radio:after, .md .color-theme-black label.item-radio input[type="radio"]:checked ~ * .icon-radio:after, .md .color-theme-black .radio input[type="radio"]:checked ~ .icon-radio:after {
+  background-color:#49f892 !important;
+  box-shadow:0 0 16px #49f892;
+}
+.inputDiv {
+  padding-top:7px;
+  color:#fff !important;
+}
+
+/*--------------------------------
+ BUTTONS
+--------------------------------*/
+.button {font-weight:600;text-transform:none !important}
+.button.color-green:not(.button-outline) {color:#000 !important;}
+.button-big {text-transform:uppercase !important}
+
+/*--------------------------------
+ TEXT
+--------------------------------*/
+.ucwords {text-transform:capitalize;}
+.navbar .title:not(.def) {width:100% !important;margin-left:auto !important;margin-right:auto !important;text-align:center !important}
+.muted {color:#999 !important}
+.truncate {
+  max-width:95%;
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.red {color:#fa574b}
+.md .color-theme-black a { color:#fff;font-weight:600 }
+.green { color:#49f892 !important }
+
+/*--------------------------------
+ LISTVIEW
+--------------------------------*/
+ul .item-media {min-width:0 !important}
+.md .links-list a {padding-left:0 !important}
+.list {margin:0 !important}
+.block-title {text-transform:uppercase;color:#49f892 !important}
+
+/*--------------------------------
+ MENU ICONS
+--------------------------------*/
+#icons .col {text-align:center !important;padding:16px;text-shadow:1px 1px 1px #000;font-weight:600;font-size:12px}
+#icons .col .fas {font-size:48px;position:relative;margin-bottom:10px}
+#icons .link {
+  &:focus {
+    outline: 0;
+    color: red !important;
+    &:before {
+      animation: effect_dylan 0.8s ease-out;
+    }
+  }
+}
+
+/*--------------------------------
+ ANIMATIONS
+--------------------------------*/
+@keyframes blink {
+  0% { color  : red; }
+  /*49% { color : red; }
+  50% { color : blue }*/
+  100% { color: #fff; }
+}
+.blink { animation: blink 0.5s linear infinite; }
+@keyframes bw {
+  0% { color  : #666; }
+  50% { color : #fff }
+  100% { color: #666; }
+}
+.bw { animation: bw 1s linear infinite; }
+
+/*--------------------------------
+ GENERAL
+--------------------------------*/
+.preloader-backdrop {opacity:1 !important;background:rgba(0, 0, 0, 0.4) !important}
+.verify-owner {display:none}
+.smart-select-page .navbar .title {text-align:left !important}
+
+/*--------------------------------
+ OFFLINE ALERT
+--------------------------------*/
+#offline {
+  display:none;
+  animation: bw 1s linear infinite;
+  text-align:center;font-weight:600;
+  position:absolute;top:0;left:0;height:100%;width:100%;
+  background:rgba(0,0,0,.5);z-index:999999;
+}
+#offline div { position:relative;top:50%;margin-top:-100px; }
+#offline div i { font-size:80px }
+#offline span { display:block;margin-top:24px;font-size:24px }
+
+/*--------------------------------
+ F7
+--------------------------------*/
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+
+/*--------------------------------
+ SYNC
+--------------------------------*/
+#syncArea {
+  display:none;position:absolute;left:0;top:0;width:100%;height:100%;
+  background-color:#000;z-index:99999;
+}
+.sync_area {
+  display:none;position:absolute;left:0;top:0;width:100%;height:100%;
+  background-size:100%;background-position:center;background-repeat:no-repeat;
+  z-index:99999;
+}
+.sync_title {
+  position:absolute;top:10%;width:100%;bborder:1px solid red;
+  text-align:center;font-size:24px;font-weight:800;
+}
+.sync_title div {padding:24px}
+.sync_subtitle {
+  position:absolute;top:18%;width:100%;bborder:1px solid red;
+  text-align:center;font-size:16px;font-weight:600;
+}
+.sync_subtitle div {padding:24px}
+.sync_foot {
+  position:absolute;bottom:10%;width:100%;
+  text-align:center;font-size:24px;
+}
+.sync_foot a {
+  display:inline-block !important;
+  width:auto !important;
+}
+/* Sync Styles */
+.stepGears {background-color:#000;background-image:url(../img/stepGears.gif);}
+.stepStars {background-color:#000;background-image:url(../img/stepStars.gif);}
+.stepBall {background-color:#000;background-image:url(../img/stepBall.gif);}
+.stepError {background-color:#de0239;bbackground-image:url(../img/error.gif);bbackground-size:50%;}
+.stepDone {background-color:#002129;background-image:url(../img/success.gif);background-size:150%;}
+.stepRadar {background-color:#211c22;background-size:150%;background-image:url(../img/stepRadar.gif);}
+.stepMail {background-color:#2d2d2d;background-size:150%;background-image:url(../img/stepMail.gif);}
+/*--------------------------------
+ INDEX (PRELOADER) PAGE
+--------------------------------*/
+/* Stars preloader */
+#preloader {display:none;background-color:#000000;background-image:url(../img/stepParticles.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%}
+div.preloaderParticles {background-color:#000000;background-image:url(../img/stepParticles.gif);background-size:170%;background-position:center;background-repeat:no-repeat;height:100%}
+
+/* Nickford preloader */
+#preloader0 {display:none;background-color:#000010;background-image:url(../img/loaderBlue.gif);background-size:80%;background-position:center;background-repeat:no-repeat;height:100%}
+
+/* Explosion preloader */
+#preloader1 {display:none;background-color:#000000;background-image:url(../img/stepBoom.gif);background-size:150%;background-position:center;background-repeat:no-repeat;height:100%}
+
+[data-name="index"] {background-color:#000000;}
+[data-name="index"] .txt {
+  display:none;color:#fff;position:absolute;text-shadow:5px 5px 5px #000;bottom:25%;left:0;width:100%;bborder:1px solid red;text-align:center
+}
+#logoNickford {background-image:url(../img/nickford.png);background-size:43%;background-position:center;background-repeat:no-repeat;height:100%}
+#logoApp {background-image:url(../img/razor-shield3.png);background-size:50%;background-position:center;background-repeat:no-repeat;height:100%}
+#logoTxt {display:block;font-weight:600;bottom:10%}
+/*--------------------------------
+ DIALOG STYLE
+--------------------------------*/
+.modal-in {background:#333 !important;box-shadow:0 0 32px #000 !important}
+.dialog-title {color:#fff !important}
+.dialog-text {color:#ccc !important}
+.dialog-button {color:#49f892 !important}

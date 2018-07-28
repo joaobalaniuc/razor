@@ -1,6 +1,5 @@
 $$(document).on('page:init', '.page[data-name="auto"]', function (e) {
   if (typeof sessionStorage.auto_edit !== "undefined") {
-    alert(1);
     autoRead(sessionStorage.auto_edit, autoReadCbEdit);
     $("#carro, #moto").prepend("<input type='hidden' name='auto_id' value='"+sessionStorage.auto_edit+"' />");
     $('[data-name="auto"] [type=submit]').html("Salvar alterações");
