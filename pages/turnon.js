@@ -23,7 +23,7 @@ $$(document).on('click', '#ignoreGps', function (e) {
 $$(document).on('click', '#turnonPush', function (e) {
   push();
   $("#divPush").fadeOut("slow", function() {
-    app.router.navigate("/home/");
+    //app.router.navigate("/home/");
   });
 });
 $$(document).on('click', '#ignorePush', function (e) {
