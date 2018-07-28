@@ -7,20 +7,23 @@ app.on('pageInit', function (page) {
   initForm();
 
   // JQUERY VALIDATION
-  $("form").validate({
-    errorElement: 'div',
-    errorPlacement: function(error, element) {
-      error.addClass("item-input-error-message").insertAfter(element);
-    },
-    highlight: function(element, errorClass, validClass) {
-      $(element).closest("li").addClass("item-input-with-error-message");
-      $(element).closest("div").find(".item-input-info").hide();
-    },
-    unhighlight: function(element, errorClass, validClass) {
-      $(element).closest("li").removeClass("item-input-with-error-message");
-      $(element).closest("div").find(".item-input-info").show();
-    }
+  $('form').each(function(i, obj) {
+    $(this).validate({
+      errorElement: 'div',
+      errorPlacement: function(error, element) {
+        error.addClass("item-input-error-message").insertAfter(element);
+      },
+      highlight: function(element, errorClass, validClass) {
+        $(element).closest("li").addClass("item-input-with-error-message");
+        $(element).closest("div").find(".item-input-info").hide();
+      },
+      unhighlight: function(element, errorClass, validClass) {
+        $(element).closest("li").removeClass("item-input-with-error-message");
+        $(element).closest("div").find(".item-input-info").show();
+      }
+    });
   });
+
 });
 app.on('panelOpen', function (panel) {
   console.log('Panel ' + panel.side + ': open');
