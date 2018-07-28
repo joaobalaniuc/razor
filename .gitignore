@@ -8,7 +8,7 @@ nbproject/
 platforms/
 plugins/
 site/
-psd/
+*psd*
 test/
 
 # Windows image file caches
