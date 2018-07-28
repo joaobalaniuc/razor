@@ -267,8 +267,6 @@ function autoInsert($el) {
 
   var fn = Hello();
 
-  if (isApp) {Keyboard.hide();}
-
   // DATA TO SEND
   var data_form = $el.serialize();
   var data_auto = {

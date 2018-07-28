@@ -106,6 +106,7 @@ $.ajaxSetup({
   timeout: localStorage.timeout,
   beforeSend: function(xhr, options) {
     //console.log("--> sending data: "+options.url);
+    if (isApp) {Keyboard.hide();}
     if (sessionStorage.online == "false") {
       xhr.abort();
       console.log("*** ajax abort (offline)");
