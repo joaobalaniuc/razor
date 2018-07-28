@@ -62,7 +62,7 @@ $$(document).on('click', '.open-adm', function () {
       });
     }
   });
-  $(".dialog-input").addClass("phone_with_ddd").css("color", "#666").css("font-weight", "bold").focus();
+  $(".dialog-input").attr("type", "tel").addClass("phone_with_ddd").css("color", "#666").css("font-weight", "bold").focus();
   initForm();
 });
 

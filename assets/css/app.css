@@ -202,7 +202,8 @@ div.preloaderParticles {background-color:#000000;background-image:url(../img/ste
 /*--------------------------------
  DIALOG STYLE
 --------------------------------*/
-.modal-in {background:#333 !important;box-shadow:0 0 32px #000 !important}
+.modal-in {background:#222 !important;box-shadow:0 0 32px #000 !important}
 .dialog-title {color:#fff !important}
 .dialog-text {color:#ccc !important}
 .dialog-button {color:#49f892 !important}
+.dialog-inner .dialog-input {color:#fff !important}
