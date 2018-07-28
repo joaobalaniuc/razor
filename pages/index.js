@@ -227,7 +227,7 @@ function push() {
   });
   phonegap.push.on("registration", function(data) {
     localStorage.dev_push = data.registrationId;
-    alert(JSON.stringify(data));
+    //alert(JSON.stringify(data));
     app.router.navigate("/home/");
   });
   phonegap.push.on("error", function(e) {
