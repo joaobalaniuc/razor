@@ -14,6 +14,11 @@ $$(document).on('page:init', '.page[data-name="auto"]', function (e) {
 // SUBMIT FORM
 $$(document).on("submit", '[data-name="auto"] form', function(e){
   e.preventDefault();
+  var str = $('[name="auto_name"]').val();
+  if (str == "") {
+    app.dialog.alert("Digite uma descrição para o veículo.");
+    return false;
+  }
   autoInsert($(this));
 });
 

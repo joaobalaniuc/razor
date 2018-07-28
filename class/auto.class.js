@@ -267,6 +267,10 @@ function autoInsert($el) {
 
   var fn = Hello();
 
+  alert(0);
+  Keyboard.hide();
+  alert(1);
+
   // DATA TO SEND
   var data_form = $el.serialize();
   var data_auto = {
