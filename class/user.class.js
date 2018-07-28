@@ -125,10 +125,10 @@ function userReadCb(res) {
 
   var fn = Hello();
 
-  $('[name=cli_name]').each(function(i) { $(this).html(res.cli_name); });
-  $('[name=cli_email]').each(function(i) { $(this).html(res.cli_email); });
-  $('[name=cli_phone]').each(function(i) { $(this).html(res.cli_phone); });
-  $('[name=cli_date]').each(function(i) { $(this).html(res.cli_date); });
+  $('[name=cli_name]').each(function(i) { $(this).html(res.cli_name).val(res.cli_name); });
+  $('[name=cli_email]').each(function(i) { $(this).html(res.cli_email).val(res.cli_email); });
+  $('[name=cli_phone]').each(function(i) { $(this).html(res.cli_phone).val(res.cli_phone); });
+  $('[name=cli_date]').each(function(i) { $(this).html(res.cli_date).val(res.cli_date); });
   $('.cel').each(function(i) { $(this).html(res.cli_phone); });
   initForm();
   txtPhone();

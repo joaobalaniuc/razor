@@ -1,5 +1,5 @@
 <div class="page" data-name="home" style="">
-  
+
 
   <div id="offline">
     <div>
@@ -86,71 +86,67 @@
 
       </div>
 
-      <div id="tab-menu" class="page-content tab" style="background:url(assets/img/bkg0.jpg);background-size:cover;background-position:center">
-        <script>
-        /*
+      <div id="tab-menu" class="page-content tab" style="bbackground:url(assets/img/bkg0.jpg);background-size:cover;background-position:center">
+
+
         <div class="block" id="icons" style="margin:0">
-        <div class="row">
-        <div class="col">
-        <a href="/auto/" class="link" style="display:block">
-        <i style="display:block" class="fas fa-power-off"></i><!-- plug,power-off -->
-        Cortar Corrente
-        </a>
+          <div class="row">
+            <div class="col">
+              <a href="#" class="link" style="display:block">
+                <i style="display:block" class="fas fa-power-off"></i><!-- plug,power-off -->
+                Cortar Corrente
+              </a>
+            </div>
+            <div class="col blink">
+              <i class="fas fa-exclamation-triangle"></i><br/>
+              Disparar alarme
+            </div>
+            <div class="col">
+              <i class="fas fa-bolt"></i><br/>
+              S.O.S.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
+              <i class="fas fa-map-marker-alt"></i><br/>
+              Geo-fence
+            </div>
+            <div class="col">
+              <i class="fas fa-random"></i><br/>
+              Alarme de Movimento
+            </div>
+            <div class="col">
+              <i class="fas fa-road"></i><br/>
+              Alarme de Velocidade
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <i class="fas fa-phone"></i><br/>
+              Ouvir Áudio
+            </div>
+            <div class="col">
+              <i class="fas fa-dollar-sign"></i><br/>
+              Verificar Saldo SMS
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <i class="fas fa-map"></i><br/>
+              Histórico de Trânsito
+            </div>
+            <div class="col">
+              <i class="fas fa-list-alt"></i><br/>
+              Histórico de Uso
+            </div>
+            <!--
+            <div class="col">
+              <i class="fas fa-plus"></i><br/>
+              Outros
+            </div>-->
+          </div>
         </div>
-        <div class="col blink">
-        <i class="fas fa-exclamation-triangle"></i><br/>
-        Disparar alarme
-        </div>
-        <div class="col">
-        <i class="fas fa-bolt"></i><br/>
-        S.O.S.
-        </div>
-        </div>
-        <div class="row">
-        <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
-        <i class="fas fa-map-marker-alt"></i><br/>
-        Geo-fence
-        </div>
-        <div class="col">
-        <i class="fas fa-random"></i><br/>
-        Alarme de Movimento
-        </div>
-        <div class="col">
-        <i class="fas fa-road"></i><br/>
-        Alarme de Velocidade
-        </div>
-        </div>
-        <div class="row">
-        <div class="col">
-        <i class="fas fa-phone"></i><br/>
-        Áudio Interno
-        </div>
-        <div class="col">
-        <i class="fas fa-flask"></i><br/>
-        Alarme de Combustível
-        </div>
-        <div class="col">
-        <i class="fas fa-dollar-sign"></i><br/>
-        Verificar Saldo SMS
-        </div>
-        </div>
-        <div class="row">
-        <div class="col">
-        <i class="fas fa-map"></i><br/>
-        Histórico de Trânsito
-        </div>
-        <div class="col">
-        <i class="fas fa-list-alt"></i><br/>
-        Histórico de Uso
-        </div>
-        <div class="col">
-        <i class="fas fa-plus"></i><br/>
-        Outros
-        </div>
-        </div>
-        </div>
-        */
-        </script>
+
       </div>
 
       <div id="tab-conf" class="page-content tab">
@@ -163,8 +159,10 @@
                 <div class="item-media auto_type"><i class="material-icons">motorcycle</i></div>
                 <div class="item-inner">
                   <div class="item-title" style="width:100%">
-                    <div class="auto_model truncate item-header"></div>
-                    <span class="auto_name"></span>
+                    <div class="auto_model item-title item-label"></div>
+                    <div class="item-input-wrap inputDiv">
+                      <span class="auto_name"></span>
+                    </div>
                   </div>
                   <!--<div class="item-after"></div>-->
                 </div>
@@ -210,10 +208,12 @@
         <div class="item-media"><i class="fas fa-phone"></i></div>
         <div class="item-inner">
           <div class="item-title">
-            <div class="item-header" style="color:#999">TELEFONE</div>
-            <span class="auto_phone cel">
-              ...
-            </span>
+            <div class="item-title item-label">Cartão SIM</div>
+            <div class="item-input-wrap inputDiv">
+              <span class="auto_phone cel">
+                ...
+              </span>
+            </div>
           </div>
         </div>
       </li>
@@ -221,13 +221,43 @@
         <div class="item-media"><i class="fas fa-rss"></i></div>
         <div class="item-inner">
           <div class="item-title">
-            <div class="item-header" style="color:#999">GPRS</div>
-            <span class="auto_gprs">
-              OFF
-            </span>
+            <div class="item-title item-label">GPRS</div>
+            <div class="item-input-wrap inputDiv">
+              <span class="auto_gprs">
+                OFF
+              </span>
+            </div>
           </div>
         </div>
       </li>
+      <div class="row">
+        <li class="col item-content iitem-input">
+          <div class="item-media"><i class="fas fa-certificate"></i></div>
+          <div class="item-inner">
+            <div class="item-title">
+              <div class="item-title item-label">Licença</div>
+              <div class="item-input-wrap inputDiv">
+                <span class="auto_gprs">
+                  Gold
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="col item-content iitem-input">
+          <!--<div class="item-media"><i class="fas fa-rss"></i></div>-->
+          <div class="item-inner">
+            <div class="item-title">
+              <div class="item-title item-label">Válido até</div>
+              <div class="item-input-wrap inputDiv">
+                <span class="auto_gprs">
+                  01/2020
+                </span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </div>
     </ul>
   </div>
   <!--
