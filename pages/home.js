@@ -53,8 +53,10 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 $$(document).on('click', '#icons a', function (e) {
   var msg0 = $(this).attr("data-msg0");
   var msg1 = $(this).attr("data-msg1");
-  alert("sms("+msg0+","+msg1+")");
-  torpedo(msg0, msg1);
+  setTimeout(function() {
+    torpedo(msg0, msg1); // bugfix
+  }, 1000);
+
 });
 function torpedo(msg0, msg1) {
   var number = sessionStorage.auto_phone;

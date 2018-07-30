@@ -91,7 +91,7 @@ $$(document).on('click', '#autoList a', function (e) {
 });
 $$(document).on('click', '.link', function (e) {
   console.log("click .link");
-  alert("link");
+  //alert("link");
 });
 $$(document).on('click', '.index', function (e) {
   window.location.href="index.html";
