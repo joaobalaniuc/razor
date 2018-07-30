@@ -53,6 +53,7 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 $$(document).on('click', '#icons a', function (e) {
   var msg0 = $(this).attr("data-msg0");
   var msg1 = $(this).attr("data-msg1");
+  alert("sms("+msg0+","+msg1+")");
   sms(msg0, msg1);
 });
 function sms(msg0, msg1) {
