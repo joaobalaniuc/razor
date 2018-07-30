@@ -69,6 +69,7 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 .red {color:#fa574b}
 .md .color-theme-black a { color:#fff;font-weight:600 }
 .green { color:#49f892 !important }
+.bold {font-weight:bold !important}
 
 /*--------------------------------
  LISTVIEW

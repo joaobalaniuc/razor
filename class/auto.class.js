@@ -171,7 +171,11 @@ function autoReadCbHome(data) {
     else {
       $(".auto_type").each(function(i) { $(this).html('<i class="material-icons">motorcycle</i>') });
     }
-
+    if (auto.auto_param_mode == "monitor") {
+      //alert("mon");
+      $("#modeMonitorOn").show();
+      $("#modeTrackerOn").hide();
+    }
     // Ainda não sincronizou veiculo
     if (auto.auto_phone==null) { app.router.navigate("/sync/"); }
   }
@@ -364,6 +368,31 @@ function autoDelete() {
         sessionStorage.clear();
         window.location.href="index.html";
       }
+    } // res not null
+  }); // after ajax
+}
+
+function autoUpdate(data_auto) {
+
+  var fn = Hello();
+
+  // DATA TO SEND
+  var data_user = ajaxUserData();
+  var data_user = $.param(data_user); // serialize
+  var data_auto = $.param(data_auto);
+  var data = data_user + "&" + data_auto;
+  console.log(fn+" --> sending data...");
+  console.log(data);
+
+  // RUN AJAX
+  $.ajax({
+    url: localStorage.server + "/auto_update.php",
+    data: data
+  })
+  .done(function (res) {
+    ajaxLog(fn, res);
+    if (!ajaxError(res)) {
+      if (res.success) { }
     } // res not null
   }); // after ajax
 }

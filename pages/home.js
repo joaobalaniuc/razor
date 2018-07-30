@@ -50,15 +50,21 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   }
 });
 
-$$(document).on('click', '#icons a', function (e) {
+$$(document).on('click', '.torpedo', function (e) {
   var msg0 = $(this).attr("data-msg0");
   var msg1 = $(this).attr("data-msg1");
+  var cb = $(this).attr("data-cb");
+  cb = window[cb];
   setTimeout(function() {
-    torpedo(msg0, msg1); // bugfix
-  }, 1000);
-
+    torpedo(msg0, msg1, cb); // bugfix
+  }, 500);
 });
-function torpedo(msg0, msg1) {
+function ligar() {
+  setTimeout(function() {
+    window.location.href="tel://"+sessionStorage.auto_phone
+  },500); // click effect bugfix
+}
+function torpedo(msg0, msg1, cb) {
   var number = sessionStorage.auto_phone;
   var pass = sessionStorage.auto_pass;
   var message = msg0 + pass + " " + msg1;
@@ -69,7 +75,69 @@ function torpedo(msg0, msg1) {
       //intent: '' // send SMS without open any other app
     }
   };
-  /*var success = function () { alert('Message sent successfully'); };
-  var error = function (e) { alert('Message Failed:' + e); };*/
-  sms.send(number, message, options, function () { alert('Message sent successfully'); }, function (e) { alert('Message Failed:' + e); });
+  if (typeof cb !== "undefined" && typeof cb !== "function") { cb = window[cb]; }
+  if (!isApp) { if (typeof cb === "function") { cb(); } }
+  else {
+    setTimeout(function() {
+      sms.send(number, message, options, function() {
+        if (typeof cb === "function") { cb(); }
+      });
+    },500); // click effect bugfix
+  }
 }
+
+//========================================================
+// CALL BACKS
+//========================================================
+function modeMonitorOn() {
+  //alert("monitor on");
+  var data_auto = {
+    auto_id: sessionStorage.auto_id,
+    auto_param_mode: "monitor"
+  };
+  $("#modeMonitorOn").show();
+  $("#modeTrackerOn").hide();
+  autoUpdate(data_auto);
+}
+function modeTrackerOn() {
+  //alert("tracker on");
+  var data_auto = {
+    auto_id: sessionStorage.auto_id,
+    auto_param_mode: "tracker"
+  };
+  $("#modeMonitorOn").hide();
+  $("#modeTrackerOn").show();
+  autoUpdate(data_auto);
+}
+$$(document).on('click', '.modeMonitorOn', function (e) {
+  app.dialog.create({
+    title: 'Ativar Modo Escuta',
+    text: 'É necessário enviar um comando via SMS para ativar esta função.',
+    buttons: [
+      { text: 'Ativar Modo Escuta', cssClass: 'bold' },
+      { text: 'Cancelar' }
+    ],
+    onClick: function(dialog, i) {
+      if (i == 0) { torpedo("monitor", "", "modeMonitorOn"); }
+    },
+    closeByBackdropClick:true,
+    verticalButtons: true,
+  }).open();
+});
+$$(document).on('click', '.modeTrackerOn', function (e) {
+  app.dialog.create({
+    title: 'Modo Escuta',
+    //text: 'É necessário enviar um comando via SMS para ativar esta função.',
+    buttons: [
+      { text: 'Ouvir Agora', cssClass: 'bold' },
+      { text: 'Desativar Modo Escuta' },
+      { text: 'Cancelar' }
+    ],
+    onClick: function(dialog, i) {
+      if (i == 0) { ligar(); }
+      if (i == 1) { torpedo("monitor", "", "modeTrackerOn"); }
+    },
+    closeByBackdropClick:true,
+    verticalButtons: true,
+  }).open();
+});

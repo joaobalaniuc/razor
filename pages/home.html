@@ -92,8 +92,8 @@
         <div class="block" id="icons" style="margin:0">
           <div class="row">
             <div class="col">
-              <a href="#" class="link" data-msg0="cortar" data-msg1="corrente">
-                <i class="fas fa-power-off"></i><!-- plug,power-off -->
+              <a href="#" class="link" data-msg0="cortar" data-msg1="corrente" data-cb="teste()">
+                <i class="fas fa-power-off"></i><br/><!-- plug,power-off -->
                 Cortar Corrente
               </a>
             </div>
@@ -101,16 +101,9 @@
               <i class="fas fa-exclamation-triangle"></i><br/>
               Disparar alarme
             </div>
-            <div class="col">
-              <i class="fas fa-bolt"></i><br/>
-              S.O.S.
-            </div>
           </div>
+
           <div class="row">
-            <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
-              <i class="fas fa-map-marker-alt"></i><br/>
-              Geo-fence
-            </div>
             <div class="col">
               <i class="fas fa-random"></i><br/>
               Alarme de Movimento
@@ -120,11 +113,27 @@
               Alarme de Velocidade
             </div>
           </div>
+
+          <div class="row">
+            <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
+              <i class="fas fa-map-marker-alt"></i><br/>
+              Geo-fence
+            </div>
+            <div class="col">
+              <i class="fas fa-bolt"></i><br/>
+              S.O.S.
+            </div>
+          </div>
+
           <div class="row">
             <div class="col">
-              <a href="#" class="link" data-msg0="monitor" data-msg1="">
-                <i class="fas fa-phone-volume"></i><br/><!--phone-slash-->
+              <a style="display:none" id="modeMonitorOn" href="#" class="modeTrackerOn link" data-msg0="monitor" data-msg1="" data-cb="modeMonitorOn">
+                <i class="fas fa-phone-volume"></i><br/>
                 Modo Escuta: ON
+              </a>
+              <a id="modeTrackerOn" href="#" class="modeMonitorOn link" data-msg0="tracker" data-msg1="" data-cb="modeTrackerOn">
+                <i class="fas fa-phone-slash"></i><br/>
+                Modo Escuta: OFF
               </a>
             </div>
             <div class="col">
