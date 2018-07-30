@@ -53,6 +53,7 @@ a.tab-link-active { color:#49f892 !important;text-shadow:0 0 15px #76bf93 }
 .button {font-weight:600;text-transform:none !important}
 .button.color-green:not(.button-outline) {color:#000 !important;}
 .button-big {text-transform:uppercase !important}
+.green-light {color:#49f892 !important;text-shadow:0 0 15px #76bf93}
 
 /*--------------------------------
  TEXT
@@ -83,7 +84,8 @@ ul .item-media {min-width:0 !important}
  MENU ICONS
 --------------------------------*/
 #icons .col {text-align:center !important;padding:16px;text-shadow:1px 1px 1px #000;font-weight:600;font-size:12px}
-#icons .col .fas {font-size:48px;position:relative;margin-bottom:10px}
+#icons .col .fas, #icons .col .far {font-size:48px;position:relative;margin-bottom:10px}
+#icons .col .material-icons {font-size:48px;position:relative;margin-bottom:10px}
 #icons .link {
   &:focus {
     outline: 0;

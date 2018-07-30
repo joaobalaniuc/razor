@@ -87,7 +87,7 @@ function torpedo(msg0, msg1, cb) {
 }
 
 //========================================================
-// CALL BACKS
+// MODO MONITOR/TRACKER
 //========================================================
 function modeMonitorOn() {
   //alert("monitor on");
@@ -109,7 +109,7 @@ function modeTrackerOn() {
   $("#modeTrackerOn").show();
   autoUpdate(data_auto);
 }
-$$(document).on('click', '.modeMonitorOn', function (e) {
+$$(document).on('click', '#modeTrackerOn', function (e) {
   app.dialog.create({
     title: 'Ativar Modo Escuta',
     text: 'É necessário enviar um comando via SMS para ativar esta função.',
@@ -124,7 +124,7 @@ $$(document).on('click', '.modeMonitorOn', function (e) {
     verticalButtons: true,
   }).open();
 });
-$$(document).on('click', '.modeTrackerOn', function (e) {
+$$(document).on('click', '#modeMonitorOn', function (e) {
   app.dialog.create({
     title: 'Modo Escuta',
     //text: 'É necessário enviar um comando via SMS para ativar esta função.',
@@ -141,3 +141,54 @@ $$(document).on('click', '.modeTrackerOn', function (e) {
     verticalButtons: true,
   }).open();
 });
+//========================================================
+// CORRENTE LIBERADA/CORTADA
+//========================================================
+$$(document).on('click', '#modeCutOff', function (e) {
+  app.dialog.create({
+    title: 'Cortar Corrente',
+    text: 'O veículo permanecerá imóvel até que você desative esta função.',
+    buttons: [
+      { text: 'Cortar Corrente', cssClass: 'bold' },
+      { text: 'Cancelar' }
+    ],
+    onClick: function(dialog, i) {
+      if (i == 0) { torpedo("quickstop", "", "modeCutOff"); }
+    },
+    closeByBackdropClick:true,
+    verticalButtons: true,
+  }).open();
+});
+$$(document).on('click', '#modeCutOn', function (e) {
+  app.dialog.create({
+    title: 'Liberar Corrente',
+    text: 'O veículo poderá se mover novamente.',
+    buttons: [
+      { text: 'Liberar Corrente', cssClass: 'bold' },
+      { text: 'Cancelar' }
+    ],
+    onClick: function(dialog, i) {
+      if (i == 0) { torpedo("resume", "", "modeCutOn"); }
+    },
+    closeByBackdropClick:true,
+    verticalButtons: true,
+  }).open();
+});
+function modeCutOff() {
+  var data_auto = {
+    auto_id: sessionStorage.auto_id,
+    auto_param_cutoff: 1
+  };
+  $("#modeCutOn").show();
+  $("#modeCutOff").hide();
+  autoUpdate(data_auto);
+}
+function modeCutOn() {
+  var data_auto = {
+    auto_id: sessionStorage.auto_id,
+    auto_param_cutoff: 0
+  };
+  $("#modeCutOn").hide();
+  $("#modeCutOff").show();
+  autoUpdate(data_auto);
+}

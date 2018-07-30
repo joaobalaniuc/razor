@@ -172,9 +172,12 @@ function autoReadCbHome(data) {
       $(".auto_type").each(function(i) { $(this).html('<i class="material-icons">motorcycle</i>') });
     }
     if (auto.auto_param_mode == "monitor") {
-      //alert("mon");
       $("#modeMonitorOn").show();
       $("#modeTrackerOn").hide();
+    }
+    if (auto.auto_param_cutoff == "1") {
+      $("#modeCutOn").show();
+      $("#modeCutOff").hide();
     }
     // Ainda não sincronizou veiculo
     if (auto.auto_phone==null) { app.router.navigate("/sync/"); }

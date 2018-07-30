@@ -92,12 +92,16 @@
         <div class="block" id="icons" style="margin:0">
           <div class="row">
             <div class="col">
-              <a href="#" class="link" data-msg0="cortar" data-msg1="corrente" data-cb="teste()">
-                <i class="fas fa-power-off"></i><br/><!-- plug,power-off -->
-                Cortar Corrente
+              <a id="modeCutOn" style="display:none" href="#" class="link blink" data-msg0="descortar" data-msg1="corrente" data-cb="teste()">
+                <i class="fas fa-ban"></i><br/><!-- plug,power-off -->
+                Corrente Cortada
+              </a>
+              <a id="modeCutOff" href="#" class="link green-light" data-msg0="dcortar" data-msg1="corrente" data-cb="teste()">
+                <i class="far fa-check-circle"></i><br/><!-- plug,power-off -->
+                Corrente Liberada
               </a>
             </div>
-            <div class="col blink">
+            <div class="col bblink">
               <i class="fas fa-exclamation-triangle"></i><br/>
               Disparar alarme
             </div>
@@ -115,7 +119,7 @@
           </div>
 
           <div class="row">
-            <div class="col" style="color:#49f892 !important;text-shadow:0 0 15px #76bf93">
+            <div class="col">
               <i class="fas fa-map-marker-alt"></i><br/>
               Geo-fence
             </div>
@@ -127,11 +131,11 @@
 
           <div class="row">
             <div class="col">
-              <a style="display:none" id="modeMonitorOn" href="#" class="modeTrackerOn link" data-msg0="monitor" data-msg1="" data-cb="modeMonitorOn">
+              <a style="display:none" id="modeMonitorOn" href="#" class="link green-light" data-msg0="monitor" data-msg1="" data-cb="modeMonitorOn">
                 <i class="fas fa-phone-volume"></i><br/>
                 Modo Escuta: ON
               </a>
-              <a id="modeTrackerOn" href="#" class="modeMonitorOn link" data-msg0="tracker" data-msg1="" data-cb="modeTrackerOn">
+              <a id="modeTrackerOn" href="#" class="link" data-msg0="tracker" data-msg1="" data-cb="modeTrackerOn">
                 <i class="fas fa-phone-slash"></i><br/>
                 Modo Escuta: OFF
               </a>
@@ -143,7 +147,10 @@
           </div>
           <div class="row">
             <div class="col">
-              <i class="fas fa-map"></i><br/>
+              <i class="material-icons">
+                accessible_forward
+              </i>
+              <!--<i class="fas fa-map"></i>--><br/>
               Histórico de Trânsito
             </div>
             <div class="col">
