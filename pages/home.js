@@ -9,9 +9,25 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/dark-v9',
-    zoom: 0,
-    center: [lat, lng]
+    /*zoom: 0,
+    center: [lat, lng]*/
+    center: [-40.2903928, -20.3407937],
+    zoom: 15
   });
+
+  var el = document.createElement('div');
+  el.className = 'pulse';
+  var marker = new mapboxgl.Marker(el)
+  .setLngLat([-40.2903928, -20.3407937])
+  .addTo(map);
+  /*
+  var el2 = document.createElement('div');
+  el2.className = 'pin';
+  var marker2 = new mapboxgl.Marker(el2)
+  .setLngLat([-40.2903928, -20.3407937])
+  .addTo(map);
+  */
+  
   sessionStorage.auto_lat = lat;
   sessionStorage.auto_lng = lng;
   if (typeof marker !== "undefined") {
