@@ -53,14 +53,13 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
 $$(document).on('click', '#icons a', function (e) {
   var msg0 = $(this).attr("data-msg0");
   var msg1 = $(this).attr("data-msg1");
-  //alert("sms("+msg0+","+msg1+")");
+  alert("sms("+msg0+","+msg1+")");
   torpedo(msg0, msg1);
 });
 function torpedo(msg0, msg1) {
   var number = sessionStorage.auto_phone;
   var pass = sessionStorage.auto_pass;
   var message = msg0 + pass + " " + msg1;
-  alert(number+","+message);
   var options = {
     replaceLineBreaks: false, // true to replace \n by a new line, false by default
     android: {
@@ -68,7 +67,7 @@ function torpedo(msg0, msg1) {
       //intent: '' // send SMS without open any other app
     }
   };
-  var success = function () { alert('Message sent successfully'); };
-  var error = function (e) { alert('Message Failed:' + e); };
-  sms.send(number, message, options, success, error);
+  /*var success = function () { alert('Message sent successfully'); };
+  var error = function (e) { alert('Message Failed:' + e); };*/
+  sms.send(number, message, options, function () { alert('Message sent successfully'); }, function (e) { alert('Message Failed:' + e); });
 }
