@@ -12,6 +12,7 @@ function autoList() {
     sessionStorage.removeItem("autoName_"+i);
     sessionStorage.removeItem("autoImei_"+i);
     sessionStorage.removeItem("autoType_"+i);
+    sessionStorage.removeItem("autoPhone_"+i);
   }
 
   // DATA TO SEND
@@ -34,14 +35,20 @@ function autoList() {
           sessionStorage.setItem("autoName_"+i, val.auto_name);
           sessionStorage.setItem("autoImei_"+i, val.auto_imei);
           sessionStorage.setItem("autoType_"+i, val.auto_type);
+          sessionStorage.setItem("autoPhone_"+i, val.auto_phone);
+          sessionStorage.setItem("autoPass_"+i, val.auto_password);
           x = 1;
         });
         //
         localStorage.auto_id = sessionStorage.autoId_0;
         localStorage.auto_imei = sessionStorage.autoImei_0;
+        localStorage.auto_phone = sessionStorage.autoPhone_0;
+        localStorage.auto_pass = sessionStorage.autoPass_0;
         //
         sessionStorage.auto_id = localStorage.auto_id;
         sessionStorage.auto_imei = localStorage.auto_imei;
+        sessionStorage.auto_phone = localStorage.auto_phone;
+        sessionStorage.auto_pass = localStorage.auto_pass;
         //
         autoListSession();
       } // auto > 0

@@ -49,3 +49,25 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
     sessionStorage.auto_imei = localStorage.auto_imei;
   }
 });
+
+$$(document).on('click', '#icons a', function (e) {
+  var msg0 = $(this).attr("data-msg0");
+  var msg1 = $(this).attr("data-msg1");
+  sms(msg0, msg1);
+});
+function sms(msg0, msg1) {
+  var number = sessionStorage.auto_phone;
+  var pass = sessionStorage.auto_pass;
+  var message = msg0 + pass + " " + msg1;
+  alert(number+","+message);
+  var options = {
+    replaceLineBreaks: false, // true to replace \n by a new line, false by default
+    android: {
+      intent: 'INTENT'  // send SMS with the native android SMS messaging
+      //intent: '' // send SMS without open any other app
+    }
+  };
+  var success = function () { alert('Message sent successfully'); };
+  var error = function (e) { alert('Message Failed:' + e); };
+  sms.send(number, message, options, success, error);
+}
