@@ -22,12 +22,12 @@ $$(document).on('page:init', '.page[data-name="home"]', function (e) {
   .addTo(map);
   /*
   var el2 = document.createElement('div');
-  el2.className = 'pin';
+  el2.className = 'pulse2';
   var marker2 = new mapboxgl.Marker(el2)
-  .setLngLat([-40.2903928, -20.3407937])
+  .setLngLat([-40.2913928, -20.3417937])
   .addTo(map);
   */
-  
+
   sessionStorage.auto_lat = lat;
   sessionStorage.auto_lng = lng;
   if (typeof marker !== "undefined") {

@@ -89,203 +89,207 @@
       <div id="tab-menu" class="page-content tab" style="bbackground:url(assets/img/bkg0.jpg);background-size:cover;background-position:center">
 
 
-        <div class="block" id="icons" style="margin:0">
+        <div class="block" id="icons" style="margin:0;margin-top:16px;">
           <div class="row">
             <div class="col">
               <a id="modeCutOn" style="display:none" href="#" class="link blink" data-msg0="descortar" data-msg1="corrente" data-cb="teste()">
-                <i class="fas fa-ban"></i><br/><!-- plug,power-off -->
-                Corrente Cortada
+                <i class="fas fa-plug"></i><br/><!-- charging-station,ban,plug,power-off -->
+                Corrente Desativada
               </a>
               <a id="modeCutOff" href="#" class="link green-light" data-msg0="dcortar" data-msg1="corrente" data-cb="teste()">
-                <i class="far fa-check-circle"></i><br/><!-- plug,power-off -->
-                Corrente Liberada
+                <i class="fas fa-bolt"></i><br/><!-- check-circle,bolt,plug,power-off -->
+                Corrente Ativada
               </a>
             </div>
-            <div class="col bblink">
+            <div class="col green-light" style="ddisplay:none;">
+              <i class="material-icons">verified_user</i><br/>
+              Alarme Ativado
+            </div>
+            <div class="col" style="display:none;">
               <i class="fas fa-exclamation-triangle"></i><br/>
-              Disparar alarme
+              Alarme Desativado
+            </div>
+            <div class="col blink" style="display:none;">
+              <i class="fas fa-exclamation-triangle"></i><br/>
+              Alarme Disparando
+            </div>
+            <div class="col">
+              <i class="fas fa-key"></i><br/>
+              Alerta de Ignição
             </div>
           </div>
 
           <div class="row">
-            <div class="col">
-              <i class="fas fa-random"></i><br/>
-              Alarme de Movimento
-            </div>
-            <div class="col">
-              <i class="fas fa-road"></i><br/>
-              Alarme de Velocidade
-            </div>
-          </div>
 
-          <div class="row">
             <div class="col">
-              <i class="fas fa-map-marker-alt"></i><br/>
-              Geo-fence
+              <i class="fas fa-tachometer-alt"></i><br/><!--road-->
+              Alerta de Velocidade
             </div>
             <div class="col">
-              <i class="fas fa-bolt"></i><br/>
+              <i class="fas fa-crosshairs"></i><br/>
+              Cerca Virtual
+            </div>
+            <div class="col">
+              <i class="material-icons">warning</i><br/>
               S.O.S.
             </div>
           </div>
 
           <div class="row">
+
             <div class="col">
               <a style="display:none" id="modeMonitorOn" href="#" class="link green-light" data-msg0="monitor" data-msg1="" data-cb="modeMonitorOn">
                 <i class="fas fa-phone-volume"></i><br/>
-                Modo Escuta: ON
+                Modo Escuta
               </a>
               <a id="modeTrackerOn" href="#" class="link" data-msg0="tracker" data-msg1="" data-cb="modeTrackerOn">
                 <i class="fas fa-phone-slash"></i><br/>
-                Modo Escuta: OFF
+                Modo Escuta
               </a>
             </div>
+
             <div class="col">
               <i class="fas fa-dollar-sign"></i><br/>
               Verificar Saldo SMS
             </div>
-          </div>
-          <div class="row">
+
             <div class="col">
-              <i class="material-icons">
-                accessible_forward
-              </i>
-              <!--<i class="fas fa-map"></i>--><br/>
+              <i class="fas fa-map-marked-alt"></i><br/><!--route,map-marked-alt-->
               Histórico de Trânsito
             </div>
-            <div class="col">
-              <i class="fas fa-list-alt"></i><br/>
-              Histórico de Uso
-            </div>
-            <!--
-            <div class="col">
-            <i class="fas fa-plus"></i><br/>
-            Outros
-          </div>-->
+
+          </div>
+          <!--
+          <div class="row">
+          <div class="col">
+          <i class="fas fa-list-alt"></i><br/>
+          Histórico de Uso</div>
+          <div class="col">
+          <i class="fas fa-plus"></i><br/>
+          Outros</div></div>-->
         </div>
+
       </div>
 
-    </div>
+      <div id="tab-conf" class="page-content tab">
 
-    <div id="tab-conf" class="page-content tab">
-
-      <div class="block-title">Veículo</div>
-      <div class="list">
-        <ul>
-          <li>
-            <a href="#" data-id="" class="item-link item-content auto_edit">
-              <div class="item-media auto_type"><i class="material-icons">motorcycle</i></div>
-              <div class="item-inner">
-                <div class="item-title" style="width:100%">
-                  <div class="auto_model item-title item-label"></div>
-                  <div class="item-input-wrap inputDiv">
-                    <span class="auto_name"></span>
-                  </div>
-                </div>
-                <!--<div class="item-after"></div>-->
-              </div>
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="verify-owner">
-        <div class="block-title">Admin</div>
+        <div class="block-title">Veículo</div>
         <div class="list">
-          <ul id="admList">
-          </ul>
-        </div>
-        <div class="block list links-list">
           <ul>
             <li>
-              <a class="open-adm" href="#">
-                <div class="item-media"><i class="fas fa-user-plus"></i></div>
+              <a href="#" data-id="" class="item-link item-content auto_edit">
+                <div class="item-media auto_type"><i class="material-icons">motorcycle</i></div>
                 <div class="item-inner">
-                  <div class="item-title" style="font-weight:600">Novo admin</div>
+                  <div class="item-title" style="width:100%">
+                    <div class="auto_model item-title item-label"></div>
+                    <div class="item-input-wrap inputDiv">
+                      <span class="auto_name"></span>
+                    </div>
+                  </div>
+                  <!--<div class="item-after"></div>-->
                 </div>
               </a>
             </li>
           </ul>
         </div>
-      </div>
 
-      <div class="block-title">Dispositivo</div>
-      <div class="list">
-        <ul>
-          <!--
-          <li class="item-content">
-          <div class="item-media"><i class="fas fa-microchip"></i></div>
+        <div class="verify-owner">
+          <div class="block-title">Admin</div>
+          <div class="list">
+            <ul id="admList">
+            </ul>
+          </div>
+          <div class="block list links-list">
+            <ul>
+              <li>
+                <a class="open-adm" href="#">
+                  <div class="item-media"><i class="fas fa-user-plus"></i></div>
+                  <div class="item-inner">
+                    <div class="item-title" style="font-weight:600">Novo admin</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="block-title">Dispositivo</div>
+        <div class="list">
+          <ul>
+            <!--
+            <li class="item-content">
+            <div class="item-media"><i class="fas fa-microchip"></i></div>
+            <div class="item-inner">
+            <div class="item-title">
+            <div class="item-header" style="color:#999">IMEI</div>
+            38294892384923
+          </div>
+        </div>
+      </li>-->
+      <li class="item-content">
+        <div class="item-media"><i class="fas fa-phone"></i></div>
+        <div class="item-inner">
+          <div class="item-title">
+            <div class="item-title item-label">Cartão SIM</div>
+            <div class="item-input-wrap inputDiv">
+              <span class="auto_phone cel">
+                ...
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="item-content">
+        <div class="item-media"><i class="fas fa-rss"></i></div>
+        <div class="item-inner">
+          <div class="item-title">
+            <div class="item-title item-label">GPRS</div>
+            <div class="item-input-wrap inputDiv">
+              <span class="auto_gprs">
+                OFF
+              </span>
+            </div>
+          </div>
+        </div>
+      </li>
+      <div class="row">
+        <li class="col item-content iitem-input">
+          <div class="item-media"><i class="fas fa-certificate"></i></div>
           <div class="item-inner">
-          <div class="item-title">
-          <div class="item-header" style="color:#999">IMEI</div>
-          38294892384923
-        </div>
-      </div>
-    </li>-->
-    <li class="item-content">
-      <div class="item-media"><i class="fas fa-phone"></i></div>
-      <div class="item-inner">
-        <div class="item-title">
-          <div class="item-title item-label">Cartão SIM</div>
-          <div class="item-input-wrap inputDiv">
-            <span class="auto_phone cel">
-              ...
-            </span>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="item-content">
-      <div class="item-media"><i class="fas fa-rss"></i></div>
-      <div class="item-inner">
-        <div class="item-title">
-          <div class="item-title item-label">GPRS</div>
-          <div class="item-input-wrap inputDiv">
-            <span class="auto_gprs">
-              OFF
-            </span>
-          </div>
-        </div>
-      </div>
-    </li>
-    <div class="row">
-      <li class="col item-content iitem-input">
-        <div class="item-media"><i class="fas fa-certificate"></i></div>
-        <div class="item-inner">
-          <div class="item-title">
-            <div class="item-title item-label">Licença</div>
-            <div class="item-input-wrap inputDiv">
-              <span class="auto_gprs">
-                Gold
-              </span>
+            <div class="item-title">
+              <div class="item-title item-label">Licença</div>
+              <div class="item-input-wrap inputDiv">
+                <span class="auto_gprs">
+                  Gold
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="col item-content iitem-input">
-        <!--<div class="item-media"><i class="fas fa-rss"></i></div>-->
-        <div class="item-inner">
-          <div class="item-title">
-            <div class="item-title item-label">Válido até</div>
-            <div class="item-input-wrap inputDiv">
-              <span class="auto_gprs">
-                01/2020
-              </span>
+        </li>
+        <li class="col item-content iitem-input">
+          <!--<div class="item-media"><i class="fas fa-rss"></i></div>-->
+          <div class="item-inner">
+            <div class="item-title">
+              <div class="item-title item-label">Válido até</div>
+              <div class="item-input-wrap inputDiv">
+                <span class="auto_gprs">
+                  01/2020
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-    </div>
-  </ul>
-</div>
-<!--
-<div class="block list links-list">
-<ul>
-<li>
-<a href="/info_dev/">
-<div class="item-media"></div>
-<div class="item-inner">
-<div class="item-title" style="font-weight:600">Mais informações</div>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <!--
+  <div class="block list links-list">
+  <ul>
+  <li>
+  <a href="/info_dev/">
+  <div class="item-media"></div>
+  <div class="item-inner">
+  <div class="item-title" style="font-weight:600">Mais informações</div>
 </div>
 </a>
 </li>
