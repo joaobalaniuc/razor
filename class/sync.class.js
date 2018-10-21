@@ -6,7 +6,7 @@ function syncPlay(start) {
 
   var fn = Hello(start);
 
-  if (typeof start !== "undefined") {tempo = 60;}
+  if (typeof start !== "undefined") {tempo = 90;}
 
   if (tempo == 0) {
     var res = {};
@@ -49,7 +49,7 @@ function syncPlay(start) {
       return false;
     }
     if (res.step_status == "1") {
-      tempo = 60;
+      tempo = 90;
       syncShow("Page", res);
     }
     if (res.step_status == "2") {

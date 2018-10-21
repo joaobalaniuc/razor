@@ -234,7 +234,7 @@ function autoCheck(auto_imei) {
         // gprs status?
         if (gprs) {
           sessionStorage.gprs = gprs.server_ip;
-          $(".auto_gprs").each(function(i) { $(this).html('<span class="txt-green shad-green">ON</span>'); });
+          $(".auto_gprs").each(function(i) { $(this).html('<span class="txt-green shad-green">ON</span> &nbsp; <span style="color:rgba(255, 255, 255, 0.54)">('+res["log"]["log_gpstime"]+")</span>"); });
         }
         else {
           sessionStorage.removeItem("gprs");
@@ -256,9 +256,15 @@ function autoCheck(auto_imei) {
               center: [lat, lng],
               zoom: 15
             });
-            marker = new mapboxgl.Marker()
+            var el = document.createElement('div');
+            el.className = 'pulse';
+            marker = new mapboxgl.Marker(el)
             .setLngLat([0, 0])
             .addTo(map);
+
+            /*marker = new mapboxgl.Marker()
+            .setLngLat([0, 0])
+            .addTo(map);*/
           }
           else {
             map.easeTo({
